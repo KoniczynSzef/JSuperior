@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+	scroll-behavior: smooth;
+}
+
 @layer base {
 	:root {
 		--background: black;
@@ -34,7 +38,7 @@
 
 		--radius: 0.5rem;
 
-		--sec: #737373;
+		--sec: #808ea0;
 
 		--yellowLogo: #facc15;
 	}
