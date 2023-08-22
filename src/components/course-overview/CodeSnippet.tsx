@@ -1,25 +1,55 @@
 'use client';
 
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
-import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import {
+	atomOneDark,
+	dracula,
+	monokai,
+	a11yDark,
+	stackoverflowDark,
+} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Button } from '../ui/button';
-
-// SyntaxHighlighter.registerLanguage('js', js);
+import { Clipboard } from 'lucide-react';
+import { useAppSelector } from '@/context/hooks';
 
 interface ComponentProps {
 	code: string;
 }
+
+const codeThemes = [atomOneDark, dracula, monokai, a11yDark, stackoverflowDark];
+
 const CodeSnippet: FC<ComponentProps> = ({ code }) => {
+	const { codeStyleIndex } = useAppSelector((s) => s.codeTheme);
+
+	const [copied, setCopied] = useState(false);
+	const handleCopy = () => {
+		setCopied(true);
+		navigator.clipboard.writeText(code);
+
+		setTimeout(() => setCopied(false), 1000);
+	};
+
 	return (
-		<>
-			<SyntaxHighlighter language={js} style={nightOwl}>
+		<div className="max-w-lg relative flex flex-col border border-slate-800 bg-slate-950 rounded">
+			<Button
+				className="bg-slate-800 hover:bg-slate-700 px-3 self-end absolute"
+				onClick={handleCopy}>
+				{!copied ? <Clipboard className="transition" /> : <>Copied!</>}
+			</Button>
+			<SyntaxHighlighter
+				language={'javascript'}
+				style={codeThemes[codeStyleIndex]}
+				wrapLongLines={true}
+				customStyle={{
+					borderRadius: '0.25rem',
+					background: 'transparent',
+					marginRight: 'auto',
+				}}>
 				{code}
 			</SyntaxHighlighter>
-			<Button>Change theme</Button>
-		</>
+		</div>
 	);
 };
 export default CodeSnippet;

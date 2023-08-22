@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { codeThemeReducers } from './codeThemeReducers/codeThemeReducers';
 
 export const store = configureStore({
-	reducer: {},
+	reducer: {
+		codeTheme: codeThemeReducers,
+	},
 });
 
 export type AppDispatch = typeof store.dispatch;

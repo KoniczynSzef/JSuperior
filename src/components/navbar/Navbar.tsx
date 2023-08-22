@@ -31,15 +31,15 @@ const links: LinkProps[] = [
 interface ComponentProps {}
 const Navbar: FC<ComponentProps> = () => {
 	return (
-		<div>
-			<header
+		<header>
+			<nav
 				className={`relative container mx-auto px-4 py-8 flex items-center justify-between transition duration-200`}>
 				<Link href={'/'}>
 					<span className="text-5xl font-extrabold text-yellowLogo opacity-90 hover:opacity-100 transition duration-150">
 						JS<span className="text-white">uperior</span>
 					</span>
 				</Link>
-				<nav>
+				<div>
 					<div className="md:hidden">
 						<Sheet>
 							<SheetTrigger asChild>
@@ -54,10 +54,10 @@ const Navbar: FC<ComponentProps> = () => {
 					<ul className="hidden md:flex md:space-x-6 lg:space-x-16 items-center">
 						<Links links={links} />
 					</ul>
-				</nav>
-			</header>
+				</div>
+			</nav>
 			<Separator />
-		</div>
+		</header>
 	);
 };
 export default Navbar;
