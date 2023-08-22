@@ -1,15 +1,15 @@
 'use client';
 
-import P from '@/components/P';
 import { Button } from '@/components/ui/button';
 import {
 	DialogContent,
 	DialogDescription,
-	DialogFooter,
 	DialogHeader,
 	DialogTitle,
 } from '@/components/ui/dialog';
 import React, { FC, useRef, useState } from 'react';
+
+import { motion } from 'framer-motion';
 
 type correctAnswers = 0 | 1 | 2 | 3;
 
@@ -22,41 +22,67 @@ export interface QuizProps {
 const Quiz: FC<QuizProps> = ({ questions, answers, correctAnswers }) => {
 	const [step, setStep] = useState(0);
 	const goodAnswers = useRef(0);
+	const wasAnswersCorrect = useRef(false);
+	const [userAnswered, setUserAnswered] = useState(false);
 
 	const handleChoose = (i: number) => {
+		setUserAnswered(true);
 		if (i === correctAnswers[step]) {
 			goodAnswers.current += 1;
+			wasAnswersCorrect.current = true;
 		}
 
-		setStep((prev) => (prev += 1));
+		setTimeout(() => {
+			setUserAnswered(false);
+			setStep((prev) => (prev += 1));
+			wasAnswersCorrect.current = false;
+		}, 1000);
 	};
 
 	return (
-		<DialogContent>
+		<DialogContent className="p-8 border border-slate-800 shadow-md max-w-lg space-y-8">
 			{step < questions.length ? (
-				<>
-					<DialogHeader>
-						<DialogTitle className="leading-8">{questions[step]}</DialogTitle>
-					</DialogHeader>
-					<DialogDescription>
-						{answers[step].map((answer, i) => (
-							<P key={i}>
-								{i + 1}. {answer}
-							</P>
-						))}
-					</DialogDescription>
-					<DialogFooter className="flex justify-between items-center">
-						{answers[step].map((answer, i) => (
-							<Button key={i} onClick={() => handleChoose(i)}>
-								{answer}
-							</Button>
-						))}
-					</DialogFooter>
-				</>
+				!userAnswered ? (
+					<>
+						<DialogHeader>
+							<DialogTitle className="leading-8 text-2xl">
+								{questions[step]}
+							</DialogTitle>
+						</DialogHeader>
+						<DialogDescription className="text-slate-300 flex flex-col gap-4">
+							{answers[step].map((answer, i) => (
+								<Button
+									key={i}
+									onClick={() => handleChoose(i)}
+									className="text-left py-8 bg-transparent border border-slate-800">
+									<p className="mr-auto text-lg">
+										{i + 1}. {answer}
+									</p>
+								</Button>
+							))}
+						</DialogDescription>
+					</>
+				) : (
+					<motion.div
+						initial={wasAnswersCorrect.current && { filter: 'blur(4px)', y: -50 }}
+						animate={wasAnswersCorrect.current && { filter: 'blur(0)', y: 0 }}
+						className="m-auto">
+						<DialogTitle
+							className={`m-auto text-2xl ${
+								wasAnswersCorrect.current
+									? 'text-green-500'
+									: 'text-red-600 animate-bounce'
+							}`}>
+							{wasAnswersCorrect.current
+								? 'Correct answer!'
+								: 'Unfortunately that is not the correct answer.'}
+						</DialogTitle>
+					</motion.div>
+				)
 			) : (
 				<>
 					<DialogHeader>
-						<DialogTitle>
+						<DialogTitle className="text-2xl text-center">
 							You scored {goodAnswers.current}/{questions.length}
 						</DialogTitle>
 					</DialogHeader>
