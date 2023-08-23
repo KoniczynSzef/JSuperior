@@ -13,11 +13,17 @@ interface ComponentProps {
 	questionsLength: number;
 	goodAnswers: number;
 	mistakenQuestions: { title: string; correctAnswer: string }[];
+	handleReset: () => void;
 }
 
 type title = 'Well Done!' | 'Great Job!' | "Don't Give Up!";
 
-const QuizSummary: FC<ComponentProps> = ({ questionsLength, goodAnswers, mistakenQuestions }) => {
+const QuizSummary: FC<ComponentProps> = ({
+	questionsLength,
+	goodAnswers,
+	mistakenQuestions,
+	handleReset,
+}) => {
 	const [summaryText, setSummaryText] = useState<{ title: title; desc: string[] }>({
 		title: 'Well Done!',
 		desc: [
@@ -27,20 +33,20 @@ const QuizSummary: FC<ComponentProps> = ({ questionsLength, goodAnswers, mistake
 	});
 
 	useEffect(() => {
-		if (goodAnswers / questionsLength <= 0.75) {
-			setSummaryText({
-				title: 'Great Job!',
-				desc: [
-					`You're on the right track to mastering the material.`,
-					`Your score is ${goodAnswers}/${questionsLength}. Keep up the good work and continue expanding your knowledge!`,
-				],
-			});
-		} else if (goodAnswers / questionsLength <= 0.5) {
+		if (goodAnswers / questionsLength < 0.5) {
 			setSummaryText({
 				title: "Don't Give Up!",
 				desc: [
 					`Your score is ${goodAnswers}/${questionsLength}.`,
 					`Learning is a process, and every answer is an opportunity to learn something new.`,
+				],
+			});
+		} else if (goodAnswers / questionsLength <= 0.75) {
+			setSummaryText({
+				title: 'Great Job!',
+				desc: [
+					`You're on the right track to mastering the material.`,
+					`Your score is ${goodAnswers}/${questionsLength}. Keep up the good work and continue expanding your knowledge!`,
 				],
 			});
 		}
@@ -55,7 +61,7 @@ const QuizSummary: FC<ComponentProps> = ({ questionsLength, goodAnswers, mistake
 				<motion.div
 					initial={{ opacity: 0, y: -100 }}
 					animate={{ opacity: 1, y: 0 }}
-					className="space-y-8">
+					className="space-y-8 flex flex-col">
 					<div
 						className={`text-foreground ${
 							mistakenQuestions.length === 0 ? 'space-y-6' : 'space-y-2'
@@ -89,7 +95,11 @@ const QuizSummary: FC<ComponentProps> = ({ questionsLength, goodAnswers, mistake
 						</div>
 					)}
 					<DialogTrigger asChild>
-						<Button type="submit" className="self-end" size={'lg'}>
+						<Button
+							type="submit"
+							className="self-end text-lg bg-transparent border-slate-800 border py-6"
+							size={'lg'}
+							onClick={handleReset}>
 							Finish quiz
 						</Button>
 					</DialogTrigger>

@@ -6,14 +6,16 @@ type QnAProps = {
 
 export const code = [
 	`
-	   const greetings = (name) => {
-		   console.log("Hello, " + name)
-	   }
+	const greetings = (name) => {
+		console.log("Hello, " + name)
+	}
 	   `,
+	//    code for class construction
 	`
 	const title = "The Hobbit"
 	const author = "J.R.R Tolkien"
 
+	// Creating a class with constructor
 	class Book {
 	  constructor(title, author) {
 		this.title = title
@@ -21,6 +23,7 @@ export const code = [
 	  }
 	}
 
+	// Creating a variable from this class
 	const book = new Book(title, author)
 	   `,
 ];
@@ -64,3 +67,8 @@ export const questions2: QnAProps[] = [
 		answer: 'Our interactive quizzes ensure you grasp each concept. Click the “start quiz” button to see an example of quiz',
 	},
 ];
+
+export const buildingRealWorldProject: QnAProps = {
+	question: 'Building Real-World Projects',
+	answer: "Apply your skills to real-world projects that simulate actual scenarios. Create a dynamic to-do list that responds to user input. Here's a sneak peek at how it might look:",
+};

@@ -75,12 +75,12 @@ const Quiz = () => {
 				</Button>
 			</DialogTrigger>
 
-			<DialogContent className="p-8 border border-slate-800 shadow-md max-w-lg space-y-8 min-h-[32rem] overflow-hidden">
+			<DialogContent className="p-8 border border-slate-800 shadow-md max-w-md md:max-w-lg space-y-8 min-h-[32rem] overflow-hidden">
 				{step < questions.length ? (
 					!userAnswered ? (
 						<>
 							<DialogHeader>
-								<DialogTitle className="leading-8 text-2xl">
+								<DialogTitle className="leading-8 text-2xl text-left md:text-center">
 									{questions[step]}
 								</DialogTitle>
 							</DialogHeader>
