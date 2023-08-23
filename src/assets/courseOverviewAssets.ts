@@ -26,6 +26,35 @@ export const code = [
 	// Creating a variable from this class
 	const book = new Book(title, author)
 	   `,
+	// code for todo list
+	`
+	// Selecting all DOM elements
+	const input = document.querySelector("input")
+	const button = document.querySelector("button")
+	const todoList = document.querySelector("div")
+
+	// Creating a function to addTodo
+	const addTodo = () => {
+		const value = input.value
+		// Creating new dynamic elements
+		const todo = document.createElement("div")
+		const paragraph = document.createElement("p")
+		const btn = document.createElement("button")
+
+		// Creating text nodes for elements 
+		const btnText = document.createTextNode("X")
+		const text = document.createTextNode(value)
+
+		// Appending elements to the DOM
+		paragraph.appendChild(text)
+		todo.appendChild(paragraph)
+		todo.appendChild(button)
+
+		todoList.appendChild(todo)
+	}	
+
+	button.addEventListener("click", addTodo)
+	`,
 ];
 
 export const questions: QnAProps[] = [
