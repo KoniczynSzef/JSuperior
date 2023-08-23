@@ -28,6 +28,8 @@ export const code = [
 	   `,
 	// code for todo list
 	`
+	// It's only an example ;)
+
 	// Selecting all DOM elements
 	const input = document.querySelector("input")
 	const button = document.querySelector("button")
@@ -35,7 +37,9 @@ export const code = [
 
 	// Creating a function to addTodo
 	const addTodo = () => {
+		// Creating a variable which is what user typed
 		const value = input.value
+
 		// Creating new dynamic elements
 		const todo = document.createElement("div")
 		const paragraph = document.createElement("p")
@@ -54,6 +58,21 @@ export const code = [
 	}	
 
 	button.addEventListener("click", addTodo)
+	`,
+	// code for an example of fetching the data
+	`
+	// Importing a link variable
+	import { link } from './data.js' 
+	
+	// Creating an async function
+	async function fetchData(link) {
+		// Actual fetching data
+		const res = await fetch(link)
+		const data = await res.json()
+
+		// Returning the data
+		return data
+	}
 	`,
 ];
 
@@ -100,4 +119,10 @@ export const questions2: QnAProps[] = [
 export const buildingRealWorldProject: QnAProps = {
 	question: 'Building Real-World Projects',
 	answer: "Apply your skills to real-world projects that simulate actual scenarios. Create a dynamic to-do list that responds to user input. Here's a sneak peek at how it might look:",
+};
+
+export const buildingModernWebApps: QnAProps = {
+	question: 'Building Modern Web Applications',
+	answer: "Learn about APIs, asynchronous programming, and how to fetch data from the web. Develop a weather app that provides real-time forecasts. Here's a snippet of fetching data:",
+	code: code[3],
 };

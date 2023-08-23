@@ -6,7 +6,12 @@ import Image from 'next/image';
 import keyboardImage from '../../assets/keyboard.png';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 import Quiz from './quiz/Quiz';
-import { buildingRealWorldProject, questions, questions2 } from '@/assets/courseOverviewAssets';
+import {
+	buildingModernWebApps,
+	buildingRealWorldProject,
+	questions,
+	questions2,
+} from '@/assets/courseOverviewAssets';
 import TodoList from './TodoList/TodoList';
 
 interface ComponentProps {}
@@ -74,6 +79,10 @@ const Course: FC<ComponentProps> = () => {
 			</div>
 
 			<TodoList />
+
+			<div className="mt-16">
+				<Question q={buildingModernWebApps} />
+			</div>
 		</section>
 	);
 };
