@@ -4,89 +4,9 @@ import P from '../P';
 import Image from 'next/image';
 
 import keyboardImage from '../../assets/keyboard.png';
-import { Button } from '../ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
-import { Dialog, DialogTrigger } from '../ui/dialog';
-import Quiz, { QuizProps } from './quiz/Quiz';
-
-export type QnAProps = {
-	question: string;
-	answer: string;
-	code?: string;
-};
-
-const quizProps: QuizProps = {
-	questions: [
-		'Which of the following methods is used to add an element to the end of an array?',
-		'Which one of these JS types is not a primitive?',
-	],
-	answers: [
-		['push()', 'pop()', 'shift()', 'unshift()'],
-		['boolean', 'array', 'string', 'number'],
-	],
-	correctAnswers: [0, 1],
-};
-
-const code = [
-	`
-	   const greetings = (name) => {
-		   console.log("Hello, " + name)
-	   }
-	   `,
-	`
-	const title = "The Hobbit"
-	const author = "J.R.R Tolkien"
-
-	class Book {
-	  constructor(title, author) {
-		this.title = title
-		  this.author = author
-	  }
-	}
-
-	const book = new Book(title, author)
-	   `,
-];
-
-const questions: QnAProps[] = [
-	{
-		question: 'Why learn JavaScript?',
-		answer: "JavaScript is the backbone of modern web development. It's the language that makes websites interactive and responsive, allowing users to experience seamless, engaging interfaces. Whether you're new to coding or looking to expand your skill set, mastering JavaScript opens up a world of opportunities.",
-	},
-	{
-		question: 'What to expect?',
-		answer: "My course is carefully crafted to cater to learners of all levels. From the basics of variables and functions to advanced topics like asynchronous programming and APIs, I've got you covered. With hands-on exercises, real-world projects, and interactive quizzes, you'll build a solid foundation in no time.",
-	},
-	{
-		question: 'Hands-On Learning',
-		answer: "I believe in learning by doing. Throughout the course, you'll work on practical projects that mirror real-world scenarios. You'll gain confidence as you apply your knowledge to solve challenges, write code, and witness the immediate impact of your efforts.",
-	},
-	{
-		question: 'Interactive Quizzes',
-		answer: "Quizzes aren't just about testing your knowledge; they're an integral part of the learning journey. My interactive quizzes will help reinforce your understanding of key concepts and guide you towards mastering each topic. Get ready to see your skills evolve with every quiz!",
-	},
-	{
-		question: 'Code Your Way to Mastery',
-		answer: "Learning JavaScript isn't just about memorizing syntax; it's about thinking critically and creatively. I'll guide you through coding exercises that encourage experimentation, problem-solving, and innovation. Unlock your coding potential and gain the confidence to bring your ideas to life.",
-	},
-];
-
-const questions2: QnAProps[] = [
-	{
-		question: 'Diving deeply into JavaScript Essentials',
-		answer: "From variables and data types to loops and conditionals, we cover the fundamental building blocks of JavaScript. Here's an example of a basic code snippet:",
-		code: code[0],
-	},
-	{
-		question: 'Mastering Complex Concepts',
-		answer: "Explore advanced topics like functions, object-oriented programming, and error handling. Challenge yourself with tasks like creating custom objects. Here's an example of an object creation:",
-		code: code[1],
-	},
-	{
-		question: 'Interactive Quizzes for Reinforcement',
-		answer: 'Our interactive quizzes ensure you grasp each concept. Click the “start quiz” button to see an example of quiz',
-	},
-];
+import Quiz from './quiz/Quiz';
+import { questions, questions2 } from '@/assets/courseOverviewAssets';
 
 interface ComponentProps {}
 const Course: FC<ComponentProps> = () => {
@@ -146,20 +66,7 @@ const Course: FC<ComponentProps> = () => {
 				))}
 			</div>
 
-			<Dialog>
-				<DialogTrigger asChild>
-					<Button
-						className="bg-transparent hover:bg-slate-900 border border-slate-700 px-10 py-6 text-lg"
-						size={'lg'}>
-						Start quiz
-					</Button>
-				</DialogTrigger>
-				<Quiz
-					questions={quizProps.questions}
-					answers={quizProps.answers}
-					correctAnswers={quizProps.correctAnswers}
-				/>
-			</Dialog>
+			<Quiz />
 		</section>
 	);
 };
