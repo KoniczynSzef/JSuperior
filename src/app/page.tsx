@@ -1,3 +1,4 @@
+import About from '@/components/about/About';
 import Course from '@/components/course-overview/Course';
 import HeroSection from '@/components/hero-section/HeroSection';
 import { Separator } from '@/components/ui/separator';
@@ -11,6 +12,7 @@ const page: FC<ComponentProps> = () => {
 			<Separator />
 			<Course />
 			<Separator />
+			<About />
 		</main>
 	);
 };
