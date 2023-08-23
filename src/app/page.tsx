@@ -10,6 +10,7 @@ const page: FC<ComponentProps> = () => {
 			<HeroSection />
 			<Separator />
 			<Course />
+			<Separator />
 		</main>
 	);
 };

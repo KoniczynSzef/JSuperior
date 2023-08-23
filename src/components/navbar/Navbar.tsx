@@ -3,9 +3,6 @@
 import Link from 'next/link';
 import React, { FC } from 'react';
 
-import { Menu } from 'lucide-react';
-import { Sheet, SheetTrigger } from '../ui/sheet';
-import { Button } from '../ui/button';
 import SheetMenu, { Links } from './SheetMenu';
 import { Separator } from '../ui/separator';
 
@@ -41,14 +38,7 @@ const Navbar: FC<ComponentProps> = () => {
 				</Link>
 				<div>
 					<div className="md:hidden">
-						<Sheet>
-							<SheetTrigger asChild>
-								<Button className="px-3">
-									<Menu />
-								</Button>
-							</SheetTrigger>
-							<SheetMenu links={links} />
-						</Sheet>
+						<SheetMenu links={links} />
 					</div>
 
 					<ul className="hidden md:flex md:space-x-6 lg:space-x-16 items-center">

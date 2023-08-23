@@ -1,11 +1,12 @@
 'use client';
 
 import React, { FC } from 'react';
-import { SheetContent, SheetDescription, SheetHeader, SheetTitle } from '../ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet';
 import { LinkProps } from './Navbar';
 import Link from 'next/link';
 
-import { Github } from 'lucide-react';
+import { Github, Menu } from 'lucide-react';
+import { Button } from '../ui/button';
 
 interface ComponentProps {
 	links: LinkProps[];
@@ -34,20 +35,32 @@ export const Links: FC<ComponentProps> = ({ links }) => {
 
 const SheetMenu: FC<ComponentProps> = ({ links }) => {
 	return (
-		<SheetContent className="py-12 border-l-slate-700 bg-[#030007]">
-			<SheetHeader className="mt-8">
-				<SheetTitle>
-					<h2 className="text-3xl font-bold text-yellowLogo">
+		<Sheet>
+			<SheetTrigger asChild>
+				<Button className="px-3">
+					<Menu />
+				</Button>
+			</SheetTrigger>
+			<SheetContent className="py-12 border-l-slate-700 bg-[#030007]">
+				<SheetHeader className="mt-8">
+					<SheetTitle className="text-3xl font-bold text-yellowLogo">
 						JS<span className="text-foreground">uperior</span>
-					</h2>
-				</SheetTitle>
-			</SheetHeader>
-			<SheetDescription className="mt-24">
-				<ul className="space-y-10 flex flex-col items-center">
-					<Links links={links} />
+					</SheetTitle>
+				</SheetHeader>
+				<ul className="space-y-10 flex flex-col items-center mt-24">
+					{links.map((link) => (
+						<SheetTrigger asChild key={link.id}>
+							<Link
+								href={link.href}
+								className="text-sec hover:text-foreground text-xl transition duration-200">
+								{link.link}
+							</Link>
+						</SheetTrigger>
+					))}
+					{/* <Links links={links} /> */}
 				</ul>
-			</SheetDescription>
-		</SheetContent>
+			</SheetContent>
+		</Sheet>
 	);
 };
 export default SheetMenu;
