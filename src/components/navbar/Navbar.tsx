@@ -11,17 +11,17 @@ const links: LinkProps[] = [
 	{
 		id: 1,
 		link: 'Course overview',
-		href: '#course',
+		href: '/#course',
 	},
 	{
 		id: 2,
 		link: 'About me',
-		href: '#about',
+		href: '/#about',
 	},
 	{
 		id: 3,
 		link: 'Learning tips',
-		href: '#tips',
+		href: '/#tips',
 	},
 ];
 

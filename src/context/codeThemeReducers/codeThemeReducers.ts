@@ -4,13 +4,13 @@ interface codeThemeProps {
 	codeStyleIndex: number;
 }
 
-const codeStyleIndex =
-	window !== undefined && localStorage.getItem('codeStyleIndex') === null
-		? 0
-		: parseInt(localStorage.getItem('codeStyleIndex') as string);
+// const codeStyleIndex =
+// 	window !== undefined && localStorage.getItem('codeStyleIndex') === null
+// 		? 0
+// 		: parseInt(localStorage.getItem('codeStyleIndex') as string);
 
 const initialState: codeThemeProps = {
-	codeStyleIndex: codeStyleIndex,
+	codeStyleIndex: 0,
 };
 
 const codeThemeSlice = createSlice({

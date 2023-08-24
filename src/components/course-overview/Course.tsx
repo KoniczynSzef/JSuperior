@@ -30,30 +30,24 @@ const Course: FC<ComponentProps> = () => {
 			</div>
 
 			<div className="my-16 flex flex-col lg:flex-row gap-10 lg:gap-8 justify-between items-center">
-				<div className="space-y-10">
-					<blockquote className="italic border border-slate-800 p-8 rounded bg-slate-950">
-						<P>
-							“Programming is not about typing code; it&apos;s about thinking
-							logically and solving problems systematically. Consistency in learning
-							leads to mastery in coding.”
-						</P>
-					</blockquote>
-					<Accordion type="single" collapsible className="space-y-2">
-						{questions.map((q, i) => (
-							<AccordionItem
-								key={i}
-								value={q.question}
-								className="border-b border-b-slate-700">
-								<AccordionTrigger className="text-xl font-bold">
-									{q.question}
-								</AccordionTrigger>
-								<AccordionContent className="text-medium text-xl leading-8">
-									{q.answer}
-								</AccordionContent>
-							</AccordionItem>
-						))}
-					</Accordion>
-				</div>
+				<Accordion
+					type="single"
+					collapsible
+					className="space-y-2 border border-slate-900 p-4 rounded w-full">
+					{questions.map((q, i) => (
+						<AccordionItem
+							key={i}
+							value={q.question}
+							className="border-b border-b-slate-500">
+							<AccordionTrigger className="text-xl font-bold">
+								{q.question}
+							</AccordionTrigger>
+							<AccordionContent className="text-medium text-xl leading-8">
+								{q.answer}
+							</AccordionContent>
+						</AccordionItem>
+					))}
+				</Accordion>
 				<Image
 					src={keyboardImage}
 					alt="Keyboard image - red keyboard and monitor behind it"
