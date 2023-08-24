@@ -1,5 +1,6 @@
 import About from '@/components/about/About';
 import Course from '@/components/course-overview/Course';
+import Footer from '@/components/footer/Footer';
 import HeroSection from '@/components/hero-section/HeroSection';
 import Learning from '@/components/learning/Learning';
 import { Separator } from '@/components/ui/separator';
@@ -17,6 +18,7 @@ const page: FC<ComponentProps> = () => {
 			<Separator />
 			<Learning />
 			<Separator />
+			<Footer />
 		</main>
 	);
 };

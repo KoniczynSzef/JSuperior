@@ -15,7 +15,7 @@ export interface TipProps {
 const Tip: FC<TipProps> = ({ title, desc, id }) => {
 	return (
 		<Card className="bg-transparent max-w-lg text-foreground border-slate-700">
-			<CardTitle className="border-b border-b-slate-800 py-4 px-6 bg-slate-900">
+			<CardTitle className="border-b border-b-slate-800 py-4 px-6 bg-slate-900 rounded-t">
 				{id}. {title}
 			</CardTitle>
 			<div className="px-6 text-sec my-4">

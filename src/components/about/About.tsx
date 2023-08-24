@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Github, Mail, LucideLinkedin } from 'lucide-react';
 import P from '../P';
 
-const links: { name: string; url: string; icon: React.JSX.Element }[] = [
+export const links: { name: string; url: string; icon: React.JSX.Element }[] = [
 	{ name: 'Github', url: 'https://github.com/KoniczynSzef', icon: <Github /> },
 	{ name: 'E-mail', url: 'mailto:koniczynszef@gmail.com', icon: <Mail /> },
 	{
