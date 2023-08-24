@@ -11,7 +11,7 @@ import {
 	stackoverflowDark,
 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Button } from '../ui/button';
-import { Clipboard } from 'lucide-react';
+import { Copy, CopyCheck } from 'lucide-react';
 import { useAppSelector } from '@/context/hooks';
 
 interface ComponentProps {
@@ -36,7 +36,7 @@ const CodeSnippet: FC<ComponentProps> = ({ code }) => {
 			<Button
 				className="bg-slate-800 hover:bg-slate-700 px-3 self-end absolute focus:outline-white"
 				onClick={handleCopy}>
-				{!copied ? <Clipboard className="transition" /> : <>Copied!</>}
+				{!copied ? <Copy className="transition" /> : <CopyCheck className="transition" />}
 			</Button>
 			<SyntaxHighlighter
 				language={'javascript'}

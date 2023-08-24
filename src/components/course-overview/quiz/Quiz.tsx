@@ -80,7 +80,7 @@ const Quiz = () => {
 					!userAnswered ? (
 						<>
 							<DialogHeader>
-								<DialogTitle className="leading-8 text-2xl text-left md:text-center">
+								<DialogTitle className="leading-8 text-2xl text-left">
 									{questions[step]}
 								</DialogTitle>
 							</DialogHeader>

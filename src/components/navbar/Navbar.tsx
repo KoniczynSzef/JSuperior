@@ -30,7 +30,7 @@ const Navbar: FC<ComponentProps> = () => {
 	return (
 		<header>
 			<nav
-				className={`relative container mx-auto px-4 py-8 flex items-center justify-between transition duration-200`}>
+				className={`relative container mx-auto py-8 flex items-center justify-between transition duration-200`}>
 				<Link href={'/'}>
 					<span className="text-5xl font-extrabold text-yellowLogo opacity-90 hover:opacity-100 transition duration-150">
 						JS<span className="text-white">uperior</span>

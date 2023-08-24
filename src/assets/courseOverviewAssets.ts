@@ -66,7 +66,7 @@ export const code = [
 	
 	// Creating an async function
 	async function fetchData(link) {
-		// Actual fetching data
+		// Actual data fetching
 		const res = await fetch(link)
 		const data = await res.json()
 
@@ -115,6 +115,11 @@ export const questions2: QnAProps[] = [
 		answer: 'Our interactive quizzes ensure you grasp each concept. Click the “start quiz” button to see an example of quiz',
 	},
 ];
+
+export const courseOffer: QnAProps = {
+	question: 'What does this course offer?',
+	answer: "Our Complete JavaScript Course offers a comprehensive learning experience that equips you with the skills and knowledge to excel in JavaScript development. Here's a glimpse of what you can expect:",
+};
 
 export const buildingRealWorldProject: QnAProps = {
 	question: 'Building Real-World Projects',

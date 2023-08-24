@@ -18,7 +18,7 @@ interface ComponentProps {}
 
 const About: FC<ComponentProps> = () => {
 	return (
-		<section id="about" className="container relative mx-auto px-4 py-32">
+		<section id="about" className="container relative mx-auto py-32">
 			<h2 className="text-4xl uppercase font-bold text-center">About me</h2>
 			<div className="space-y-6 mt-16">
 				{paragraphs.map((p, i) => (
@@ -28,13 +28,13 @@ const About: FC<ComponentProps> = () => {
 
 			<Card className="bg-transparent text-foreground border-slate-800 max-w-lg mt-16">
 				<CardHeader>
-					<CardTitle>My social media</CardTitle>
+					<CardTitle className="text-3xl">My social media</CardTitle>
 				</CardHeader>
-				<CardContent className="w-full space-x-2 flex">
+				<CardContent className="w-full space-x-2 flex mt-8">
 					{links.map((link, i) => (
 						<a
 							key={i}
-							className="w-full bg-transparent hover:bg-slate-900 flex items-center p-4 rounded border border-slate-900 transition-all duration-150"
+							className="w-full bg-slate-950 hover:bg-slate-900 flex items-center p-4 rounded border border-slate-800 transition-all duration-150"
 							href={link.url}
 							target="_blank"
 							rel="noreferrer">

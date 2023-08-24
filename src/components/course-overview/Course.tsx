@@ -9,26 +9,27 @@ import Quiz from './quiz/Quiz';
 import {
 	buildingModernWebApps,
 	buildingRealWorldProject,
+	courseOffer,
 	questions,
 	questions2,
 } from '@/assets/courseOverviewAssets';
-import TodoList from './TodoList/TodoList';
+import TodoList from './todoList/TodoList';
 
 interface ComponentProps {}
 const Course: FC<ComponentProps> = () => {
 	return (
 		<section className="container mx-auto relative py-32" id="course">
 			<h2 className="text-4xl uppercase font-bold text-center z-30">Course overview</h2>
-			<div className="flex flex-col lg:flex-row mt-24 items-center gap-16 lg:gap-8 z-30">
-				<p className="font-medium leading-10 mt-6 md:max-w-3xl text-xl z-30">
+			<div className="flex flex-col lg:flex-row mt-8 items-center gap-16 lg:gap-8 z-30">
+				<P>
 					Dive into the world of JavaScript with our Complete JavaScript Course! Are you
 					curious about harnessing the power of code to build dynamic websites and
 					applications? Look no further. This course is designed to take you from a
 					curious beginner to a confident JavaScript developer.
-				</p>
+				</P>
 			</div>
 
-			<div className="my-32 flex flex-col lg:flex-row gap-10 lg:gap-8 justify-between items-center">
+			<div className="my-16 flex flex-col lg:flex-row gap-10 lg:gap-8 justify-between items-center">
 				<div className="space-y-10">
 					<blockquote className="italic border border-slate-800 p-8 rounded bg-slate-950">
 						<P>
@@ -39,7 +40,10 @@ const Course: FC<ComponentProps> = () => {
 					</blockquote>
 					<Accordion type="single" collapsible className="space-y-2">
 						{questions.map((q, i) => (
-							<AccordionItem key={i} value={q.question}>
+							<AccordionItem
+								key={i}
+								value={q.question}
+								className="border-b border-b-slate-700">
 								<AccordionTrigger className="text-xl font-bold">
 									{q.question}
 								</AccordionTrigger>
@@ -57,14 +61,7 @@ const Course: FC<ComponentProps> = () => {
 				/>
 			</div>
 
-			<h2 className="text-4xl font-bold">What does this course offer?</h2>
-			<div className="mt-2">
-				<P>
-					Our Complete JavaScript Course offers a comprehensive learning experience that
-					equips you with the skills and knowledge to excel in JavaScript development.
-					Here&apos;s a glimpse of what you can expect:
-				</P>
-			</div>
+			<Question q={courseOffer} />
 
 			<div className="space-y-16 mt-32">
 				{questions2.map((q, i) => (
