@@ -51,7 +51,7 @@ const Course: FC<ComponentProps> = () => {
 				<Image
 					src={keyboardImage}
 					alt="Keyboard image - red keyboard and monitor behind it"
-					className="lg:max-w-md xl:max-w-2xl object-cover rounded"
+					className="max-w-lg object-cover rounded"
 				/>
 			</div>
 

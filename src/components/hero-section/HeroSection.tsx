@@ -36,7 +36,7 @@ const HeroSection: FC<ComponentProps> = () => {
 			<Image
 				src={coding}
 				alt="Coding using JS in editor image"
-				className="rounded max-w-[50%]"
+				className="rounded lg:max-w-[40%]"
 			/>
 		</section>
 	);

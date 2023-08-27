@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 import { Github, Menu } from 'lucide-react';
 import { Button } from '../ui/button';
+import Sidebar from '../sidebar/Sidebar';
 
 interface ComponentProps {
 	links: LinkProps[];
@@ -57,8 +58,9 @@ const SheetMenu: FC<ComponentProps> = ({ links }) => {
 							</Link>
 						</SheetTrigger>
 					))}
-					{/* <Links links={links} /> */}
 				</ul>
+
+				<Sidebar />
 			</SheetContent>
 		</Sheet>
 	);
