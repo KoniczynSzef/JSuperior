@@ -8,7 +8,6 @@ import { Toaster } from '@/components/ui/toaster';
 import Bottom from '@/components/bottom/Bottom';
 import Sidebar from '@/components/sidebar/Sidebar';
 import AuthProvider from '@/components/auth/AuthProvider';
-import { getServerSession } from 'next-auth';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,7 +21,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<AuthProvider>
 			<ReduxProvider>
 				<html lang="en">
-					<body className={`${inter.className} bg-background text-foreground`}>
+					<body
+						className={`${inter.className} bg-gradient-b from-gray-900 via-[#300171] to-slate-900 text-foreground`}>
 						<Navbar />
 						{/* <div className="lg:flex mx-auto gap-4 relative items-start container"> */}
 						{/* <Sidebar /> */}

@@ -11,7 +11,7 @@ interface ComponentProps {
 
 const AuthDialogSpinner: FC<ComponentProps> = ({ session }) => {
 	return (
-		<Link href={'/dashboard'} className="hover:bg-zinc-900 p-1.5 rounded-full transition-all">
+		<Link href={'/dashboard'} className="hover:bg-zinc-900 p-2 rounded-full transition-all">
 			<Avatar>
 				<AvatarFallback>{session?.user?.name?.slice(0, 2)}</AvatarFallback>
 				<AvatarImage src={session?.user?.image || ''} />

@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 import SheetMenu, { Links } from './SheetMenu';
 import { getServerSession } from 'next-auth';
-import AuthDialogSpinner from './AuthDialogSpinner';
+import UserAvatar from './UserAvatar';
 import { authOptions } from '@/utils/authOptions';
 import { Button } from '../ui/button';
 import { Dialog, DialogTrigger } from '../ui/dialog';
@@ -43,13 +43,13 @@ const Navbar: FC<ComponentProps> = async () => {
 				</Link>
 				<div>
 					<div className="md:hidden">
-						<SheetMenu links={links} />
+						<SheetMenu links={links} session={session} />
 					</div>
 
 					<ul className="hidden md:flex md:space-x-6 lg:space-x-16 items-center">
 						<Links links={links} />
 						{session?.user ? (
-							<AuthDialogSpinner session={session} />
+							<UserAvatar session={session} />
 						) : (
 							<Dialog>
 								<DialogTrigger asChild>

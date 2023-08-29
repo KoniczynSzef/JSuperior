@@ -11,7 +11,6 @@ html {
 	:root {
 		--background: black;
 		--foreground: white;
-
 		--card: 0 0% 100%;
 		--card-foreground: 222.2 84% 4.9%;
 
@@ -72,11 +71,17 @@ html {
 	}
 }
 
-@layer base {
-	* {
-		@apply border-border;
-	}
-	body {
-		@apply bg-background text-foreground;
-	}
+body {
+	background: linear-gradient(to bottom, #020017, #1e1b4b, black);
+	position: relative;
+}
+
+body::before {
+	position: absolute;
+	inset: 0;
+	display: block;
+	height: 100%;
+	width: 100%;
+	background: cover no-repeat;
+	opacity: 0.05;
 }

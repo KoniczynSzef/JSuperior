@@ -8,9 +8,14 @@ import Link from 'next/link';
 import { Menu } from 'lucide-react';
 import { Button } from '../ui/button';
 import Sidebar from '../sidebar/Sidebar';
+import { Session } from 'next-auth';
+import UserAvatar from './UserAvatar';
+import { Dialog, DialogTrigger } from '../ui/dialog';
+import SignUpForm from './SignUpForm';
 
 interface ComponentProps {
 	links: LinkProps[];
+	session?: Session | null;
 }
 
 export const Links: FC<ComponentProps> = ({ links }) => {
@@ -25,7 +30,7 @@ export const Links: FC<ComponentProps> = ({ links }) => {
 	));
 };
 
-const SheetMenu: FC<ComponentProps> = ({ links }) => {
+const SheetMenu: FC<ComponentProps> = ({ links, session }) => {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
@@ -49,6 +54,21 @@ const SheetMenu: FC<ComponentProps> = ({ links }) => {
 							</Link>
 						</SheetTrigger>
 					))}
+
+					{session?.user ? (
+						<li className="mx-auto">
+							<UserAvatar session={session} />
+						</li>
+					) : (
+						<Dialog>
+							<DialogTrigger asChild>
+								<Button className="bg-violet-800 hover:bg-violet-700 px-6">
+									Sign in
+								</Button>
+							</DialogTrigger>
+							<SignUpForm />
+						</Dialog>
+					)}
 				</ul>
 
 				<Sidebar />

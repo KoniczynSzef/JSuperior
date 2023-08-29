@@ -6,12 +6,10 @@ import Learning from '@/components/learning/Learning';
 import { Separator } from '@/components/ui/separator';
 import React, { FC } from 'react';
 
-
 interface ComponentProps {}
 const page: FC<ComponentProps> = async () => {
-
 	return (
-		<main className="text-foreground bg-background">
+		<main className="text-foreground">
 			<HeroSection />
 			<Separator />
 			<Course />
