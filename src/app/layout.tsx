@@ -23,10 +23,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<html lang="en">
 					<body className={`${inter.className} bg-background text-foreground`}>
 						<Navbar />
-						<div className="lg:flex mx-auto gap-4 relative items-start container">
-							<Sidebar />
-							{children}
-						</div>
+						{/* <div className="lg:flex mx-auto gap-4 relative items-start container"> */}
+						{/* <Sidebar /> */}
+						{children}
+						{/* </div> */}
 						<Bottom />
 						<Toaster />
 					</body>

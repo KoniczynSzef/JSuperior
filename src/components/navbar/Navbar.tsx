@@ -1,10 +1,8 @@
-'use client';
-
 import Link from 'next/link';
 import React, { FC } from 'react';
 
 import SheetMenu, { Links } from './SheetMenu';
-import { Separator } from '../ui/separator';
+import { getServerSession } from 'next-auth';
 
 export type LinkProps = { id: number; link: string; href: string };
 const links: LinkProps[] = [
@@ -26,9 +24,14 @@ const links: LinkProps[] = [
 ];
 
 interface ComponentProps {}
-const Navbar: FC<ComponentProps> = () => {
+const Navbar: FC<ComponentProps> = async () => {
+
+	const session = await getServerSession()
+
+	console.log(session)
+
 	return (
-		<header>
+		<header className="border-b-slate-700 border-b">
 			<nav
 				className={`relative container mx-auto py-8 flex items-center justify-between transition duration-200`}>
 				<Link href={'/'}>
@@ -46,7 +49,6 @@ const Navbar: FC<ComponentProps> = () => {
 					</ul>
 				</div>
 			</nav>
-			<Separator />
 		</header>
 	);
 };

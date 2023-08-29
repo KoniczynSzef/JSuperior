@@ -6,7 +6,7 @@ interface ComponentProps {}
 const Sidebar: FC<ComponentProps> = () => {
 	return (
 		<div className="sticky top-0 hidden lg:block">
-			<ScrollArea className="h-screen px-4 py-2 my-4 max-w-sm rounded bg-zinc-950">
+			<ScrollArea className="h-screen px-4 py-2 my-4 max-w-sm rounded">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolores, inventore
 				cum ullam est optio reiciendis impedit, earum vel blanditiis libero! Nobis facilis
 				accusamus numquam enim libero magni aperiam facere. Qui totam veniam perferendis

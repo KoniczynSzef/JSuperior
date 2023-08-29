@@ -8,12 +8,26 @@ import Link from 'next/link';
 import { Github, Menu } from 'lucide-react';
 import { Button } from '../ui/button';
 import Sidebar from '../sidebar/Sidebar';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { Dialog, DialogTrigger } from '../ui/dialog';
 
 interface ComponentProps {
 	links: LinkProps[];
 }
 
 export const Links: FC<ComponentProps> = ({ links }) => {
+	const { data: session } = useSession();
+
+	const handleLogin = async () => {
+		await signIn();
+	};
+
+	const handleLogout = async () => {
+		await signOut();
+	};
+
+	console.log(session);
+
 	return (
 		<>
 			{links.map((link) => (
@@ -30,6 +44,26 @@ export const Links: FC<ComponentProps> = ({ links }) => {
 					<Github className="text-white" />
 				</li>
 			</a>
+
+			<Dialog>
+				{!session?.user ? (
+					<DialogTrigger asChild>
+						<Button
+							onClick={handleLogin}
+							variant={'outline'}
+							className="text-xl py-6 border-none hover:bg-gray-900 hover:text-foreground">
+							Login
+						</Button>
+					</DialogTrigger>
+				) : (
+					<Button
+						onClick={handleLogout}
+						variant={'outline'}
+						className="text-xl py-6 border-none hover:bg-gray-900 hover:text-foreground">
+						Sign out
+					</Button>
+				)}
+			</Dialog>
 		</>
 	);
 };

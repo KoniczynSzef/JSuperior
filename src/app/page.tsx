@@ -6,8 +6,13 @@ import Learning from '@/components/learning/Learning';
 import { Separator } from '@/components/ui/separator';
 import React, { FC } from 'react';
 
+import { getServerSession } from 'next-auth/next';
+
 interface ComponentProps {}
-const page: FC<ComponentProps> = () => {
+const page: FC<ComponentProps> = async () => {
+	const session = await getServerSession();
+	console.log(session);
+
 	return (
 		<main className="text-foreground bg-background">
 			<HeroSection />
