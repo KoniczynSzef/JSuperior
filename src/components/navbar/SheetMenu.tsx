@@ -5,67 +5,24 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../u
 import { LinkProps } from './Navbar';
 import Link from 'next/link';
 
-import { Github, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '../ui/button';
 import Sidebar from '../sidebar/Sidebar';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import { Dialog, DialogTrigger } from '../ui/dialog';
 
 interface ComponentProps {
 	links: LinkProps[];
 }
 
 export const Links: FC<ComponentProps> = ({ links }) => {
-	const { data: session } = useSession();
-
-	const handleLogin = async () => {
-		await signIn();
-	};
-
-	const handleLogout = async () => {
-		await signOut();
-	};
-
-	console.log(session);
-
-	return (
-		<>
-			{links.map((link) => (
-				<li key={link.id}>
-					<Link
-						href={link.href}
-						className="text-sec hover:text-foreground text-xl transition duration-200">
-						{link.link}
-					</Link>
-				</li>
-			))}
-			<a href="https://github.com/KoniczynSzef" target="_blank" rel="noreferrer">
-				<li className="bg-transparent p-3 border border-slate-700 rounded hover:bg-slate-900 transition">
-					<Github className="text-white" />
-				</li>
-			</a>
-
-			<Dialog>
-				{!session?.user ? (
-					<DialogTrigger asChild>
-						<Button
-							onClick={handleLogin}
-							variant={'outline'}
-							className="text-xl py-6 border-none hover:bg-gray-900 hover:text-foreground">
-							Login
-						</Button>
-					</DialogTrigger>
-				) : (
-					<Button
-						onClick={handleLogout}
-						variant={'outline'}
-						className="text-xl py-6 border-none hover:bg-gray-900 hover:text-foreground">
-						Sign out
-					</Button>
-				)}
-			</Dialog>
-		</>
-	);
+	return links.map((link) => (
+		<li key={link.id}>
+			<Link
+				href={link.href}
+				className="text-sec hover:text-foreground text-xl transition duration-200">
+				{link.link}
+			</Link>
+		</li>
+	));
 };
 
 const SheetMenu: FC<ComponentProps> = ({ links }) => {

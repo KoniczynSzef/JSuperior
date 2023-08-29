@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 import Bottom from '@/components/bottom/Bottom';
 import Sidebar from '@/components/sidebar/Sidebar';
 import AuthProvider from '@/components/auth/AuthProvider';
+import { getServerSession } from 'next-auth';
 
 const inter = Inter({ subsets: ['latin'] });
 

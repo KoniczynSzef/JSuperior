@@ -1,26 +1,22 @@
 'use client';
 
 import React, { FC } from 'react';
-import { DialogTrigger } from '../ui/dialog';
-import { Button } from '../ui/button';
 import { Session } from 'next-auth';
+import Link from 'next/link';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 interface ComponentProps {
-	handleLogin: () => Promise<void>;
-	handleLogout: () => Promise<void>;
 	session: Session | null;
 }
 
-const AuthDialogSpinner: FC<ComponentProps> = ({ handleLogin, handleLogout, session }) => {
+const AuthDialogSpinner: FC<ComponentProps> = ({ session }) => {
 	return (
-		<DialogTrigger asChild>
-			<Button
-				onClick={session?.user ? handleLogout : handleLogin}
-				variant={'outline'}
-				className="text-xl py-6 border-none hover:bg-gray-900 hover:text-foreground">
-				{session?.user ? 'Sign out' : 'Login in'}
-			</Button>
-		</DialogTrigger>
+		<Link href={'/dashboard'} className="hover:bg-zinc-900 p-1.5 rounded-full transition-all">
+			<Avatar>
+				<AvatarFallback>{session?.user?.name?.slice(0, 2)}</AvatarFallback>
+				<AvatarImage src={session?.user?.image || ''} />
+			</Avatar>
+		</Link>
 	);
 };
 export default AuthDialogSpinner;

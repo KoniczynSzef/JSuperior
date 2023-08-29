@@ -3,6 +3,11 @@ import React, { FC } from 'react';
 
 import SheetMenu, { Links } from './SheetMenu';
 import { getServerSession } from 'next-auth';
+import AuthDialogSpinner from './AuthDialogSpinner';
+import { authOptions } from '@/utils/authOptions';
+import { Button } from '../ui/button';
+import { Dialog, DialogTrigger } from '../ui/dialog';
+import SignUpForm from './SignUpForm';
 
 export type LinkProps = { id: number; link: string; href: string };
 const links: LinkProps[] = [
@@ -25,10 +30,7 @@ const links: LinkProps[] = [
 
 interface ComponentProps {}
 const Navbar: FC<ComponentProps> = async () => {
-
-	const session = await getServerSession()
-
-	console.log(session)
+	const session = await getServerSession(authOptions);
 
 	return (
 		<header className="border-b-slate-700 border-b">
@@ -46,6 +48,18 @@ const Navbar: FC<ComponentProps> = async () => {
 
 					<ul className="hidden md:flex md:space-x-6 lg:space-x-16 items-center">
 						<Links links={links} />
+						{session?.user ? (
+							<AuthDialogSpinner session={session} />
+						) : (
+							<Dialog>
+								<DialogTrigger asChild>
+									<Button className="bg-violet-800 hover:bg-violet-700 px-6">
+										Sign in
+									</Button>
+								</DialogTrigger>
+								<SignUpForm />
+							</Dialog>
+						)}
 					</ul>
 				</div>
 			</nav>
