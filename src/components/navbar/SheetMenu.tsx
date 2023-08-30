@@ -10,8 +10,6 @@ import { Button } from '../ui/button';
 import Sidebar from '../sidebar/Sidebar';
 import { Session } from 'next-auth';
 import UserAvatar from './UserAvatar';
-import { Dialog, DialogTrigger } from '../ui/dialog';
-import SignUpForm from './SignUpForm';
 
 interface ComponentProps {
 	links: LinkProps[];
@@ -60,14 +58,9 @@ const SheetMenu: FC<ComponentProps> = ({ links, session }) => {
 							<UserAvatar session={session} />
 						</li>
 					) : (
-						<Dialog>
-							<DialogTrigger asChild>
-								<Button className="bg-violet-800 hover:bg-violet-700 px-6">
-									Sign in
-								</Button>
-							</DialogTrigger>
-							<SignUpForm />
-						</Dialog>
+						<Link href={'/signin'}>
+							<Button>Sign in</Button>
+						</Link>
 					)}
 				</ul>
 

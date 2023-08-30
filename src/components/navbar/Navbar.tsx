@@ -6,8 +6,6 @@ import { getServerSession } from 'next-auth';
 import UserAvatar from './UserAvatar';
 import { authOptions } from '@/utils/authOptions';
 import { Button } from '../ui/button';
-import { Dialog, DialogTrigger } from '../ui/dialog';
-import SignUpForm from './SignUpForm';
 
 export type LinkProps = { id: number; link: string; href: string };
 const links: LinkProps[] = [
@@ -51,14 +49,9 @@ const Navbar: FC<ComponentProps> = async () => {
 						{session?.user ? (
 							<UserAvatar session={session} />
 						) : (
-							<Dialog>
-								<DialogTrigger asChild>
-									<Button className="bg-violet-800 hover:bg-violet-700 px-6">
-										Sign in
-									</Button>
-								</DialogTrigger>
-								<SignUpForm />
-							</Dialog>
+							<Link href={'/signin'}>
+								<Button>Sign in</Button>
+							</Link>
 						)}
 					</ul>
 				</div>

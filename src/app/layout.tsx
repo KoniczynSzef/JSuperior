@@ -7,6 +7,7 @@ import Navbar from '@/components/navbar/Navbar';
 import { Toaster } from '@/components/ui/toaster';
 import Bottom from '@/components/bottom/Bottom';
 import AuthProvider from '@/components/auth/AuthProvider';
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<html lang="en">
 					<body
 						className={`${inter.className} bg-gradient-b from-gray-900 via-[#300171] to-slate-900 text-foreground`}>
+						<NextTopLoader color="#4338ca" />
 						<Navbar />
 						{children}
 						<Bottom />
