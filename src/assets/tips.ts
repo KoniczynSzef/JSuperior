@@ -1,5 +1,4 @@
-import { TipProps } from '@/components/learning/Learning';
-
+import { TipProps } from '@/components/learning/Tip';
 export const tips: TipProps[] = [
 	{
 		id: 1,

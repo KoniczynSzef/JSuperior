@@ -72,8 +72,9 @@ html {
 }
 
 body {
-	background: linear-gradient(to bottom, #020017, #1e1b4b, black);
+	background: linear-gradient(to bottom, black, #080127 20%, #020617, black 50%);
 	position: relative;
+	min-height: 100vh;
 }
 
 body::before {

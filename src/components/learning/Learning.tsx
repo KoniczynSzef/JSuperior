@@ -1,29 +1,10 @@
 import React, { FC } from 'react';
 import P from '../P';
-import { Card, CardTitle } from '../ui/card';
 import { tips } from '@/assets/tips';
 import Link from 'next/link';
+import Tip from './Tip';
 
 interface ComponentProps {}
-
-export interface TipProps {
-	id: number;
-	title: string;
-	desc: string;
-}
-
-const Tip: FC<TipProps> = ({ title, desc, id }) => {
-	return (
-		<Card className="bg-transparent max-w-lg text-foreground border-slate-700">
-			<CardTitle className="border-b border-b-slate-800 py-4 px-6 bg-slate-900 rounded-t">
-				{id}. {title}
-			</CardTitle>
-			<div className="px-6 text-sec my-4">
-				<P>{desc}</P>
-			</div>
-		</Card>
-	);
-};
 
 const Learning: FC<ComponentProps> = () => {
 	return (
@@ -36,9 +17,9 @@ const Learning: FC<ComponentProps> = () => {
 				</P>
 			</div>
 
-			<div className="mt-16 gap-6 grid grid-cols-1 md:grid-cols-2">
+			<div className="mt-16 gap-6 grid grid-cols-1 md:grid-cols-4">
 				{tips.map((tip) => (
-					<Tip key={tip.id} id={tip.id} title={tip.title} desc={tip.desc} />
+					<Tip key={tip.id} title={tip.title} desc={tip.desc} id={tip.id} />
 				))}
 			</div>
 

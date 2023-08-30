@@ -33,7 +33,7 @@ const Navbar: FC<ComponentProps> = async () => {
 	const session = await getServerSession(authOptions);
 
 	return (
-		<header className="border-b-slate-700 border-b">
+		<header className="border-b-slate-700 border-b z-50">
 			<nav
 				className={`relative container mx-auto py-8 flex items-center justify-between transition duration-200`}>
 				<Link href={'/'}>

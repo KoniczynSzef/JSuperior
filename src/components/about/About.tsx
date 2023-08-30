@@ -18,7 +18,7 @@ interface ComponentProps {}
 
 const About: FC<ComponentProps> = () => {
 	return (
-		<div className="bg-[#030712]">
+		<div className=" grayscale-0">
 			<section id="about" className="container relative mx-auto py-32">
 				<h2 className="text-4xl uppercase font-bold text-center">About me</h2>
 				<div className="space-y-6 mt-16">

@@ -23,7 +23,7 @@ const SignUpForm: FC<SignUpFormProps> = () => {
 			initial={{ opacity: 0, y: -100 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 1 }}>
-			<DialogContent className="bg-zinc-950 border-slate-800 max-w-sm">
+			<DialogContent className="bg-slate-950 border-slate-800 max-w-sm">
 				<DialogHeader>
 					<DialogTitle className="text-center text-2xl font-bold">
 						Sign up to <span className="text-yellowLogo">JS</span>uperior

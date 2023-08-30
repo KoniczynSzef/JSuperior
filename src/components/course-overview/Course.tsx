@@ -33,12 +33,12 @@ const Course: FC<ComponentProps> = () => {
 				<Accordion
 					type="single"
 					collapsible
-					className="space-y-2 border border-slate-900 p-4 rounded w-full">
+					className="space-y-2 border border-slate-300 p-4 rounded w-full bg-slate-950">
 					{questions.map((q, i) => (
 						<AccordionItem
 							key={i}
 							value={q.question}
-							className="border-b border-b-slate-500">
+							className="border-b border-b-slate-300">
 							<AccordionTrigger className="text-xl font-bold">
 								{q.question}
 							</AccordionTrigger>
