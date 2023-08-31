@@ -52,17 +52,19 @@ const SheetMenu: FC<ComponentProps> = ({ links, session }) => {
 							</Link>
 						</SheetTrigger>
 					))}
-
-					{session?.user ? (
-						<li className="mx-auto">
-							<UserAvatar session={session} />
-						</li>
-					) : (
-						<Link href={'/signin'}>
-							<Button>Sign in</Button>
-						</Link>
-					)}
 				</ul>
+
+				<div className="flex justify-center my-12">
+					<SheetTrigger asChild>
+						{session?.user ? (
+							<UserAvatar session={session} />
+						) : (
+							<Link href={'/signin'}>
+								<Button>Sign in</Button>
+							</Link>
+						)}
+					</SheetTrigger>
+				</div>
 
 				<Sidebar />
 			</SheetContent>

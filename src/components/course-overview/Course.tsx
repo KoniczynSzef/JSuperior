@@ -1,10 +1,8 @@
-import React, { FC } from 'react';
+import React from 'react';
 import Question from './question/Question';
 import P from '../P';
-import Image from 'next/image';
 
-import keyboardImage from '../../assets/keyboard.png';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
+import { Accordion } from '../ui/accordion';
 import Quiz from './quiz/Quiz';
 import {
 	buildingModernWebApps,
@@ -14,9 +12,9 @@ import {
 	questions2,
 } from '@/assets/courseOverviewAssets';
 import TodoList from './todoList/TodoList';
+import AccordionChild from './accordion/AccordionChild';
 
-interface ComponentProps {}
-const Course: FC<ComponentProps> = () => {
+const Course = () => {
 	return (
 		<section className="container mx-auto relative py-32" id="course">
 			<h2 className="text-4xl uppercase font-bold text-center z-30">Course overview</h2>
@@ -33,26 +31,11 @@ const Course: FC<ComponentProps> = () => {
 				<Accordion
 					type="single"
 					collapsible
-					className="space-y-2 border border-slate-300 p-4 rounded w-full bg-slate-950">
+					className="space-y-4 border border-slate-300 p-4 rounded w-full bg-slate-950 max-w-3xl">
 					{questions.map((q, i) => (
-						<AccordionItem
-							key={i}
-							value={q.question}
-							className="border-b border-b-slate-300">
-							<AccordionTrigger className="text-xl font-bold">
-								{q.question}
-							</AccordionTrigger>
-							<AccordionContent className="text-medium text-xl leading-8">
-								{q.answer}
-							</AccordionContent>
-						</AccordionItem>
+						<AccordionChild key={i} q={q} />
 					))}
 				</Accordion>
-				<Image
-					src={keyboardImage}
-					alt="Keyboard image - red keyboard and monitor behind it"
-					className="max-w-lg object-cover rounded"
-				/>
 			</div>
 
 			<Question q={courseOffer} />
