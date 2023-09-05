@@ -8,18 +8,18 @@ import React, { FC } from 'react';
 
 interface ComponentProps {}
 const page: FC<ComponentProps> = async () => {
-	return (
-		<main className="text-foreground">
-			<HeroSection />
-			<Separator />
-			<Course />
-			<Separator />
-			<About />
-			<Separator />
-			<Learning />
-			<Separator />
-			<Footer />
-		</main>
-	);
+    return (
+        <main className="text-foreground">
+            <HeroSection />
+            <Separator />
+            <Course />
+            <Separator />
+            <About />
+            <Separator />
+            <Learning />
+            <Separator />
+            <Footer />
+        </main>
+    );
 };
 export default page;

@@ -1,3 +1,4 @@
+import P from '@/components/P';
 import { authOptions } from '@/utils/authOptions';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
@@ -5,16 +6,40 @@ import React, { FC } from 'react';
 
 interface pageProps {}
 
+type lessonProps = {
+    id: number;
+    attributes: {
+        Title: string;
+        Description: string;
+        Content: string;
+        createdAt: Date;
+        updatedAt: Date;
+        publishedAt: Date;
+    };
+};
+
+type dataProps = {
+    data: lessonProps[];
+    meta: {
+        pagination: {
+            page: number;
+            pageSize: number;
+            pageCount: number;
+            total: number;
+        };
+    };
+};
+
 export const fetchData = async () => {
-    const res = await fetch(`http://localhost:1337/api/lessons`, {
+    const res = await fetch(`http://127.0.0.1:1337/api/lessons`, {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + process.env.ACCESS_TOKEN,
         },
     });
-    const data = await res.json();
+    const data: dataProps = await res.json();
 
-    return data;
+    return data.data;
 };
 
 const page: FC<pageProps> = async () => {
@@ -26,7 +51,7 @@ const page: FC<pageProps> = async () => {
 
     return (
         <div>
-            <p>Testing nested layout from Next js 13</p>
+            <P>{data[0].attributes.Title}</P>
         </div>
     );
 };
