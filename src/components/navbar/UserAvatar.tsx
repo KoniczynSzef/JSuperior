@@ -13,7 +13,7 @@ const UserAvatar: FC<ComponentProps> = ({ session }) => {
 	return (
 		<Link
 			href={'/dashboard'}
-			className="relative bg-purple-900 hover:shadow-xl hover:shadow-purple-700 hover:scale-105 origin-center p-2 rounded-full transition-all">
+			className="relative bg-transparent hover:shadow-xl hover:shadow-purple-700 hover:scale-105 origin-center p-2 rounded-full transition-all">
 			<Avatar>
 				<AvatarFallback>{session?.user?.name?.slice(0, 2)}</AvatarFallback>
 				<AvatarImage src={session?.user?.image || ''} />

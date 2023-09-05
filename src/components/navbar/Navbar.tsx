@@ -10,6 +10,11 @@ import { Button } from '../ui/button';
 export type LinkProps = { id: number; link: string; href: string };
 const links: LinkProps[] = [
 	{
+		id: 0,
+		link: 'Start learning',
+		href: '/lessons',
+	},
+	{
 		id: 1,
 		link: 'Course overview',
 		href: '/#course',
@@ -44,7 +49,7 @@ const Navbar: FC<ComponentProps> = async () => {
 						<SheetMenu links={links} session={session} />
 					</div>
 
-					<ul className="hidden md:flex md:space-x-6 lg:space-x-16 items-center">
+					<ul className="hidden md:flex md:space-x-6 lg:space-x-12 xl:space-x-16 items-center md:text-base lg:text-lg">
 						<Links links={links} />
 						{session?.user ? (
 							<UserAvatar session={session} />

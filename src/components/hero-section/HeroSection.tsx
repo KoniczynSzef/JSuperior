@@ -36,7 +36,7 @@ const HeroSection: FC<ComponentProps> = () => {
 
 				<motion.div initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }}>
 					<Link
-						href={'/signin'}
+						href={'/lessons'}
 						className="bg-violet-700 hover:bg-violet-600 mt-6 py-3 px-6 rounded transition grid place-content-center w-fit">
 						Start learning
 					</Link>
