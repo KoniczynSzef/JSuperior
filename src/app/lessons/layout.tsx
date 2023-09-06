@@ -2,16 +2,16 @@ import Sidebar from '@/components/sidebar/Sidebar';
 import React, { FC } from 'react';
 
 interface layoutProps {
-	children: React.ReactNode;
+    children: React.ReactNode;
 }
 
 const layout: FC<layoutProps> = ({ children }) => {
-	return (
-		<div className="flex container mx-auto">
-			<Sidebar />
-			<section>{children}</section>
-		</div>
-	);
+    return (
+        <div className="flex container mx-auto gap-16 relative">
+            <Sidebar />
+            {children}
+        </div>
+    );
 };
 
 export default layout;

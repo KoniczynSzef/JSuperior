@@ -1,8 +1,10 @@
-import P from '@/components/P';
+import { Separator } from '@/components/ui/separator';
 import { authOptions } from '@/utils/authOptions';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
+
+import ReactMarkdown from 'react-markdown';
 
 interface pageProps {}
 
@@ -50,8 +52,15 @@ const page: FC<pageProps> = async () => {
     console.log(data);
 
     return (
-        <div>
-            <P>{data[0].attributes.Title}</P>
+        <div className="relative my-16 text-left w-full mx-16">
+            <h2 className="text-4xl font-semibold">
+                {data[0].attributes.Title}
+            </h2>
+            <p className="mt-5">{data[0].attributes.Description}</p>
+            <Separator className="my-4" />
+            <ReactMarkdown className="text-left flex flex-col gap-2 list-disc markdown">
+                {data[0].attributes.Content}
+            </ReactMarkdown>
         </div>
     );
 };
