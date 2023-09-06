@@ -7,67 +7,48 @@ import React, { FC } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 import ReactMarkdown from 'react-markdown';
+import { lessonProps } from '../page';
 
-interface pageProps {}
-
-export type lessonProps = {
-    id: number;
-    attributes: {
-        Title: string;
-        Description: string;
-        Content: string;
-        createdAt: Date;
-        updatedAt: Date;
-        publishedAt: Date;
+interface pageProps {
+    params: {
+        id: number;
     };
-};
+}
 
-export type dataProps = {
-    data: lessonProps[];
-    meta: {
-        pagination: {
-            page: number;
-            pageSize: number;
-            pageCount: number;
-            total: number;
-        };
-    };
-};
-
-export const fetchData = async () => {
-    const res = await fetch(`${process.env.BASE_URL}`, {
+const fetchData = async (id: number) => {
+    if (!id) throw new Error('d is required');
+    const res = await fetch(`${process.env.BASE_URL}/${id}`, {
         method: 'GET',
         headers: {
             Authorization: 'Bearer ' + process.env.ACCESS_TOKEN,
         },
     });
-    const data: dataProps = await res.json();
+    const data: { data: lessonProps } = await res.json();
 
     return data.data;
 };
 
-const page: FC<pageProps> = async () => {
+const page: FC<pageProps> = async ({ params }) => {
     const session = await getServerSession(authOptions);
     if (!session?.user) return redirect('/signin');
 
-    const data = await fetchData();
+    console.log(params.id);
+    const data = await fetchData(params.id);
 
     return (
         <div className="relative my-16 text-left w-full mx-16">
-            <h2 className="text-4xl font-semibold">
-                {data[0].attributes.Title}
-            </h2>
-            <p className="mt-5">{data[0].attributes.Description}</p>
+            <h2 className="text-4xl font-semibold">{data.attributes.Title}</h2>
+            <p className="mt-5">{data.attributes.Description}</p>
 
             <Separator className="my-8" />
             <ReactMarkdown className="text-left flex flex-col gap-2 list-disc markdown">
-                {data[0].attributes.Content}
+                {data.attributes.Content}
             </ReactMarkdown>
             <Separator className="my-8" />
 
             <div className="flex mt-8">
                 <Link
-                    href={`/lessons/${data[0].id + 1}`}
+                    href={`/lessons/${data.id + 1}`}
                     className="group ml-auto"
                 >
                     <span className="flex items-center gap-3 text-sec group-hover:text-white transition">
