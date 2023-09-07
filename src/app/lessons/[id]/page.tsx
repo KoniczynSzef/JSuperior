@@ -4,10 +4,11 @@ import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import ReactMarkdown from 'react-markdown';
 import { lessonProps } from '../page';
+import { options } from '@/app/config';
 
 interface pageProps {
     params: {
@@ -17,23 +18,29 @@ interface pageProps {
 
 const fetchData = async (id: number) => {
     if (!id) throw new Error('d is required');
-    const res = await fetch(`${process.env.BASE_URL}/${id}`, {
-        method: 'GET',
-        headers: {
-            Authorization: 'Bearer ' + process.env.ACCESS_TOKEN,
-        },
-    });
+
+    const res = await fetch(`${process.env.BASE_URL}/${id}`, options);
     const data: { data: lessonProps } = await res.json();
 
-    return data.data;
+    const nextPage = await fetch(`${process.env.BASE_URL}/${id + 1}`, options);
+    const nextPageData: { data: lessonProps } = await nextPage.json();
+
+    const prevPage = await fetch(`${process.env.BASE_URL}/${id - 1}`, options);
+    const prevPageData: { data: lessonProps } = await prevPage.json();
+
+    return {
+        data: data.data,
+        nextLesson: nextPageData.data,
+        prevLesson: prevPageData.data,
+    };
 };
 
 const page: FC<pageProps> = async ({ params }) => {
     const session = await getServerSession(authOptions);
     if (!session?.user) return redirect('/signin');
 
-    console.log(params.id);
-    const data = await fetchData(params.id);
+    const { data, nextLesson, prevLesson } = await fetchData(params.id);
+    console.log(nextLesson);
 
     return (
         <div className="relative my-16 text-left w-full mx-16">
@@ -46,15 +53,33 @@ const page: FC<pageProps> = async ({ params }) => {
             </ReactMarkdown>
             <Separator className="my-8" />
 
-            <div className="flex mt-8">
-                <Link
-                    href={`/lessons/${data.id + 1}`}
-                    className="group ml-auto"
-                >
-                    <span className="flex items-center gap-3 text-sec group-hover:text-white transition">
-                        Setting up Vite <ArrowRight className="" />
-                    </span>
-                </Link>
+            <div className="flex mt-8 justify-between">
+                {prevLesson !== null && (
+                    <Link
+                        href={`/lessons/${
+                            data.id - 1 === 1 ? '' : data.id - 1
+                        }`}
+                        className="group"
+                    >
+                        <span className="flex items-center gap-3 text-sec group-hover:text-white transition">
+                            <ArrowLeft />
+                            {prevLesson.attributes.Title}{' '}
+                        </span>
+                    </Link>
+                )}
+
+                {nextLesson !== null && (
+                    <Link
+                        href={`/lessons/${data.id + 1}`}
+                        className="group ml-auto"
+                    >
+                        <span className="flex items-center gap-3 text-sec group-hover:text-white transition">
+                            {nextLesson.attributes.Title}
+
+                            <ArrowRight />
+                        </span>
+                    </Link>
+                )}
             </div>
         </div>
     );

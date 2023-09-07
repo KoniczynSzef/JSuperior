@@ -53,7 +53,7 @@ const page: FC<pageProps> = async () => {
     const data = await fetchData();
 
     return (
-        <div className="relative my-16 text-left w-full mx-16">
+        <div className="relative my-16 text-left w-full">
             <h2 className="text-4xl font-semibold">
                 {data[0].attributes.Title}
             </h2>

@@ -22,14 +22,14 @@ const Sidebar: FC<ComponentProps> = async () => {
     const data = await fetchLessons();
 
     return (
-        <nav className="h-screen w-72 sticky top-2 hidden lg:block border-r border-r-slate-600">
-            <ScrollArea className="h-screen px-4 py-6 my-4 max-w-sm rounded w-full">
+        <nav className="w-72 sticky top-32 hidden lg:block border-r border-r-slate-600 h-screen">
+            <ScrollArea className="px-4 py-6 my-4 max-w-sm rounded w-full">
                 <div className="flex flex-col w-full gap-2">
                     {data.map((lesson) => (
                         <Link
                             key={lesson.id}
                             href={`/lesson/${lesson.id === 1 ? '' : lesson.id}`}
-                            className="text-gray-400 hover:text-white transition"
+                            className="text-sec hover:text-white transition"
                         >
                             {lesson.attributes.Title}
                         </Link>
