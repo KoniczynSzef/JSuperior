@@ -43,7 +43,7 @@ const page: FC<pageProps> = async ({ params }) => {
     console.log(nextLesson);
 
     return (
-        <div className="relative my-16 text-left w-full mx-16">
+        <div className="relative my-16 text-left w-full">
             <h2 className="text-4xl font-semibold">{data.attributes.Title}</h2>
             <p className="mt-5">{data.attributes.Description}</p>
 
@@ -51,7 +51,6 @@ const page: FC<pageProps> = async ({ params }) => {
             <ReactMarkdown className="text-left flex flex-col gap-2 list-disc markdown">
                 {data.attributes.Content}
             </ReactMarkdown>
-            <Separator className="my-8" />
 
             <div className="flex mt-8 justify-between">
                 {prevLesson !== null && (
@@ -81,6 +80,8 @@ const page: FC<pageProps> = async ({ params }) => {
                     </Link>
                 )}
             </div>
+
+            <Separator className="mt-8" />
         </div>
     );
 };

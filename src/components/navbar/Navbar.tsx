@@ -10,11 +10,6 @@ import { Button } from '../ui/button';
 export type LinkProps = { id: number; link: string; href: string };
 const links: LinkProps[] = [
     {
-        id: 0,
-        link: 'Start learning',
-        href: '/lessons',
-    },
-    {
         id: 1,
         link: 'Course overview',
         href: '/#course',
@@ -36,7 +31,7 @@ const Navbar: FC<ComponentProps> = async () => {
     const session = await getServerSession(authOptions);
 
     return (
-        <header className="border-b-slate-700 border-b z-50 sticky top-0 bg-black">
+        <header className="border-b-slate-700 border-b z-50 sticky top-0 bg-black backdrop-blur">
             <nav
                 className={`relative container mx-auto py-8 flex items-center justify-between transition duration-200`}
             >

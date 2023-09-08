@@ -10,6 +10,8 @@ import ReactMarkdown from 'react-markdown';
 
 interface pageProps {}
 
+export type lessonCategory = 'Get Started';
+
 export type lessonProps = {
     id: number;
     attributes: {
@@ -19,6 +21,7 @@ export type lessonProps = {
         createdAt: Date;
         updatedAt: Date;
         publishedAt: Date;
+        lessonCategory: lessonCategory;
     };
 };
 
@@ -63,7 +66,6 @@ const page: FC<pageProps> = async () => {
             <ReactMarkdown className="text-left flex flex-col gap-2 list-disc markdown">
                 {data[0].attributes.Content}
             </ReactMarkdown>
-            <Separator className="my-8" />
 
             <div className="flex mt-8">
                 <Link
@@ -75,6 +77,8 @@ const page: FC<pageProps> = async () => {
                     </span>
                 </Link>
             </div>
+
+            <Separator className="mt-8" />
         </div>
     );
 };

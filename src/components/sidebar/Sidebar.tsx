@@ -3,6 +3,8 @@ import { ScrollArea } from '../ui/scroll-area';
 import { dataProps } from '@/app/lessons/page';
 import Link from 'next/link';
 
+const categories = ['Get started'];
+
 interface ComponentProps {}
 
 const fetchLessons = async () => {
@@ -24,15 +26,25 @@ const Sidebar: FC<ComponentProps> = async () => {
     return (
         <nav className="w-72 sticky top-32 hidden lg:block border-r border-r-slate-600 h-screen">
             <ScrollArea className="px-4 py-6 my-4 max-w-sm rounded w-full">
-                <div className="flex flex-col w-full gap-2">
-                    {data.map((lesson) => (
-                        <Link
-                            key={lesson.id}
-                            href={`/lesson/${lesson.id === 1 ? '' : lesson.id}`}
-                            className="text-sec hover:text-white transition"
-                        >
-                            {lesson.attributes.Title}
-                        </Link>
+                <div className="flex flex-col w-full gap-1">
+                    {data.map((lesson, i) => (
+                        <div key={i}>
+                            {i % 5 === 0 && (
+                                <h3 className="text-xl font-semibold mb-3">
+                                    {categories[i % 5]}
+                                </h3>
+                            )}
+
+                            <Link
+                                key={lesson.id}
+                                href={`/lesson/${
+                                    lesson.id === 1 ? '' : lesson.id
+                                }`}
+                                className="text-sec hover:text-white transition text-sm"
+                            >
+                                {lesson.attributes.Title}
+                            </Link>
+                        </div>
                     ))}
                 </div>
             </ScrollArea>
