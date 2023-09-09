@@ -9,8 +9,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { FcGoogle } from 'react-icons/fc';
 import { Github } from 'lucide-react';
 
-import Confetti from 'js-confetti';
-
 interface ButtonProps {
     btn: { name: provider; icon: React.JSX.Element; text: string };
 }
@@ -23,13 +21,9 @@ const buttons: { name: provider; icon: React.JSX.Element; text: string }[] = [
 ];
 
 const SignInButton: FC<ButtonProps> = ({ btn }) => {
-    const confetti = new Confetti();
     return (
         <Button
-            onClick={() => {
-                handleLogin(btn.name);
-                confetti.addConfetti();
-            }}
+            onClick={() => handleLogin(btn.name)}
             className="w-full space-x-3 bg-transparent border border-slate-700 py-6 text-lg"
         >
             {btn.icon}
