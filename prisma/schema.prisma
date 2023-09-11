@@ -45,6 +45,15 @@ model User {
   sessions      Session[]
 }
 
+model Lesson {
+  id String @id @default(uuid())
+  description String
+  title String
+  content String
+  category String
+  hasQuiz Boolean
+}
+
 model VerificationToken {
   identifier String
   token      String   @unique

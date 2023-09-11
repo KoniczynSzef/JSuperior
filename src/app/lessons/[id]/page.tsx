@@ -40,7 +40,6 @@ const page: FC<pageProps> = async ({ params }) => {
     if (!session?.user) return redirect('/signin');
 
     const { data, nextLesson, prevLesson } = await fetchData(params.id);
-    console.log(nextLesson);
 
     return (
         <div className="relative my-16 text-left w-full">

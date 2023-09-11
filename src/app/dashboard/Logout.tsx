@@ -3,22 +3,27 @@
 import { Button } from '@/components/ui/button';
 import { handleLogout } from '@/utils/authFunctions';
 import React, { FC, useState } from 'react';
-import { Loader } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 interface LogoutProps {}
 
 const Logout: FC<LogoutProps> = () => {
+    const [loggedOut, setLoggedOut] = useState(false);
+
     const handleClick = async () => {
         setLoggedOut(true);
         await handleLogout();
         setLoggedOut(false);
     };
-    const [loggedOut, setLoggedOut] = useState(false);
 
-    return !loggedOut ? (
-        <Button onClick={handleClick}>Sign out</Button>
-    ) : (
-        <Loader className="animate-spin" />
+    return (
+        <Button
+            onClick={handleClick}
+            disabled={loggedOut}
+            className={`${loggedOut ? 'gap-2' : ''} transition-all`}
+        >
+            {loggedOut && <Loader2 className="animate-spin" />} Sign out
+        </Button>
     );
 };
 

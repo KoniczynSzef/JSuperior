@@ -4,7 +4,8 @@
   "info": {
     "singularName": "lesson",
     "pluralName": "lessons",
-    "displayName": "Lesson"
+    "displayName": "Lesson",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,13 @@
     },
     "Content": {
       "type": "richtext"
+    },
+    "category": {
+      "type": "string",
+      "default": "GetStarted"
+    },
+    "hasQuiz": {
+      "type": "boolean"
     }
   }
 }

@@ -7,10 +7,9 @@ import React, { FC } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 import ReactMarkdown from 'react-markdown';
+import { $Enums } from '@prisma/client';
 
 interface pageProps {}
-
-export type lessonCategory = 'Get Started';
 
 export type lessonProps = {
     id: number;
@@ -21,7 +20,7 @@ export type lessonProps = {
         createdAt: Date;
         updatedAt: Date;
         publishedAt: Date;
-        lessonCategory: lessonCategory;
+        lessonCategory: $Enums.Category;
     };
 };
 
