@@ -1,5 +1,5 @@
 import { lessonProps } from '@/app/cms/CmsForm';
-import { prisma } from '../../../../prisma/db';
+import { prisma } from '../../../lib/db';
 
 export async function POST(req: Request) {
     const test = prisma;

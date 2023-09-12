@@ -7,7 +7,7 @@ import React, { FC } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 import ReactMarkdown from 'react-markdown';
-import { $Enums } from '@prisma/client';
+import { fetchData } from './[id]/page';
 
 interface pageProps {}
 
@@ -20,7 +20,7 @@ export type lessonProps = {
         createdAt: Date;
         updatedAt: Date;
         publishedAt: Date;
-        lessonCategory: $Enums.Category;
+        lessonCategory: string;
     };
 };
 
@@ -36,39 +36,24 @@ export type dataProps = {
     };
 };
 
-export const fetchData = async () => {
-    const res = await fetch(`${process.env.BASE_URL}`, {
-        method: 'GET',
-        headers: {
-            Authorization: 'Bearer ' + process.env.ACCESS_TOKEN,
-        },
-    });
-    const data: dataProps = await res.json();
-
-    return data.data;
-};
-
 const page: FC<pageProps> = async () => {
     const session = await getServerSession(authOptions);
     if (!session?.user) return redirect('/signin');
-
-    const data = await fetchData();
+    const { data } = await fetchData(1);
 
     return (
         <div className="relative my-16 text-left w-full">
-            <h2 className="text-4xl font-semibold">
-                {data[0].attributes.Title}
-            </h2>
-            <p className="mt-5">{data[0].attributes.Description}</p>
+            <h2 className="text-4xl font-semibold">{data.attributes.Title}</h2>
+            <p className="mt-5">{data.attributes.Description}</p>
 
             <Separator className="my-8" />
             <ReactMarkdown className="text-left flex flex-col gap-2 list-disc markdown">
-                {data[0].attributes.Content}
+                {data.attributes.Content}
             </ReactMarkdown>
 
             <div className="flex mt-8">
                 <Link
-                    href={`/lessons/${data[0].id + 1}`}
+                    href={`/lessons/${data.id + 1}`}
                     className="group ml-auto"
                 >
                     <span className="flex items-center gap-3 text-sec group-hover:text-white transition">

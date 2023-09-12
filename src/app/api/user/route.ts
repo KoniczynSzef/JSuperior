@@ -1,5 +1,5 @@
 import { $Enums } from '@prisma/client';
-import { prisma } from '../../../../prisma/db';
+import { prisma } from '../../../lib/db';
 
 type lesson = {
     id: string;

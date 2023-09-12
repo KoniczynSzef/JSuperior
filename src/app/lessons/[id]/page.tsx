@@ -16,8 +16,8 @@ interface pageProps {
     };
 }
 
-const fetchData = async (id: number) => {
-    if (!id) throw new Error('d is required');
+export const fetchData = async (id: number) => {
+    if (!id) throw new Error('id is required');
 
     const res = await fetch(`${process.env.BASE_URL}/${id}`, options);
     const data: { data: lessonProps } = await res.json();

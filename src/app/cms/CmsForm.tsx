@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import React, { FC, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { addLessonOnServer } from '../_actions';
 
 export type lessonProps = {
     title: string;
@@ -31,35 +32,28 @@ const CmsForm: FC<CmsFormProps> = () => {
         setWithQuiz((q) => !q);
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
+    const action = async () => {
         try {
-            const body: lessonProps = {
+            await addLessonOnServer({
+                id: crypto.randomUUID(),
                 title,
-                content,
                 description: desc,
+                content,
+                category,
                 hasQuiz: withQuiz,
-                lessonCategory: category,
-            };
-
-            const res = await fetch('/api/lessons', {
-                method: 'POST',
-                body: JSON.stringify(body),
             });
 
-            const data: lessonProps = await res.json();
             toast({
                 title: 'Created a new lesson!',
                 description:
-                    'Successfully created a new lesson with the title ' +
-                    data.title,
+                    'Successfully created a new lesson with the title: ' +
+                    title,
                 duration: 2000,
             });
 
             setTitle('');
-            setCategory('');
             setDesc('');
+            setCategory('');
             setContent('');
         } catch (error) {
             console.error(error);
@@ -70,7 +64,7 @@ const CmsForm: FC<CmsFormProps> = () => {
         <div className="flex gap-12">
             <form
                 className="max-w-2xl flex flex-col space-y-10 border border-slate-800 p-8 rounded"
-                onSubmit={handleSubmit}
+                action={action}
             >
                 <div className="flex gap-8">
                     <Input
@@ -78,6 +72,7 @@ const CmsForm: FC<CmsFormProps> = () => {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         autoFocus
+                        name="title"
                     />
                     <Textarea
                         className=""
@@ -85,6 +80,7 @@ const CmsForm: FC<CmsFormProps> = () => {
                         rows={2}
                         value={desc}
                         onChange={(e) => setDesc(e.target.value)}
+                        name="desc"
                     />
                 </div>
                 <Textarea
@@ -93,11 +89,13 @@ const CmsForm: FC<CmsFormProps> = () => {
                     rows={10}
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
+                    name="content"
                 />
                 <Input
                     placeholder="Category..."
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
+                    name="category"
                 />
                 <div className="flex items-center self-end gap-4">
                     <Label htmlFor="switch">With quiz: </Label>

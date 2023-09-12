@@ -39,7 +39,7 @@ const Sidebar: FC<ComponentProps> = async () => {
 
                             <Link
                                 key={lesson.id}
-                                href={`/lesson/${
+                                href={`/lessons/${
                                     lesson.id === 1 ? '' : lesson.id
                                 }`}
                                 className="text-sec hover:text-white transition text-sm"
