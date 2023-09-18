@@ -9,6 +9,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Cookies from '../cookies/Cookies';
 
+import { TypeAnimation } from 'react-type-animation';
+
 interface ComponentProps {}
 const HeroSection: FC<ComponentProps> = () => {
     return (
@@ -18,12 +20,7 @@ const HeroSection: FC<ComponentProps> = () => {
         >
             <Cookies />
             <div>
-                <motion.h1
-                    className="text-4xl font-extrabold text-center md:text-left"
-                    initial={{ opacity: 0, y: -100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
+                <h1 className="text-4xl font-extrabold text-center md:text-left">
                     <p>
                         Complete{' '}
                         <span className="text-yellowLogo">JavaScript</span>{' '}
@@ -34,23 +31,27 @@ const HeroSection: FC<ComponentProps> = () => {
                         <span className="bg-gradient-to-r bg-clip-text text-transparent from-[#a50643] to-[#ffd119]">
                             superior
                         </span>{' '}
-                        in <span>JavaScript</span>
+                        in{' '}
+                        <span>
+                            <TypeAnimation
+                                sequence={['JavaScript']}
+                                speed={35}
+                            />
+                        </span>
                     </p>
-                </motion.h1>
+                </h1>
+                <div className="mt-12">
+                    <TypedParagraph />
+                </div>
 
-                <TypedParagraph />
-
-                <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                >
+                <div>
                     <Link
                         href={'/lessons'}
                         className="bg-violet-700 hover:bg-violet-600 mt-6 py-3 px-6 rounded transition grid place-content-center w-fit"
                     >
                         Start learning
                     </Link>
-                </motion.div>
+                </div>
             </div>
             <Image
                 src={coding}
