@@ -5,7 +5,6 @@ import TypedParagraph from './TypedParagraph';
 import Image from 'next/image';
 
 import coding from '../../assets/coding.png';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Cookies from '../cookies/Cookies';
 

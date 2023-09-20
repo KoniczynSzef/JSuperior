@@ -6,9 +6,9 @@ import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-import ReactMarkdown from 'react-markdown';
 import { lessonProps } from '../page';
 import { options } from '@/app/config';
+import Markdown from './Markdown';
 
 interface pageProps {
     params: {
@@ -47,9 +47,7 @@ const page: FC<pageProps> = async ({ params }) => {
             <p className="mt-5">{data.attributes.Description}</p>
 
             <Separator className="my-8" />
-            <ReactMarkdown className="text-left flex flex-col gap-2 list-disc markdown">
-                {data.attributes.Content}
-            </ReactMarkdown>
+            <Markdown content={data.attributes.Content} />
 
             <div className="flex mt-8 justify-between">
                 {prevLesson !== null && (

@@ -5,10 +5,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
+import { Quiz } from '@prisma/client';
 import React, { FC, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { addLessonOnServer } from '../_actions';
 
 export type lessonProps = {
     title: string;
@@ -21,50 +20,39 @@ export type lessonProps = {
 interface CmsFormProps {}
 
 const CmsForm: FC<CmsFormProps> = () => {
+    async function createQuiz() {
+        const quiz: Quiz = {
+            id: crypto.randomUUID(),
+            questions: ['What is the capital of the United States?'],
+            answers: ['New York', 'Warsaw', 'Washington', 'Seattle'],
+            correctAnswers: ['Washington'],
+            lessonId: 3,
+        };
+        const res = await fetch(`/api/quiz`, {
+            method: 'POST',
+            body: JSON.stringify(quiz),
+        });
+
+        const data = await res.json();
+
+        console.log(data);
+    }
+
     const [title, setTitle] = useState<string>('');
     const [desc, setDesc] = useState<string>('');
     const [content, setContent] = useState<string>('');
     const [withQuiz, setWithQuiz] = useState<boolean>(true);
     const [category, setCategory] = useState<string>('');
-    const { toast } = useToast();
 
     const handleToggle = () => {
         setWithQuiz((q) => !q);
-    };
-
-    const action = async () => {
-        try {
-            await addLessonOnServer({
-                id: crypto.randomUUID(),
-                title,
-                description: desc,
-                content,
-                category,
-                hasQuiz: withQuiz,
-            });
-
-            toast({
-                title: 'Created a new lesson!',
-                description:
-                    'Successfully created a new lesson with the title: ' +
-                    title,
-                duration: 2000,
-            });
-
-            setTitle('');
-            setDesc('');
-            setCategory('');
-            setContent('');
-        } catch (error) {
-            console.error(error);
-        }
     };
 
     return (
         <div className="flex gap-12">
             <form
                 className="max-w-2xl flex flex-col space-y-10 border border-slate-800 p-8 rounded"
-                action={action}
+                onSubmit={(e) => e.preventDefault()}
             >
                 <div className="flex gap-8">
                     <Input
@@ -108,6 +96,8 @@ const CmsForm: FC<CmsFormProps> = () => {
                 <Button
                     className="self-end bg-indigo-700 hover:bg-indigo-600 transition"
                     size={'lg'}
+                    type="submit"
+                    onClick={createQuiz}
                 >
                     Save
                 </Button>
