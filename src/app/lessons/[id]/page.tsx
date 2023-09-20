@@ -9,6 +9,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { lessonProps } from '../page';
 import { options } from '@/app/config';
 import Markdown from './Markdown';
+import { Quiz } from '@prisma/client';
 
 interface pageProps {
     params: {
@@ -35,11 +36,23 @@ export const fetchData = async (id: number) => {
     };
 };
 
+export const fetchQuiz = async (id: number) => {
+    const res = await fetch(`${process.env.BASE_NEXT_URL}/api/quiz/${id}`, {
+        method: 'POST',
+        body: JSON.stringify(id),
+    });
+
+    const data: Quiz = await res.json();
+
+    return data;
+};
+
 const page: FC<pageProps> = async ({ params }) => {
     const session = await getServerSession(authOptions);
     if (!session?.user) return redirect('/signin');
 
     const { data, nextLesson, prevLesson } = await fetchData(params.id);
+    const quiz = await fetchQuiz(params.id);
 
     return (
         <div className="relative my-16 text-left w-full">
