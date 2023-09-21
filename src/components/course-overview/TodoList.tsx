@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import { X } from 'lucide-react';
 import P from '@/components/P';
-import CodeSnippet from '../CodeSnippet';
+import CodeSnippet from './CodeSnippet';
 import { code } from '@/assets/courseOverviewAssets';
 
 type Todo = {
