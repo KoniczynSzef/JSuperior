@@ -9,16 +9,16 @@ import QuizField from './quizField/QuizField';
 
 interface QuizFormProps {}
 
-async function createQuiz(quiz: Quiz) {
-    const res = await fetch(`/api/quiz`, {
-        method: 'POST',
-        body: JSON.stringify(quiz),
-    });
+// async function createQuiz(quiz: Quiz) {
+//     const res = await fetch(`/api/quiz`, {
+//         method: 'POST',
+//         body: JSON.stringify(quiz),
+//     });
 
-    const data = await res.json();
+//     const data = await res.json();
 
-    console.log(data);
-}
+//     console.log(data);
+// }
 
 const QuizForm: FC<QuizFormProps> = () => {
     const [entities, setEntities] = useState<number[]>([]);
