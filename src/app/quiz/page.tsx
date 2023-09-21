@@ -2,7 +2,7 @@ import { authOptions } from '@/utils/authOptions';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
-import CmsForm from './CmsForm';
+import QuizForm from './QuizForm';
 
 interface pageProps {}
 
@@ -14,7 +14,7 @@ const page: FC<pageProps> = async () => {
 
     return (
         <section className="container mx-auto relative my-16">
-            <CmsForm />
+            <QuizForm />
         </section>
     );
 };
