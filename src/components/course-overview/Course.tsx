@@ -55,8 +55,9 @@ const Course = () => {
             <div className="mt-16">
                 <Question q={buildingRealWorldProject} />
             </div>
-
-            <TodoList />
+            <div>
+                <TodoList />
+            </div>
 
             <div className="mt-16">
                 <Question q={buildingModernWebApps} />
