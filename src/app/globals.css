@@ -38,7 +38,7 @@ html {
 
         --radius: 0.5rem;
 
-        --sec: #818791;
+        --sec: #64748b;
 
         --yellowLogo: #facc15;
     }
@@ -75,8 +75,8 @@ body {
     background: linear-gradient(
         to bottom left,
         #0b093a 0%,
-        #060431 1%,
-        var(--background) 50%,
+        #040222 1%,
+        var(--background) 30%,
         #010113 100%
     );
     color: var(--foreground);

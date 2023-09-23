@@ -17,10 +17,10 @@ import AccordionChild from './accordion/AccordionChild';
 const Course = () => {
     return (
         <section className="container mx-auto relative py-32" id="course">
-            <h2 className="text-4xl uppercase font-bold text-center z-30">
+            <h2 className="text-4xl uppercase font-bold text-left z-30">
                 Course overview
             </h2>
-            <div className="flex flex-col lg:flex-row mt-8 items-center gap-16 lg:gap-8 z-30">
+            <div className="flex flex-col lg:flex-row mt-12 items-center gap-16 lg:gap-8 z-30">
                 <P>
                     Dive into the world of JavaScript with our Complete
                     JavaScript Course! Are you curious about harnessing the

@@ -31,7 +31,7 @@ const Navbar: FC<ComponentProps> = async () => {
     const session = await getServerSession(authOptions);
 
     return (
-        <header className="border-b-slate-700 border-b z-50 sticky top-0 bg-black backdrop-blur">
+        <header className="border-b-slate-700 border-b z-50 sticky top-0 bg-[#020207] backdrop-blur">
             <nav
                 className={`relative container mx-auto py-8 flex items-center justify-between transition duration-200`}
             >
