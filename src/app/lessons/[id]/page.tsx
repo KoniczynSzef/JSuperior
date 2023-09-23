@@ -54,7 +54,6 @@ const page: FC<pageProps> = async ({ params }) => {
 
     const { data, nextLesson, prevLesson } = await fetchData(params.id);
     const quiz = await fetchQuiz(params.id);
-    console.log(quiz);
 
     return (
         <div className="relative my-16 text-left w-full">
@@ -64,7 +63,7 @@ const page: FC<pageProps> = async ({ params }) => {
             <Separator className="my-8" />
             <Markdown content={data.attributes.Content} />
 
-            <QuizWrapper quiz={quiz} />
+            {quiz && <QuizWrapper quiz={quiz} />}
 
             <div className="flex mt-8 justify-between">
                 {prevLesson !== null && (
