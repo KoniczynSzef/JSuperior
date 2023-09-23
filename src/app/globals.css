@@ -72,7 +72,13 @@ html {
 }
 
 body {
-    background: var(--background);
+    background: linear-gradient(
+        to bottom left,
+        #0b093a 0%,
+        #060431 1%,
+        var(--background) 50%,
+        #010113 100%
+    );
     color: var(--foreground);
 }
 

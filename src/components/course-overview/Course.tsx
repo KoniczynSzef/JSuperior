@@ -34,7 +34,7 @@ const Course = () => {
                 <Accordion
                     type="single"
                     collapsible
-                    className="space-y-4 border border-slate-300 p-4 rounded w-full bg-slate-950 max-w-3xl"
+                    className="space-y-4 border border-gray-800 p-8 rounded w-full max-w-3xl"
                 >
                     {questions.map((q, i) => (
                         <AccordionChild key={i} q={q} />
