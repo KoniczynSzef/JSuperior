@@ -9,7 +9,8 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { lessonProps } from '../page';
 import { options } from '@/app/config';
 import Markdown from './Markdown';
-import { Quiz } from '@prisma/client';
+import { Quiz as QuizType } from '@prisma/client';
+import Quiz from '@/components/course-overview/quiz/Quiz';
 
 interface pageProps {
     params: {
@@ -36,13 +37,13 @@ export const fetchData = async (id: number) => {
     };
 };
 
-export const fetchQuiz = async (id: number) => {
+const fetchQuiz = async (id: number) => {
     const res = await fetch(`${process.env.BASE_NEXT_URL}/api/quiz/${id}`, {
         method: 'POST',
-        body: JSON.stringify(id),
+        body: JSON.stringify(id.toString()),
     });
 
-    const data: Quiz = await res.json();
+    const data: QuizType = await res.json();
 
     return data;
 };
@@ -52,6 +53,8 @@ const page: FC<pageProps> = async ({ params }) => {
     if (!session?.user) return redirect('/signin');
 
     const { data, nextLesson, prevLesson } = await fetchData(params.id);
+    const quiz = await fetchQuiz(params.id);
+    console.log(quiz);
 
     return (
         <div className="relative my-16 text-left w-full">
@@ -60,6 +63,8 @@ const page: FC<pageProps> = async ({ params }) => {
 
             <Separator className="my-8" />
             <Markdown content={data.attributes.Content} />
+
+            <Quiz />
 
             <div className="flex mt-8 justify-between">
                 {prevLesson !== null && (

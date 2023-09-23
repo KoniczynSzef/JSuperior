@@ -1,7 +1,7 @@
 'use client';
 
 import { Input } from '@/components/ui/input';
-import React, { FC, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import Answer from '../answer/Answer';
 import { Button } from '@/components/ui/button';
 
@@ -14,13 +14,25 @@ interface QuizFieldProps {
     answers: React.MutableRefObject<string[]>;
 }
 
-const QuizField: FC<QuizFieldProps> = ({ addQuestion, answers }) => {
+const QuizField: FC<QuizFieldProps> = ({ addQuestion }) => {
     const [question, setQuestion] = useState<string>('');
     const [active, setActive] = useState<number>(10);
     const [correctAnswer, setCorrectAnswer] = useState<number>(10);
+    const [isAdded, setIsAdded] = useState<boolean>(false);
+
+    const answers = useRef<string[]>(['', '', '', '']);
+
+    const handleAddQuestion = () => {
+        addQuestion(question, answers.current, correctAnswer.toString());
+        setIsAdded(true);
+    };
 
     return (
-        <div>
+        <div
+            className={`${
+                isAdded ? 'opacity-30' : 'opacity-100'
+            } border border-slate-900 p-2 rounded`}
+        >
             <div className="flex gap-2">
                 <Input
                     placeholder="Question..."
@@ -43,14 +55,8 @@ const QuizField: FC<QuizFieldProps> = ({ addQuestion, answers }) => {
 
             <Button
                 type="button"
-                className="bg-indigo-800 hover:bg-indigo-700 transition mt-2"
-                onClick={() =>
-                    addQuestion(
-                        question,
-                        answers.current,
-                        correctAnswer.toString()
-                    )
-                }
+                className="bg-indigo-800 hover:bg-indigo-700 transition mt-3"
+                onClick={handleAddQuestion}
             >
                 Add question
             </Button>

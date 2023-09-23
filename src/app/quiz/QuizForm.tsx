@@ -9,25 +9,26 @@ import QuizField from './quizField/QuizField';
 
 interface QuizFormProps {}
 
-// async function createQuiz(quiz: Quiz) {
-//     const res = await fetch(`/api/quiz`, {
-//         method: 'POST',
-//         body: JSON.stringify(quiz),
-//     });
+async function createQuiz(quiz: Quiz) {
+    const res = await fetch(`/api/quiz`, {
+        method: 'POST',
+        body: JSON.stringify(quiz),
+    });
 
-//     const data = await res.json();
+    const data = await res.json();
 
-//     console.log(data);
-// }
+    console.log(data);
+}
 
 const QuizForm: FC<QuizFormProps> = () => {
     const [entities, setEntities] = useState<number[]>([]);
 
     const [lessonId, setLessonId] = useState<number>(0);
     const questions = useRef<string[]>([]);
-    const answers = useRef<string[]>(['', '', '', '']);
-    const correctAnswers = useRef<string[]>(['']);
+    const answers = useRef<string[]>([]);
+    const correctAnswers = useRef<string[]>([]);
     const { toast } = useToast();
+    const [isLessonIdSet, setIsLessonId] = useState<boolean>(false);
 
     const addQuestion = (
         question: string,
@@ -40,8 +41,6 @@ const QuizForm: FC<QuizFormProps> = () => {
         });
 
         correctAnswers.current.push(correctAnswer);
-
-        console.log(questions.current);
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,9 +55,7 @@ const QuizForm: FC<QuizFormProps> = () => {
                 correctAnswers: correctAnswers.current,
             };
 
-            console.log(quiz);
-
-            // await createQuiz(quiz);
+            await createQuiz(quiz);
 
             toast({
                 title:
@@ -72,8 +69,15 @@ const QuizForm: FC<QuizFormProps> = () => {
     };
 
     const addEntity = () => {
-        console.log(entities);
         setEntities((prev) => [...prev, entities.length]);
+    };
+
+    const handleSetLessonId = () => {
+        setIsLessonId(true);
+
+        toast({
+            title: 'Lesson ID set with a value of ' + lessonId,
+        });
     };
 
     return (
@@ -82,37 +86,47 @@ const QuizForm: FC<QuizFormProps> = () => {
                 className="max-w-2xl w-full flex flex-col space-y-10 border border-slate-800 p-8 rounded"
                 onSubmit={handleSubmit}
             >
-                <div className="flex w-full gap-8 justify-between">
-                    <Button
-                        onClick={addEntity}
-                        className="flex-1 max-w-[75%]"
-                        type="button"
-                    >
-                        Add Question
-                    </Button>
+                {isLessonIdSet ? (
+                    <>
+                        <Button
+                            onClick={addEntity}
+                            className="self-start"
+                            type="button"
+                        >
+                            Add Question
+                        </Button>
+                        {entities?.map((_, i) => (
+                            <QuizField
+                                key={i}
+                                addQuestion={addQuestion}
+                                answers={answers}
+                            />
+                        ))}
 
-                    <Input
-                        placeholder="ID..."
-                        value={lessonId}
-                        onChange={(e) => setLessonId(Number(e.target.value))}
-                        className="w-[10%]"
-                    />
-                </div>
-                {entities?.map((_, i) => (
-                    <QuizField
-                        key={i}
-                        addQuestion={addQuestion}
-                        answers={answers}
-                    />
-                ))}
-
-                {entities.length >= 1 && (
-                    <Button
-                        type="submit"
-                        className="bg-violet-800 hover:bg-violet-700"
-                    >
-                        Submit quiz
-                    </Button>
+                        {entities.length >= 1 && (
+                            <Button
+                                type="submit"
+                                className="bg-violet-800 hover:bg-violet-700"
+                            >
+                                Submit quiz
+                            </Button>
+                        )}
+                    </>
+                ) : (
+                    <div className="flex gap-12">
+                        <Input
+                            type="number"
+                            placeholder="ID..."
+                            value={lessonId}
+                            onChange={(e) =>
+                                setLessonId(Number(e.target.value))
+                            }
+                            className="w-[15%]"
+                        />
+                        <Button onClick={handleSetLessonId} className="w-full">
+                            Set lessonID
+                        </Button>
+                    </div>
                 )}
             </form>
         </div>
