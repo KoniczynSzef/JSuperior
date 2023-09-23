@@ -9,18 +9,15 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import React, { useRef, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 
 import { motion } from 'framer-motion';
 import QuizSummary from './QuizSummary';
-import { quizProps } from '@/assets/quizAssets';
-
-type correctAnswers = 0 | 1 | 2 | 3;
 
 export interface QuizProps {
     questions: string[];
     answers: string[][];
-    correctAnswers: correctAnswers[];
+    correctAnswers: number[];
 }
 
 export type QnAProps = {
@@ -29,8 +26,7 @@ export type QnAProps = {
     code?: string;
 };
 
-const Quiz = () => {
-    const { questions, answers, correctAnswers } = quizProps;
+const Quiz: FC<QuizProps> = ({ answers, correctAnswers, questions }) => {
     const [step, setStep] = useState(0);
     const goodAnswers = useRef(0);
     const wasAnswersCorrect = useRef(false);

@@ -20,6 +20,7 @@ const Answer: FC<AnswerProps> = ({
     setActive,
 }) => {
     const [value, setValue] = useState<string>('');
+    console.log(idx);
 
     return (
         <div className="flex gap-2">
@@ -34,7 +35,7 @@ const Answer: FC<AnswerProps> = ({
                 disabled={active === idx}
                 onClick={() => {
                     setActive(idx);
-                    setCorrectAnswer(idx);
+                    setCorrectAnswer(idx % 4);
                 }}
                 className={active === idx ? 'bg-slate-950' : ''}
             >

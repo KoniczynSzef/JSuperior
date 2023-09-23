@@ -10,7 +10,7 @@ import { lessonProps } from '../page';
 import { options } from '@/app/config';
 import Markdown from './Markdown';
 import { Quiz as QuizType } from '@prisma/client';
-import Quiz from '@/components/course-overview/quiz/Quiz';
+import QuizWrapper from './QuizWrapper';
 
 interface pageProps {
     params: {
@@ -64,7 +64,7 @@ const page: FC<pageProps> = async ({ params }) => {
             <Separator className="my-8" />
             <Markdown content={data.attributes.Content} />
 
-            <Quiz />
+            <QuizWrapper quiz={quiz} />
 
             <div className="flex mt-8 justify-between">
                 {prevLesson !== null && (
