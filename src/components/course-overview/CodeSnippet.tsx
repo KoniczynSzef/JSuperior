@@ -18,7 +18,13 @@ interface ComponentProps {
     code: string;
 }
 
-const codeThemes = [atomOneDark, dracula, monokai, a11yDark, stackoverflowDark];
+export const codeThemes = [
+    atomOneDark,
+    dracula,
+    monokai,
+    a11yDark,
+    stackoverflowDark,
+];
 
 const CodeSnippet: FC<ComponentProps> = ({ code }) => {
     const { codeStyleIndex } = useAppSelector((s) => s.codeTheme);

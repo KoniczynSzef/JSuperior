@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-interface codeThemeProps {
-	codeStyleIndex: number;
+export interface codeThemeProps {
+    codeStyleIndex: number;
 }
 
 // const codeStyleIndex =
@@ -10,18 +10,21 @@ interface codeThemeProps {
 // 		: parseInt(localStorage.getItem('codeStyleIndex') as string);
 
 const initialState: codeThemeProps = {
-	codeStyleIndex: 0,
+    codeStyleIndex: 0,
 };
 
 const codeThemeSlice = createSlice({
-	initialState: initialState,
-	name: 'codeTheme',
-	reducers: {
-		setCodeTheme: (state, action: PayloadAction<codeThemeProps>) => {
-			state.codeStyleIndex = action.payload.codeStyleIndex;
-			localStorage.setItem('codeStyleIndex', action.payload.codeStyleIndex + '');
-		},
-	},
+    initialState: initialState,
+    name: 'codeTheme',
+    reducers: {
+        setCodeTheme: (state, action: PayloadAction<codeThemeProps>) => {
+            state.codeStyleIndex = action.payload.codeStyleIndex;
+            localStorage.setItem(
+                'codeStyleIndex',
+                action.payload.codeStyleIndex + ''
+            );
+        },
+    },
 });
 
 export const { setCodeTheme } = codeThemeSlice.actions;

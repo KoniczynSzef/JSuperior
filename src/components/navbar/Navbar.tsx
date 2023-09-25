@@ -51,7 +51,9 @@ const Navbar: FC<ComponentProps> = async () => {
                             <UserAvatar session={session} />
                         ) : (
                             <Link href={'/signin'}>
-                                <Button>Sign in</Button>
+                                <Button className="bg-purple-800 hover:bg-purple-700">
+                                    Sign in
+                                </Button>
                             </Link>
                         )}
                     </ul>

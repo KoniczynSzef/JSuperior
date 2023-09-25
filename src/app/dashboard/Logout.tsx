@@ -20,7 +20,9 @@ const Logout: FC<LogoutProps> = () => {
         <Button
             onClick={handleClick}
             disabled={loggedOut}
-            className={`${loggedOut ? 'gap-2' : ''} transition-all`}
+            className={`${
+                loggedOut ? 'gap-2' : ''
+            } transition-all bg-red-700 hover:bg-red-600`}
         >
             {loggedOut && <Loader2 className="animate-spin" />} Sign out
         </Button>
