@@ -31,7 +31,7 @@ const Todo: FC<{
                 {i + 1}. {title}
             </P>
             <Button
-                className="bg-transparent border border-slate-800"
+                className="bg-background hover:bg-accent border border-slate-800 text-foreground"
                 onClick={() => handleDeleteTodo(id)}
             >
                 <X />
@@ -64,13 +64,13 @@ const TodoList: FC<ComponentProps> = () => {
         <Tabs className="my-16 max-w-lg" defaultValue="todo-list">
             <TabsList className="w-full flex justify-evenly">
                 <TabsTrigger
-                    className="hover:text-white transition w-1/2 text-md "
+                    className="hover:text-foreground transition w-1/2 text-md "
                     value="todo-list"
                 >
                     Todo List
                 </TabsTrigger>
                 <TabsTrigger
-                    className="hover:text-white transition w-1/2 text-md"
+                    className="hover:text-foreground transition w-1/2 text-md"
                     value="code"
                 >
                     Code
@@ -91,12 +91,12 @@ const TodoList: FC<ComponentProps> = () => {
                                         name="todo-input"
                                         type="text"
                                         placeholder="Type todo..."
-                                        className="border-slate-600 text-white placeholder:text-sec"
+                                        className="border-slate-600 text-foreground placeholder:text-sec"
                                     />
                                 </Label>
                                 <Button
                                     type="submit"
-                                    className="bg-slate-200 text-background hover:bg-white hover:text-background"
+                                    className="bg-foreground text-background hover:bg-accent-foreground hover:text-background"
                                 >
                                     Submit
                                 </Button>

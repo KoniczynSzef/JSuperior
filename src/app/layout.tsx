@@ -1,13 +1,13 @@
 import React from 'react';
-import ReduxProvider from '@/context/ReduxProvider';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/navbar/Navbar';
 import { Toaster } from '@/components/ui/toaster';
 import Bottom from '@/components/bottom/Bottom';
-import AuthProvider from '@/components/auth/AuthProvider';
 import NextTopLoader from 'nextjs-toploader';
+import Providers from '@/components/Providers';
+import { ThemeProvider } from '@/components/theme-provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -21,20 +21,25 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <AuthProvider>
-            <ReduxProvider>
-                <html lang="en">
-                    <body
-                        className={`${inter.className} bg-gradient-b from-gray-900 via-[#300171] to-slate-900 text-foreground`}
+        <Providers>
+            <html lang="en" suppressHydrationWarning>
+                <body
+                    className={`${inter.className} bg-gradient-b from-gray-900 via-[#300171] to-slate-900 text-foreground`}
+                >
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="system"
+                        enableSystem
+                        disableTransitionOnChange
                     >
                         <NextTopLoader color="#312e81" showSpinner={false} />
                         <Navbar />
                         {children}
                         <Bottom />
                         <Toaster />
-                    </body>
-                </html>
-            </ReduxProvider>
-        </AuthProvider>
+                    </ThemeProvider>
+                </body>
+            </html>
+        </Providers>
     );
 }

@@ -6,6 +6,7 @@ import { getServerSession } from 'next-auth';
 import UserAvatar from './UserAvatar';
 import { authOptions } from '@/utils/authOptions';
 import { Button } from '../ui/button';
+import ToggleTheme from './ToggleTheme';
 
 export type LinkProps = { id: number; link: string; href: string };
 const links: LinkProps[] = [
@@ -31,13 +32,13 @@ const Navbar: FC<ComponentProps> = async () => {
     const session = await getServerSession(authOptions);
 
     return (
-        <header className="border-b-slate-700 border-b z-50 sticky top-0 bg-[#020207] backdrop-blur">
+        <header className="border-b-slate-400 dark:border-b-slate-700 border-b">
             <nav
                 className={`relative container mx-auto py-8 flex items-center justify-between transition duration-200`}
             >
                 <Link href={'/'}>
                     <span className="text-5xl font-extrabold text-yellowLogo opacity-90 hover:opacity-100 transition duration-150">
-                        JS<span className="text-white">uperior</span>
+                        JS<span className="text-foreground">uperior</span>
                     </span>
                 </Link>
                 <div>
@@ -56,6 +57,7 @@ const Navbar: FC<ComponentProps> = async () => {
                                 </Button>
                             </Link>
                         )}
+                        <ToggleTheme />
                     </ul>
                 </div>
             </nav>

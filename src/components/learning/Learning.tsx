@@ -41,7 +41,7 @@ const Learning: FC<ComponentProps> = () => {
 
                 <Link
                     href={'/lessons'}
-                    className="bg-transparent hover:bg-slate-900 border border-slate-700 mx-auto py-4 px-12 rounded font-medium transition"
+                    className="bg-transparent hover:bg-accent dark:hover:bg-slate-900 border border-slate-700 mx-auto py-4 px-12 rounded font-medium transition"
                 >
                     <P>Start learning</P>
                 </Link>

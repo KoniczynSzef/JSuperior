@@ -10,8 +10,9 @@ html {
 
 @layer base {
     :root {
-        --background: black;
-        --foreground: white;
+        --sec: #475569;
+        --background: white;
+        --foreground: black;
         --card: 0 0% 100%;
         --card-foreground: 222.2 84% 4.9%;
 
@@ -39,12 +40,19 @@ html {
 
         --radius: 0.5rem;
 
-        --sec: #64748b;
-
         --yellowLogo: #facc15;
     }
 
     .dark {
+        --sec: #64748b;
+        --background: linear-gradient(
+            to bottom left,
+            #0b093a 0%,
+            #040222 1%,
+            black 30%,
+            #010113 100%
+        );
+        --foreground: white;
         --card: 222.2 84% 4.9%;
         --card-foreground: 210 40% 98%;
 
@@ -73,13 +81,7 @@ html {
 }
 
 body {
-    background: linear-gradient(
-        to bottom left,
-        #0b093a 0%,
-        #040222 1%,
-        var(--background) 30%,
-        #010113 100%
-    );
+    background: var(--background);
     color: var(--foreground);
 }
 

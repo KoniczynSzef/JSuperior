@@ -67,7 +67,7 @@ const Quiz: FC<QuizProps> = ({ answers, correctAnswers, questions }) => {
         <AlertDialog>
             <AlertDialogTrigger asChild>
                 <Button
-                    className="bg-transparent hover:bg-slate-900 border border-slate-700 px-10 py-6 text-lg"
+                    className="bg-transparent hover:bg-accent dark:hover:bg-slate-900 border border-slate-700 px-10 py-6 text-lg text-foreground"
                     size={'lg'}
                 >
                     Start quiz

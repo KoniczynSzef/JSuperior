@@ -33,7 +33,7 @@ const About: FC<ComponentProps> = () => {
                     ))}
                 </div>
 
-                <Card className="bg-black text-foreground border-slate-800 max-w-lg mt-16">
+                <Card className="bg-background text-foreground border-slate-800 max-w-lg mt-16">
                     <CardHeader>
                         <CardTitle className="text-3xl">
                             My social media
@@ -43,7 +43,7 @@ const About: FC<ComponentProps> = () => {
                         {links.map((link, i) => (
                             <a
                                 key={i}
-                                className="w-full bg-slate-950 hover:bg-slate-900 flex items-center p-4 rounded border border-slate-800 transition-all duration-150"
+                                className="w-full bg-background hover:bg-accent dark:bg-slate-950 dark:hover:bg-slate-900 flex items-center p-4 rounded border border-slate-800 transition-all duration-150 text-foreground"
                                 href={link.url}
                                 target="_blank"
                                 rel="noreferrer"

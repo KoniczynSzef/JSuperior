@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Cookies from '../cookies/Cookies';
 
 import { TypeAnimation } from 'react-type-animation';
+import { Button } from '../ui/button';
 
 interface ComponentProps {}
 const HeroSection: FC<ComponentProps> = () => {
@@ -43,12 +44,14 @@ const HeroSection: FC<ComponentProps> = () => {
                     <TypedParagraph />
                 </div>
 
-                <div>
-                    <Link
-                        href={'/lessons'}
-                        className="bg-violet-700 hover:bg-violet-600 mt-6 py-3 px-6 rounded transition grid place-content-center w-fit"
-                    >
-                        Start learning
+                <div className="mt-4">
+                    <Link href={'/lessons'}>
+                        <Button
+                            className="bg-violet-700 hover:bg-violet-600 transition text-white"
+                            size={'lg'}
+                        >
+                            Start learning
+                        </Button>
                     </Link>
                 </div>
             </div>
