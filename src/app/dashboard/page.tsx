@@ -32,7 +32,7 @@ const page: FC<ComponentProps> = async () => {
                         <TabsTrigger
                             key={i}
                             value={t}
-                            className="hover:text-slate-400"
+                            className="dark:hover:text-slate-300 hover:text-slate-700"
                         >
                             {t.charAt(0).toLocaleUpperCase() +
                                 t.slice(1, t.length)}

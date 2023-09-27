@@ -52,7 +52,7 @@ const General: FC<GeneralProps> = async ({ user }) => {
                     </div>
                 ))}
 
-                <pre className="dark:bg-slate-950 p-4 rounded border border-slate-900">
+                <pre className="bg-accent dark:bg-slate-950 p-4 rounded border border-slate-900">
                     <code>{JSON.stringify(userFromDb)}</code>
                 </pre>
             </div>

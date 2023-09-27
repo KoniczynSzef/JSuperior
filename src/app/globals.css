@@ -50,7 +50,7 @@ html {
     }
 
     .dark {
-        --sec: #64748b;
+        --sec: #94a3b8;
         --backgroundGradient: linear-gradient(
             to bottom left,
             #0b093a 0%,
