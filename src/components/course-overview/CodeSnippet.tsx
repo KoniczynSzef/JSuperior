@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {
@@ -12,7 +12,8 @@ import {
 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Button } from '../ui/button';
 import { Copy, CopyCheck } from 'lucide-react';
-import { useAppSelector } from '@/context/hooks';
+import { useAppDispatch, useAppSelector } from '@/context/hooks';
+import { getCodeTheme } from '@/context/codeThemeReducers/codeThemeReducers';
 
 interface ComponentProps {
     code: string;
@@ -27,7 +28,12 @@ export const codeThemes = [
 ];
 
 const CodeSnippet: FC<ComponentProps> = ({ code }) => {
+    const dispatch = useAppDispatch();
     const { codeStyleIndex } = useAppSelector((s) => s.codeTheme);
+
+    useEffect(() => {
+        dispatch(getCodeTheme());
+    }, []);
 
     const [copied, setCopied] = useState(false);
     const handleCopy = () => {
