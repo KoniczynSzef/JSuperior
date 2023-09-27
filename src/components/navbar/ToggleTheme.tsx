@@ -12,9 +12,9 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-interface ToggleThemeProps {}
+interface ToggleThemeProps extends React.ComponentProps<'div'> {}
 
-const ToggleTheme: FC<ToggleThemeProps> = () => {
+const ToggleTheme: FC<ToggleThemeProps> = ({ className }) => {
     const { setTheme } = useTheme();
     return (
         <DropdownMenu>
@@ -25,7 +25,10 @@ const ToggleTheme: FC<ToggleThemeProps> = () => {
                     <span className="sr-only">Toggle theme</span>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="dark:border-slate-700">
+            <DropdownMenuContent
+                align="end"
+                className={`${className} dark:border-slate-700`}
+            >
                 <DropdownMenuItem onClick={() => setTheme('light')}>
                     Light
                 </DropdownMenuItem>

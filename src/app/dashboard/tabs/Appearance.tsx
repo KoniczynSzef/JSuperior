@@ -39,18 +39,18 @@ const General: FC<GeneralProps> = () => {
 
     return (
         <>
-            <h2 className="text-2xl font-bold text-left text-white">
+            <h2 className="text-2xl font-bold text-left text-foreground">
                 Code snippets theme
             </h2>
             <div className="gap-16 flex flex-col md:flex-row mt-12">
-                <div className="flex flex-row md:flex-col gap-4">
+                <div className="flex flex-wrap md:flex-col gap-4">
                     {codeThemes.map((_, i) => (
                         <Button key={i} onClick={() => handleChangeTheme(i)}>
                             {themes[i]}
                         </Button>
                     ))}
                 </div>
-                <div className="self-center w-[30%]">
+                <div className="self-center">
                     <CodeSnippet code={demoText} />
                 </div>
             </div>

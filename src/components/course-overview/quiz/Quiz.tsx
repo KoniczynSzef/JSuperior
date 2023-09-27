@@ -74,7 +74,7 @@ const Quiz: FC<QuizProps> = ({ answers, correctAnswers, questions }) => {
                 </Button>
             </AlertDialogTrigger>
 
-            <AlertDialogContent className="p-8 border border-slate-800 shadow-md max-w-md md:max-w-lg space-y-8 min-h-[32rem] overflow-hidden">
+            <AlertDialogContent className="dark:bg-black p-8 border border-slate-800 shadow-md max-w-md md:max-w-lg space-y-8 min-h-[32rem] overflow-hidden text-foreground rounded">
                 {step < questions.length ? (
                     !userAnswered ? (
                         <>
@@ -83,15 +83,15 @@ const Quiz: FC<QuizProps> = ({ answers, correctAnswers, questions }) => {
                                     {questions[step]}
                                 </AlertDialogTitle>
                             </AlertDialogHeader>
-                            <AlertDialogDescription className="text-slate-300 flex flex-col gap-4">
+                            <AlertDialogDescription className="text-foreground flex flex-col gap-4">
                                 {answers[step].map((answer, i) => (
                                     <Button
                                         ref={btnRef}
                                         key={i}
                                         onClick={() => handleChoose(i)}
-                                        className={`text-left py-8 bg-transparent border border-slate-800 flex items-center justify-start gap-6`}
+                                        className={`text-left py-8 bg-transparent border border-slate-800 flex items-center justify-start gap-6 hover:bg-accent`}
                                     >
-                                        <p className="text-lg">
+                                        <p className="text-lg text-foreground">
                                             {i + 1}. {answer}
                                         </p>
                                     </Button>

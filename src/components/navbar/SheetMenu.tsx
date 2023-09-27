@@ -15,6 +15,7 @@ import { Menu } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Session } from 'next-auth';
 import UserAvatar from './UserAvatar';
+import ToggleTheme from './ToggleTheme';
 
 interface ComponentProps {
     links: LinkProps[];
@@ -26,7 +27,7 @@ export const Links: FC<ComponentProps> = ({ links }) => {
         <li key={link.id}>
             <Link
                 href={link.href}
-                className="text-sec hover:text-foreground text-lg md:text-base lg:text-lg transition duration-200"
+                className="text-sec hover:text-background text-lg md:text-base lg:text-lg transition duration-200"
             >
                 {link.link}
             </Link>
@@ -43,7 +44,7 @@ const SheetMenu: FC<ComponentProps> = ({ links, session }) => {
                         <Menu />
                     </Button>
                 </SheetTrigger>
-                <SheetContent className="py-12 border-l-slate-700 bg-[#030007]">
+                <SheetContent className="py-12 border-l-slate-700 bg-background dark:bg-[#030007]">
                     <SheetHeader className="mt-8">
                         <SheetTitle className="text-3xl font-bold text-yellowLogo">
                             <SheetTrigger asChild>
@@ -82,6 +83,9 @@ const SheetMenu: FC<ComponentProps> = ({ links, session }) => {
                                 <Button>Sign in</Button>
                             </Link>
                         )}
+                    </div>
+                    <div className="flex justify-center my-12">
+                        <ToggleTheme className="z-[1000]" />
                     </div>
                 </SheetContent>
             </>

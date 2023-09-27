@@ -28,7 +28,7 @@ const page: FC<ComponentProps> = async () => {
     return (
         <div className="min-h-[80vh] container my-16 px-16">
             <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-medium text-purple-300">
+                <h2 className="text-2xl font-medium text-purple-600 dark:text-purple-300">
                     {user.name}
                 </h2>
                 <Logout />
@@ -48,12 +48,13 @@ const page: FC<ComponentProps> = async () => {
                         </TabsTrigger>
                     ))}
                 </TabsList>
-                <TabsContent value="general"></TabsContent>
-                <TabsContent value="appearance">
-                    <Card className="bg-transparent p-4 border-slate-700">
+                <Card className="bg-transparent p-8 border-slate-700">
+                    <TabsContent value="general"></TabsContent>
+                    <TabsContent value="account"></TabsContent>
+                    <TabsContent value="appearance">
                         <Appearance />
-                    </Card>
-                </TabsContent>
+                    </TabsContent>
+                </Card>
             </Tabs>
         </div>
     );

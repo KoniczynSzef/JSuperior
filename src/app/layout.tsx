@@ -30,7 +30,6 @@ export default function RootLayout({
                         attribute="class"
                         defaultTheme="system"
                         enableSystem
-                        disableTransitionOnChange
                     >
                         <NextTopLoader color="#312e81" showSpinner={false} />
                         <Navbar />

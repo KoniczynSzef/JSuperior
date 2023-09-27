@@ -115,7 +115,7 @@ const QuizSummary: FC<ComponentProps> = ({
                     <AlertDialogTrigger asChild>
                         <Button
                             type="submit"
-                            className="self-end text-lg bg-transparent border-slate-800 border py-6"
+                            className="self-end text-lg border-slate-800 border py-6"
                             size={'lg'}
                             onClick={handleReset}
                         >

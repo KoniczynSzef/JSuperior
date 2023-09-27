@@ -38,9 +38,9 @@ const CodeSnippet: FC<ComponentProps> = ({ code }) => {
     };
 
     return (
-        <div className="max-w-lg relative flex flex-col border border-slate-800 bg-slate-900 dark:bg-slate-950 rounded">
+        <div className="max-w-lg relative flex flex-col border border-slate-800 bg-slate-900 dark:bg-slate-950 rounded pb-4">
             <Button
-                className="bg-slate-800 hover:bg-slate-700 px-3 self-end absolute focus:outline-white text-white"
+                className="bg-slate-800 hover:bg-slate-700 px-3 self-end focus:outline-white text-white"
                 onClick={handleCopy}
             >
                 {!copied ? (

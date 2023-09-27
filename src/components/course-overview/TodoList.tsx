@@ -96,7 +96,7 @@ const TodoList: FC<ComponentProps> = () => {
                                 </Label>
                                 <Button
                                     type="submit"
-                                    className="bg-foreground text-background hover:bg-accent-foreground hover:text-background"
+                                    className="hover:bg-foreground"
                                 >
                                     Submit
                                 </Button>
