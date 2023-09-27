@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ChevronRightSquare } from 'lucide-react';
 import React, { FC } from 'react';
-import SidebarLink from '../sidebar-link/SidebarLink';
+import SidebarLink from '../sidebar-links/SidebarLinks';
 
 interface SidebarMenuProps {
     data: lessonProps[];

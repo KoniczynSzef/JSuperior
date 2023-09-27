@@ -44,7 +44,7 @@ const SheetMenu: FC<ComponentProps> = ({ links, session }) => {
                         <Menu />
                     </Button>
                 </SheetTrigger>
-                <SheetContent className="py-12 border-l-slate-700 bg-background dark:bg-[#030007]">
+                <SheetContent className="py-12 border-l-slate-700 bg-white dark:bg-[#030007]">
                     <SheetHeader className="mt-8">
                         <SheetTitle className="text-3xl font-bold text-yellowLogo">
                             <SheetTrigger asChild>

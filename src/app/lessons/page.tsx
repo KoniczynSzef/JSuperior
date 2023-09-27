@@ -1,4 +1,3 @@
-import { Separator } from '@/components/ui/separator';
 import { authOptions } from '@/utils/authOptions';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
@@ -46,7 +45,6 @@ const page: FC<pageProps> = async () => {
             <h2 className="text-4xl font-semibold">{data.attributes.Title}</h2>
             <p className="mt-5">{data.attributes.Description}</p>
 
-            <Separator className="my-8" />
             <ReactMarkdown className="text-left flex flex-col gap-2 list-disc markdown">
                 {data.attributes.Content}
             </ReactMarkdown>
@@ -56,13 +54,11 @@ const page: FC<pageProps> = async () => {
                     href={`/lessons/${data.id + 1}`}
                     className="group ml-auto"
                 >
-                    <span className="flex items-center gap-3 text-sec group-hover:text-white transition">
+                    <span className="flex items-center gap-3 text-sec group-hover:text-accent-foreground transition">
                         Setting up Vite <ArrowRight className="" />
                     </span>
                 </Link>
             </div>
-
-            <Separator className="mt-8" />
         </div>
     );
 };

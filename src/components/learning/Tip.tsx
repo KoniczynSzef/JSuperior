@@ -29,7 +29,7 @@ const Tip: FC<TipProps> = ({ title, desc, id }) => {
             id={`card-${id}`}
         >
             <Card className="bg-transparent max-w-lg text-background border-slate-700">
-                <CardTitle className="border-b border-b-slate-800 py-4 px-6 bg-slate-900 rounded-t">
+                <CardTitle className="text-white border-b border-b-slate-800 py-4 px-6 bg-slate-900 rounded-t">
                     {id}. {title}
                 </CardTitle>
                 <div className="px-6 text-sec my-4">

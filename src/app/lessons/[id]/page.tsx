@@ -73,7 +73,7 @@ const page: FC<pageProps> = async ({ params }) => {
                         }`}
                         className="group"
                     >
-                        <span className="flex items-center gap-3 text-sec group-hover:text-white transition">
+                        <span className="flex items-center gap-3 text-sec group-hover:text-accent-foreground transition">
                             <ArrowLeft />
                             {prevLesson.attributes.Title}{' '}
                         </span>
@@ -85,7 +85,7 @@ const page: FC<pageProps> = async ({ params }) => {
                         href={`/lessons/${data.id + 1}`}
                         className="group ml-auto"
                     >
-                        <span className="flex items-center gap-3 text-sec group-hover:text-white transition">
+                        <span className="flex items-center gap-3 text-sec group-hover:text-accent-foreground transition">
                             {nextLesson.attributes.Title}
 
                             <ArrowRight />

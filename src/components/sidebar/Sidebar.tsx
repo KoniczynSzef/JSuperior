@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { ScrollArea } from '../ui/scroll-area';
 import { dataProps } from '@/app/lessons/page';
 import SidebarMenu from './sidebar-menu/SidebarMenu';
-import SidebarLinks from './sidebar-link/SidebarLink';
+import SidebarLinks from './sidebar-links/SidebarLinks';
 
 const categories = ['Get started'];
 
@@ -25,7 +25,7 @@ const Sidebar: FC<ComponentProps> = async () => {
     const data = await fetchLessons();
 
     return (
-        <nav className="md:sticky md:top-32 md:w-72">
+        <nav className="md:sticky top-0 md:w-72 md:border-r md:border-r-slate-700">
             <SidebarMenu data={data} categories={categories} />
             <ScrollArea className="px-4 py-6 my-4 max-w-sm rounded w-full hidden md:block">
                 <div className="flex flex-col w-full gap-1">

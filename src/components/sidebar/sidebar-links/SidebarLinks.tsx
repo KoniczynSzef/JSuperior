@@ -20,7 +20,7 @@ const SidebarLinks: FC<SidebarLinksProps> = ({ lesson, categories, i }) => {
             <Link
                 key={lesson.id}
                 href={`/lessons/${lesson.id === 1 ? '' : lesson.id}`}
-                className="text-gray-400 hover:text-white transition text-sm"
+                className="text-sec hover:text-accent-foreground transition text-sm"
             >
                 {lesson.attributes.Title}
             </Link>
