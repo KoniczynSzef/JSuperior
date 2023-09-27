@@ -44,10 +44,10 @@ const HeroSection: FC<ComponentProps> = () => {
                     <TypedParagraph />
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-6">
                     <Link href={'/lessons'}>
                         <Button
-                            className="bg-violet-700 hover:bg-violet-600 transition text-white"
+                            className="transition-all text-white start-learning capitalize text-lg py-6"
                             size={'lg'}
                         >
                             Start learning

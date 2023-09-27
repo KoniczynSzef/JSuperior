@@ -1,13 +1,12 @@
 import { authOptions } from '@/utils/authOptions';
 import { getServerSession } from 'next-auth';
 import React, { FC } from 'react';
-import Logout from './Logout';
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Appearance from './tabs/Appearance';
-import { Separator } from '@/components/ui/separator';
 import { Card } from '@/components/ui/card';
+import General from './tabs/general/General';
 
 type tab = 'general' | 'account' | 'appearance';
 
@@ -27,14 +26,6 @@ const page: FC<ComponentProps> = async () => {
 
     return (
         <div className="min-h-[80vh] container my-16 px-16">
-            <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-medium text-purple-600 dark:text-purple-300">
-                    {user.name}
-                </h2>
-                <Logout />
-            </div>
-            <Separator className="mt-4" />
-
             <Tabs defaultValue="general" className="space-y-16 mt-12">
                 <TabsList className="gap-8 px-4">
                     {tabs.map((t, i) => (
@@ -49,7 +40,9 @@ const page: FC<ComponentProps> = async () => {
                     ))}
                 </TabsList>
                 <Card className="bg-transparent p-8 border-slate-700">
-                    <TabsContent value="general"></TabsContent>
+                    <TabsContent value="general">
+                        <General user={user} />
+                    </TabsContent>
                     <TabsContent value="account"></TabsContent>
                     <TabsContent value="appearance">
                         <Appearance />

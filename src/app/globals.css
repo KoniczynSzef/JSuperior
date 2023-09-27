@@ -130,3 +130,15 @@ html.light .markdown a:hover {
     color: #2563eb;
     transition: 200ms all;
 }
+
+.start-learning {
+    --first: #7f00ff;
+    --second: #e100ff;
+    background-image: linear-gradient(var(--first), var(--second));
+
+    transition: all 200ms;
+}
+
+.start-learning:hover {
+    scale: 1.05;
+}
