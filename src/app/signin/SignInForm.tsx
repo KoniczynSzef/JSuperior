@@ -27,7 +27,7 @@ const SignInButton: FC<ButtonProps> = ({ btn, handleClick }) => {
     return (
         <Button
             onClick={() => handleClick(btn)}
-            className="w-full space-x-3 bg-transparent border border-slate-700 py-6 text-lg"
+            className="w-full space-x-3 border border-slate-700 py-6 text-lg"
         >
             {btn.icon}
             <span className="mx-1">Sign up with {btn.text}</span>
@@ -56,7 +56,7 @@ const SignInForm: FC<props> = () => {
                     {!logged ? (
                         <>
                             <CardHeader>
-                                <CardTitle className="text-center text-2xl font-bold">
+                                <CardTitle className="text-center text-2xl font-bold text-white">
                                     Sign up to{' '}
                                     <span className="text-yellowLogo">JS</span>
                                     uperior

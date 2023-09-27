@@ -27,7 +27,7 @@ export const Links: FC<ComponentProps> = ({ links }) => {
         <li key={link.id}>
             <Link
                 href={link.href}
-                className="text-sec hover:text-background text-lg md:text-base lg:text-lg transition duration-200"
+                className="text-sec hover:text-foreground text-lg md:text-base lg:text-lg transition duration-200"
             >
                 {link.link}
             </Link>
