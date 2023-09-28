@@ -27,11 +27,9 @@ model Account {
 
 model Lesson {
   id          Int     @id @default(autoincrement())
-  description String
-  hasQuiz     Boolean
   title       String
+  description String
   content     String
-  category    String
 }
 
 model Quiz {

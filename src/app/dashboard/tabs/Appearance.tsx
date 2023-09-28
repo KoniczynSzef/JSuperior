@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import CodeSnippet, {
     codeThemes,
 } from '@/components/course-overview/CodeSnippet';
+import { Separator } from '@/components/ui/separator';
 
 const themes: string[] = [
     'Atom One Dark',
@@ -42,6 +43,8 @@ const General: FC<GeneralProps> = () => {
             <h2 className="text-2xl font-bold text-left text-foreground">
                 Code snippets theme
             </h2>
+            <Separator className="mt-2 bg-slate-900" />
+
             <div className="gap-16 flex flex-col md:flex-row mt-12">
                 <div className="flex flex-wrap md:flex-col gap-4">
                     {codeThemes.map((_, i) => (

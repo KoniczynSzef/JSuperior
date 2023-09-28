@@ -10,7 +10,7 @@ import General from './tabs/general/General';
 
 type tab = 'general' | 'account' | 'appearance';
 
-const tabs: tab[] = ['general', 'account', 'appearance'];
+const tabs: tab[] = ['general', 'appearance'];
 
 export const metadata: Metadata = {
     title: 'JSuperior Dashboard',
@@ -43,7 +43,6 @@ const page: FC<ComponentProps> = async () => {
                     <TabsContent value="general">
                         <General user={user} />
                     </TabsContent>
-                    <TabsContent value="account"></TabsContent>
                     <TabsContent value="appearance">
                         <Appearance />
                     </TabsContent>

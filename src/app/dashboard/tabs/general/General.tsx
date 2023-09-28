@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import Logout from '../../Logout';
 import { Separator } from '@/components/ui/separator';
 import { prisma } from '@/lib/prisma';
+import UserCode from './UserCode';
 
 interface GeneralProps {
     user: {
@@ -52,10 +53,14 @@ const General: FC<GeneralProps> = async ({ user }) => {
                     </div>
                 ))}
 
-                <pre className="bg-accent dark:bg-slate-950 p-4 rounded border border-slate-900">
-                    <code>{JSON.stringify(userFromDb)}</code>
-                </pre>
+                {userFromDb && (
+                    <pre className="bg-accent dark:bg-slate-950 p-4 rounded border border-slate-900 flex items-center justify-between">
+                        <code>{JSON.stringify(userFromDb)}</code>
+                        <UserCode userFromDb={userFromDb} />
+                    </pre>
+                )}
             </div>
+
             <div className="mt-8">
                 <Logout />
             </div>
