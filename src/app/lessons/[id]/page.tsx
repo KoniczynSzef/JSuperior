@@ -9,7 +9,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { lessonProps } from '../page';
 import { options } from '@/app/config';
 import Markdown from './Markdown';
-import { Quiz as QuizType } from '@prisma/client';
+import { Lesson, Quiz as QuizType } from '@prisma/client';
 import QuizWrapper from './QuizWrapper';
 
 interface pageProps {
@@ -17,6 +17,18 @@ interface pageProps {
         id: number;
     };
 }
+
+export const fetchLesson = async (id: number) => {
+    if (!id) throw new Error('id is required');
+
+    const res = await fetch(`${process.env.BASE_NEXT_URL}/api/lessons/${id}`, {
+        body: JSON.stringify({ id }),
+        method: 'POST',
+    });
+
+    const data: Lesson = await res.json();
+    return data;
+};
 
 export const fetchData = async (id: number) => {
     if (!id) throw new Error('id is required');
@@ -55,13 +67,15 @@ const page: FC<pageProps> = async ({ params }) => {
     const { data, nextLesson, prevLesson } = await fetchData(params.id);
     const quiz = await fetchQuiz(params.id);
 
+    const lesson = await fetchLesson(params.id);
+
     return (
         <div className="relative my-16 text-left w-full">
-            <h2 className="text-4xl font-semibold">{data.attributes.Title}</h2>
-            <p className="mt-5">{data.attributes.Description}</p>
+            <h2 className="text-4xl font-semibold">{lesson.title}</h2>
+            <p className="mt-5">{lesson.description}</p>
 
             <Separator className="my-8" />
-            <Markdown content={data.attributes.Content} />
+            <Markdown content={lesson.content} />
 
             {quiz && <QuizWrapper quiz={quiz} />}
 
