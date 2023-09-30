@@ -1,10 +1,10 @@
 import { Separator } from '@/components/ui/separator';
 import { authOptions } from '@/utils/authOptions';
 import { getServerSession } from 'next-auth';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+// import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import Markdown from './Markdown';
 import { Lesson, Quiz as QuizType } from '@prisma/client';
@@ -51,7 +51,6 @@ const page: FC<pageProps> = async ({ params }) => {
             <h2 className="text-4xl font-semibold">{lesson.title}</h2>
             <p className="mt-5">{lesson.description}</p>
 
-            <Separator className="my-8" />
             <Markdown content={lesson.content} />
 
             {quiz && <QuizWrapper quiz={quiz} />}
