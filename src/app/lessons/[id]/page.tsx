@@ -12,7 +12,7 @@ import QuizWrapper from './QuizWrapper';
 
 interface pageProps {
     params: {
-        id: number;
+        id: string;
     };
 }
 
@@ -43,8 +43,8 @@ const page: FC<pageProps> = async ({ params }) => {
     const session = await getServerSession(authOptions);
     if (!session?.user) return redirect('/signin');
 
-    const lesson = await fetchLesson(params.id);
-    const quiz = await fetchQuiz(params.id);
+    const lesson = await fetchLesson(parseInt(params.id));
+    const quiz = await fetchQuiz(parseInt(params.id));
 
     return (
         <div className="relative my-16 text-left w-full">
