@@ -7,17 +7,15 @@ interface pageProps {}
 
 const postLesson = async (lesson: Lesson) => {
     'use server';
-    try {
-        const res = await fetch(`${process.env.BASE_NEXT_URL}/api/lesson`, {
-            method: 'POST',
-            body: JSON.stringify({ ...lesson }),
-        });
+    console.log(lesson);
 
-        const data: Lesson = await res.json();
-        return data;
-    } catch (error) {
-        console.error(error);
-    }
+    const res = await fetch(`${process.env.BASE_NEXT_URL}/api/lessons`, {
+        method: 'POST',
+        body: JSON.stringify(lesson),
+    });
+
+    const data: Lesson = await res.json();
+    return data;
 };
 
 const getLessons = async () => {

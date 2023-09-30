@@ -22,9 +22,7 @@ const LessonPanel: FC<LessonPanelProps> = ({ postLesson, prevId }) => {
     const [description, setDescription] = useState<string>('');
     const [content, setContent] = useState<string>('');
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
+    const handleSubmit = async () => {
         console.log(prevId);
 
         await postLesson({
@@ -36,10 +34,10 @@ const LessonPanel: FC<LessonPanelProps> = ({ postLesson, prevId }) => {
     };
 
     return (
-        <div className="flex">
+        <div className="flex flex-col gap-16">
             <form
                 className="max-w-lg border border-slate-800 p-4 rounded space-y-2 flex flex-col"
-                onSubmit={handleSubmit}
+                action={handleSubmit}
             >
                 <div className="flex gap-5">
                     <Input
@@ -49,20 +47,28 @@ const LessonPanel: FC<LessonPanelProps> = ({ postLesson, prevId }) => {
                     />
                 </div>
                 <Textarea
+                    placeholder="Description..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
 
                 <Textarea
+                    placeholder="Content..."
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
+                    cols={40}
+                    rows={20}
                 />
 
                 <Button>Post lesson</Button>
             </form>
 
             <div>
-                <ReactMarkdown>{content}</ReactMarkdown>
+                <h2 className="text-4xl font-semibold">{title}</h2>
+                <p className="mt-5">{description}</p>
+                <ReactMarkdown className="text-left flex flex-col gap-6 list-disc markdown">
+                    {content}
+                </ReactMarkdown>
             </div>
         </div>
     );

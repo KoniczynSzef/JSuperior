@@ -15,7 +15,6 @@ const page: FC<pageProps> = async () => {
     if (!session?.user) return redirect('/signin');
 
     const lesson = await fetchLesson(1);
-    console.log(lesson);
 
     return (
         <div className="relative my-16 text-left w-full">
