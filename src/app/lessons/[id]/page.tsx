@@ -31,7 +31,7 @@ export const fetchLesson = async (id: number) => {
 const fetchQuiz = async (id: number) => {
     const res = await fetch(`${process.env.BASE_NEXT_URL}/api/quiz/${id}`, {
         method: 'POST',
-        body: JSON.stringify(id.toString()),
+        body: JSON.stringify({ id }),
     });
 
     const data: QuizType = await res.json();

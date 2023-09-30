@@ -9,16 +9,20 @@ import React, { FC, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 interface LessonPanelProps {
-    postLesson: (lesson: Lesson) => Promise<{
-        id: number;
-        title: string;
-        description: string;
-        content: string;
-    }>;
     prevId: number;
 }
 
-const LessonPanel: FC<LessonPanelProps> = ({ postLesson, prevId }) => {
+const postLesson = async (lesson: Lesson) => {
+    const res = await fetch(`${process.env.BASE_NEXT_URL}/api/lessons`, {
+        method: 'POST',
+        body: JSON.stringify(lesson),
+    });
+
+    const data: Lesson = await res.json();
+    return data;
+};
+
+const LessonPanel: FC<LessonPanelProps> = ({ prevId }) => {
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [content, setContent] = useState<string>('');

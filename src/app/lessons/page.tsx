@@ -26,10 +26,7 @@ const page: FC<pageProps> = async () => {
             </ReactMarkdown>
 
             <div className="flex mt-8">
-                <Link
-                    href={`/lessons/${lesson.id + 1}`}
-                    className="group ml-auto"
-                >
+                <Link href={`/lessons/2`} className="group ml-auto">
                     <span className="flex items-center gap-3 text-sec group-hover:text-accent-foreground transition">
                         Setting up Vite <ArrowRight className="" />
                     </span>
