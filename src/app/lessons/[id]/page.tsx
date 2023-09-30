@@ -6,8 +6,6 @@ import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-import { lessonProps } from '../page';
-import { options } from '@/app/config';
 import Markdown from './Markdown';
 import { Lesson, Quiz as QuizType } from '@prisma/client';
 import QuizWrapper from './QuizWrapper';
@@ -30,25 +28,6 @@ export const fetchLesson = async (id: number) => {
     return data;
 };
 
-export const fetchData = async (id: number) => {
-    if (!id) throw new Error('id is required');
-
-    const res = await fetch(`${process.env.BASE_URL}/${id}`, options);
-    const data: { data: lessonProps } = await res.json();
-
-    const nextPage = await fetch(`${process.env.BASE_URL}/${id + 1}`, options);
-    const nextPageData: { data: lessonProps } = await nextPage.json();
-
-    const prevPage = await fetch(`${process.env.BASE_URL}/${id - 1}`, options);
-    const prevPageData: { data: lessonProps } = await prevPage.json();
-
-    return {
-        data: data.data,
-        nextLesson: nextPageData.data,
-        prevLesson: prevPageData.data,
-    };
-};
-
 const fetchQuiz = async (id: number) => {
     const res = await fetch(`${process.env.BASE_NEXT_URL}/api/quiz/${id}`, {
         method: 'POST',
@@ -64,10 +43,8 @@ const page: FC<pageProps> = async ({ params }) => {
     const session = await getServerSession(authOptions);
     if (!session?.user) return redirect('/signin');
 
-    const { data, nextLesson, prevLesson } = await fetchData(params.id);
-    const quiz = await fetchQuiz(params.id);
-
     const lesson = await fetchLesson(params.id);
+    const quiz = await fetchQuiz(params.id);
 
     return (
         <div className="relative my-16 text-left w-full">
@@ -79,7 +56,7 @@ const page: FC<pageProps> = async ({ params }) => {
 
             {quiz && <QuizWrapper quiz={quiz} />}
 
-            <div className="flex mt-8 justify-between">
+            {/* <div className="flex mt-8 justify-between">
                 {prevLesson !== null && (
                     <Link
                         href={`/lessons/${
@@ -106,7 +83,7 @@ const page: FC<pageProps> = async ({ params }) => {
                         </span>
                     </Link>
                 )}
-            </div>
+            </div> */}
 
             <Separator className="mt-8" />
         </div>

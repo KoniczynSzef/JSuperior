@@ -1,24 +1,21 @@
 import React, { FC } from 'react';
 import { ScrollArea } from '../ui/scroll-area';
-import { dataProps } from '@/app/lessons/page';
 import SidebarMenu from './sidebar-menu/SidebarMenu';
-import SidebarLinks from './sidebar-links/SidebarLinks';
+import SidebarLinks from './sidebar-link/SidebarLink';
+import { Lesson } from '@prisma/client';
 
 const categories = ['Get started'];
 
 interface ComponentProps {}
 
 const fetchLessons = async () => {
-    const res = await fetch(`${process.env.BASE_URL}`, {
+    const res = await fetch(`${process.env.BASE_NEXT_URL}/api/lessons`, {
         method: 'GET',
-        headers: {
-            Authorization: 'Bearer ' + process.env.ACCESS_TOKEN,
-        },
     });
 
-    const data: dataProps = await res.json();
+    const data: Lesson[] = await res.json();
 
-    return data.data;
+    return data;
 };
 
 const Sidebar: FC<ComponentProps> = async () => {

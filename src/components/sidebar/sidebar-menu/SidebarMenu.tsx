@@ -1,14 +1,14 @@
 'use client';
 
-import { lessonProps } from '@/app/lessons/page';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ChevronRightSquare } from 'lucide-react';
 import React, { FC } from 'react';
-import SidebarLink from '../sidebar-links/SidebarLinks';
+import SidebarLink from '../sidebar-link/SidebarLink';
+import { Lesson } from '@prisma/client';
 
 interface SidebarMenuProps {
-    data: lessonProps[];
+    data: Lesson[];
     categories: string[];
 }
 

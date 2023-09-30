@@ -1,9 +1,9 @@
-import { lessonProps } from '@/app/lessons/page';
+import { Lesson } from '@prisma/client';
 import Link from 'next/link';
 import React, { FC } from 'react';
 
 interface SidebarLinksProps {
-    lesson: lessonProps;
+    lesson: Lesson;
     categories: string[];
     i: number;
 }
@@ -22,7 +22,7 @@ const SidebarLinks: FC<SidebarLinksProps> = ({ lesson, categories, i }) => {
                 href={`/lessons/${lesson.id === 1 ? '' : lesson.id}`}
                 className="text-sec hover:text-accent-foreground transition text-sm"
             >
-                {lesson.attributes.Title}
+                {lesson.title}
             </Link>
         </div>
     );
