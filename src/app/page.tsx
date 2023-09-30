@@ -7,6 +7,7 @@ import { Separator } from '@/components/ui/separator';
 import React, { FC } from 'react';
 
 interface ComponentProps {}
+
 const page: FC<ComponentProps> = async () => {
     return (
         <main className="text-foreground">
