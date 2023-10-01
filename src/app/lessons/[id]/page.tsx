@@ -20,6 +20,9 @@ export const fetchLesson = async (id: number) => {
     const res = await fetch(`${process.env.BASE_NEXT_URL}/api/lessons/${id}`, {
         body: JSON.stringify({ id }),
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
     });
 
     if (res.status !== 200) throw new Error('Error while fetching');
@@ -32,6 +35,9 @@ const fetchQuiz = async (id: number) => {
     const res = await fetch(`${process.env.BASE_NEXT_URL}/api/quiz/${id}`, {
         method: 'POST',
         body: JSON.stringify({ id }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
     });
 
     if (res.status !== 200) throw new Error('Error while fetching');

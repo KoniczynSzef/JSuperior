@@ -16,7 +16,12 @@ const postLesson = async (lesson: Lesson) => {
     const res = await fetch(`/api/lessons`, {
         method: 'POST',
         body: JSON.stringify(lesson),
+        headers: {
+            'Content-Type': 'application/json',
+        },
     });
+
+    if (res.status !== 200) throw new Error('Failed to post');
 
     const data: Lesson = await res.json();
     return data;
