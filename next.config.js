@@ -15,6 +15,17 @@ const nextConfig = {
             },
         ],
     },
+    env: {
+        BASE_NEXT_URL:
+            process.env.NODE_ENV === 'production'
+                ? 'https://js-superior.vercel.app'
+                : 'http://localhost:3000',
+
+        NEXTAUTH_URL:
+            process.env.NODE_ENV === 'production'
+                ? 'https://js-superior.vercel.app'
+                : 'http://localhost:3000',
+    },
 };
 
 module.exports = nextConfig;

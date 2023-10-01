@@ -10,7 +10,7 @@ import QuizField from './quizField/QuizField';
 interface QuizFormProps {}
 
 async function createQuiz(quiz: Quiz) {
-    const res = await fetch(`/api/quiz`, {
+    const res = await fetch(`${process.env.BASE_NEXT_URL}/api/quiz`, {
         method: 'POST',
         body: JSON.stringify(quiz),
     });

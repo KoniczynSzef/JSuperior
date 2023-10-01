@@ -45,6 +45,7 @@ const page: FC<pageProps> = async ({ params }) => {
     const lesson = await fetchLesson(parseInt(params.id));
     const prevLesson = await fetchLesson(parseInt(params.id) - 1);
     const nextLesson = await fetchLesson(parseInt(params.id) + 1);
+
     const quiz = await fetchQuiz(parseInt(params.id));
 
     return (
