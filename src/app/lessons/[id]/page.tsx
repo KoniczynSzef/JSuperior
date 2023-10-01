@@ -2,7 +2,6 @@ import { authOptions } from '@/utils/authOptions';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
-
 import Markdown from './Markdown';
 import { Lesson, Quiz as QuizType } from '@prisma/client';
 import QuizWrapper from './QuizWrapper';
