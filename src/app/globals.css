@@ -104,13 +104,11 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
-    margin-top: 1rem;
 }
 
 .markdown h3 {
     font-size: 1.5rem;
     margin-top: 3rem;
-    margin-bottom: 1rem;
 }
 
 .markdown a {

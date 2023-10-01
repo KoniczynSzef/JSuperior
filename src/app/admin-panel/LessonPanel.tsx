@@ -13,7 +13,7 @@ interface LessonPanelProps {
 }
 
 const postLesson = async (lesson: Lesson) => {
-    const res = await fetch(`${process.env.BASE_NEXT_URL}/api/lessons`, {
+    const res = await fetch(`/api/lessons`, {
         method: 'POST',
         body: JSON.stringify(lesson),
     });
@@ -29,8 +29,6 @@ const LessonPanel: FC<LessonPanelProps> = ({ prevId }) => {
     const { toast } = useToast();
 
     const handleSubmit = async () => {
-        console.log(prevId);
-
         try {
             await postLesson({
                 id: prevId + 1,
@@ -79,7 +77,7 @@ const LessonPanel: FC<LessonPanelProps> = ({ prevId }) => {
                 <Button>Post lesson</Button>
             </form>
 
-            <div>
+            <div className="max-w-[50%]">
                 <h2 className="text-4xl font-semibold">{title}</h2>
                 <p className="mt-5">{description}</p>
                 <ReactMarkdown className="text-left flex flex-col gap-6 list-disc markdown">

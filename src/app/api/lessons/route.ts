@@ -9,6 +9,7 @@ export async function GET() {
 
 export async function POST(req: Request) {
     const body: Lesson = await req.json();
+    console.log(body);
 
     const newLesson = await prisma.lesson.create({
         data: body,

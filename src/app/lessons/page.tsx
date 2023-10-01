@@ -21,7 +21,7 @@ const page: FC<pageProps> = async () => {
             <h2 className="text-4xl font-semibold">{lesson.title}</h2>
             <p className="mt-5">{lesson.description}</p>
 
-            <ReactMarkdown className="text-left flex flex-col gap-2 list-disc markdown">
+            <ReactMarkdown className="text-left flex flex-col gap-6 list-disc markdown">
                 {lesson.content}
             </ReactMarkdown>
 

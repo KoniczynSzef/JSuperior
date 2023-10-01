@@ -1,14 +1,13 @@
-import { Separator } from '@/components/ui/separator';
 import { authOptions } from '@/utils/authOptions';
 import { getServerSession } from 'next-auth';
-// import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
-// import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import Markdown from './Markdown';
 import { Lesson, Quiz as QuizType } from '@prisma/client';
 import QuizWrapper from './QuizWrapper';
+import Link from 'next/link';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface pageProps {
     params: {
@@ -44,6 +43,8 @@ const page: FC<pageProps> = async ({ params }) => {
     if (!session?.user) return redirect('/signin');
 
     const lesson = await fetchLesson(parseInt(params.id));
+    const prevLesson = await fetchLesson(parseInt(params.id) - 1);
+    const nextLesson = await fetchLesson(parseInt(params.id) + 1);
     const quiz = await fetchQuiz(parseInt(params.id));
 
     return (
@@ -55,36 +56,34 @@ const page: FC<pageProps> = async ({ params }) => {
 
             {quiz && <QuizWrapper quiz={quiz} />}
 
-            {/* <div className="flex mt-8 justify-between">
+            <div className="flex mt-8 justify-between">
                 {prevLesson !== null && (
                     <Link
                         href={`/lessons/${
-                            data.id - 1 === 1 ? '' : data.id - 1
+                            prevLesson.id === 1 ? '' : prevLesson.id
                         }`}
                         className="group"
                     >
                         <span className="flex items-center gap-3 text-sec group-hover:text-accent-foreground transition">
                             <ArrowLeft />
-                            {prevLesson.attributes.Title}{' '}
+                            {prevLesson.title}{' '}
                         </span>
                     </Link>
                 )}
 
                 {nextLesson !== null && (
                     <Link
-                        href={`/lessons/${data.id + 1}`}
+                        href={`/lessons/${nextLesson.id}`}
                         className="group ml-auto"
                     >
                         <span className="flex items-center gap-3 text-sec group-hover:text-accent-foreground transition">
-                            {nextLesson.attributes.Title}
+                            {nextLesson.title}
 
                             <ArrowRight />
                         </span>
                     </Link>
                 )}
-            </div> */}
-
-            <Separator className="mt-8" />
+            </div>
         </div>
     );
 };

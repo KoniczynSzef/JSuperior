@@ -47,7 +47,7 @@ const HeroSection: FC<ComponentProps> = () => {
                 <div className="mt-6">
                     <Link href={'/lessons'}>
                         <Button
-                            className="transition-all text-white start-learning capitalize text-lg py-6"
+                            className="transition-all text-white start-learning text-base py-6"
                             size={'lg'}
                         >
                             Start learning
