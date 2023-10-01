@@ -22,7 +22,7 @@ export const fetchLesson = async (id: number) => {
         method: 'POST',
     });
 
-    if (res.status !== 200) throw new Error('There was an error fetching');
+    if (res.status !== 200) throw new Error('Error while fetching');
 
     const data: Lesson = await res.json();
     return data;
@@ -34,7 +34,7 @@ const fetchQuiz = async (id: number) => {
         body: JSON.stringify({ id }),
     });
 
-    if (res.status !== 200) throw new Error('There was an error fetching');
+    if (res.status !== 200) throw new Error('Error while fetching');
 
     const data: QuizType = await res.json();
 
