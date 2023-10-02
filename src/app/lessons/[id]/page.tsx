@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
 // import Markdown from './Markdown';
-import { Lesson } from '@prisma/client';
+// import { Lesson } from '@prisma/client';
 // import { Lesson, Quiz as QuizType } from '@prisma/client';
 // import QuizWrapper from './QuizWrapper';
 // import Link from 'next/link';
@@ -15,20 +15,20 @@ interface pageProps {
     };
 }
 
-export const fetchLesson = async (id: number) => {
-    if (!id) throw new Error('id is required');
+// export const fetchLesson = async (id: number) => {
+//     if (!id) throw new Error('id is required');
 
-    const res = await fetch(`${process.env.BASE_NEXT_URL}/api/lessons/${id}`, {
-        body: JSON.stringify({ id }),
-        method: 'POST',
-    });
+//     const res = await fetch(`${process.env.BASE_NEXT_URL}/api/lessons/${id}`, {
+//         body: JSON.stringify({ id }),
+//         method: 'POST',
+//     });
 
-    if (res.status !== 200) throw new Error('Error while fetching');
+//     if (res.status !== 200) throw new Error('Error while fetching');
 
-    const data: Lesson = await res.json();
+//     const data: Lesson = await res.json();
 
-    return data;
-};
+//     return data;
+// };
 
 // const fetchQuiz = async (id: number) => {
 //     const res = await fetch(`${process.env.BASE_NEXT_URL}/api/quiz/${id}`, {
