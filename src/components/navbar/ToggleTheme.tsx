@@ -12,9 +12,11 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-interface ToggleThemeProps extends React.ComponentProps<'div'> {}
+interface ToggleThemeProps extends React.ComponentProps<'div'> {
+    align: 'center' | 'end' | 'start';
+}
 
-const ToggleTheme: FC<ToggleThemeProps> = ({ className }) => {
+const ToggleTheme: FC<ToggleThemeProps> = ({ className, align }) => {
     const { setTheme } = useTheme();
     return (
         <DropdownMenu>
@@ -26,7 +28,7 @@ const ToggleTheme: FC<ToggleThemeProps> = ({ className }) => {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
-                align="end"
+                align={align}
                 className={`${className} dark:border-slate-700`}
             >
                 <DropdownMenuItem onClick={() => setTheme('light')}>

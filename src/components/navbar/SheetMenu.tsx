@@ -85,7 +85,7 @@ const SheetMenu: FC<ComponentProps> = ({ links, session }) => {
                         )}
                     </div>
                     <div className="flex justify-center my-12">
-                        <ToggleTheme className="z-[1000]" />
+                        <ToggleTheme className="z-[1000]" align="center" />
                     </div>
                 </SheetContent>
             </>

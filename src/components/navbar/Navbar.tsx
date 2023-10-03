@@ -57,7 +57,7 @@ const Navbar: FC<ComponentProps> = async () => {
                                 </Button>
                             </Link>
                         )}
-                        <ToggleTheme />
+                        <ToggleTheme align="end" />
                     </ul>
                 </div>
             </nav>

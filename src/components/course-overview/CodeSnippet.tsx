@@ -44,7 +44,7 @@ const CodeSnippet: FC<ComponentProps> = ({ code }) => {
     };
 
     return (
-        <div className="max-w-lg relative flex flex-col border border-slate-800 bg-slate-950 rounded pb-4">
+        <div className="max-w-lg relative flex flex-col border border-slate-800 dark:bg-slate-950 bg-zinc-800 rounded pb-4">
             <Button
                 size={'icon'}
                 variant={'outline'}

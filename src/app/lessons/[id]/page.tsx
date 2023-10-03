@@ -1,6 +1,6 @@
-// import { authOptions } from '@/utils/authOptions';
-// import { getServerSession } from 'next-auth';
-// import { redirect } from 'next/navigation';
+import { authOptions } from '@/utils/authOptions';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
 import Markdown from './Markdown';
 import { Lesson, Quiz as QuizType } from '@prisma/client';
@@ -43,8 +43,8 @@ const fetchQuiz = async (id: number) => {
 };
 
 const page: FC<pageProps> = async ({ params = { id: '1' } }) => {
-    // const session = await getServerSession(authOptions);
-    // if (!session?.user) return redirect('/signin');
+    const session = await getServerSession(authOptions);
+    if (!session?.user) return redirect('/signin');
 
     const lesson = await fetchLesson(parseInt(params.id));
     const prevLesson = await fetchLesson(parseInt(params.id) - 1);

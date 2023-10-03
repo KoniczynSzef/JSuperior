@@ -61,8 +61,12 @@ const General: FC<GeneralProps> = async ({ user }) => {
                 )}
             </div>
 
-            <div className="mt-8">
-                <Logout />
+            <div className="mt-12">
+                <h2 className="text-2xl font-bold">Sign out</h2>
+                <Separator className="mt-2 bg-slate-900" />
+                <div className="mt-8">
+                    <Logout />
+                </div>
             </div>
         </div>
     );
