@@ -16,24 +16,27 @@ interface ComponentProps {
 const UserAvatar: FC<ComponentProps> = ({ session }) => {
     return (
         <TooltipProvider>
-            <Tooltip>
-                <TooltipTrigger asChild>
-                    <Link
-                        href={'/dashboard'}
-                        // className="relative bg-transparent hover:shadow-xl hover:shadow-purple-700 hover:scale-105 origin-center p-2 rounded-full transition-all"
-                    >
+            <Link
+                href={'/dashboard'}
+                className="relative bg-transparent hover:bg-accent p-1 rounded-full transition-all duration-200"
+            >
+                <Tooltip>
+                    <TooltipTrigger asChild>
                         <Avatar>
                             <AvatarFallback className="bg-black text-white">
                                 {session?.user?.name?.slice(0, 2)}
                             </AvatarFallback>
                             <AvatarImage src={session?.user?.image || ''} />
                         </Avatar>
-                    </Link>
-                </TooltipTrigger>
-                <TooltipContent className="dark:border-slate-600">
-                    Dashboard
-                </TooltipContent>
-            </Tooltip>
+                    </TooltipTrigger>
+                    <TooltipContent
+                        className="dark:border-slate-600"
+                        side="bottom"
+                    >
+                        Dashboard
+                    </TooltipContent>
+                </Tooltip>
+            </Link>
         </TooltipProvider>
     );
 };
