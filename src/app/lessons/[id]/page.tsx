@@ -62,7 +62,7 @@ const page: FC<pageProps> = async ({ params = { id: '1' } }) => {
             {quiz && <QuizWrapper quiz={quiz} />}
 
             <div className="flex mt-8 justify-between">
-                {prevLesson.title.length >= 1 && (
+                {prevLesson && prevLesson.title.length >= 1 && (
                     <Link
                         href={`/lessons/${
                             prevLesson.id === 1 ? '' : prevLesson.id
@@ -76,7 +76,7 @@ const page: FC<pageProps> = async ({ params = { id: '1' } }) => {
                     </Link>
                 )}
 
-                {nextLesson.title.length >= 1 && (
+                {nextLesson && nextLesson.title.length >= 1 && (
                     <Link
                         href={`/lessons/${nextLesson.id}`}
                         className="group ml-auto"

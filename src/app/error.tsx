@@ -10,10 +10,12 @@ interface errorProps {
 
 const Error: FC<errorProps> = ({ error, reset }) => {
     return (
-        <div>
+        <div className="container my-24 min-h-[50vh] space-y-2">
             <h2>Something was wrong while performing operations</h2>
             <p>Error: {error.message}</p>
-            <Button onClick={() => reset()}>Try again</Button>
+            <Button onClick={() => reset()} className="mt-4">
+                Try again
+            </Button>
         </div>
     );
 };
