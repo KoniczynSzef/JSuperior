@@ -16,9 +16,6 @@ const postLesson = async (lesson: Lesson) => {
     const res = await fetch(`/api/lessons`, {
         method: 'POST',
         body: JSON.stringify(lesson),
-        headers: {
-            'Content-Type': 'application/json',
-        },
     });
 
     if (res.status !== 200) throw new Error('Failed to post');
@@ -33,7 +30,9 @@ const LessonPanel: FC<LessonPanelProps> = ({ prevId }) => {
     const [content, setContent] = useState<string>('');
     const { toast } = useToast();
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
         try {
             await postLesson({
                 id: prevId + 1,
@@ -48,6 +47,11 @@ const LessonPanel: FC<LessonPanelProps> = ({ prevId }) => {
                 duration: 2000,
             });
         } catch (error) {
+            toast({
+                title: 'Error creating lesson',
+                variant: 'destructive',
+                duration: 2000,
+            });
             throw new Error('There was an error creating the lesson');
         }
     };
@@ -56,7 +60,7 @@ const LessonPanel: FC<LessonPanelProps> = ({ prevId }) => {
         <div className="flex gap-16 justify-between">
             <form
                 className="border border-slate-800 p-4 rounded space-y-2 flex flex-col max-w-[50%] w-full"
-                action={handleSubmit}
+                onSubmit={handleSubmit}
             >
                 <div className="flex gap-5">
                     <Input

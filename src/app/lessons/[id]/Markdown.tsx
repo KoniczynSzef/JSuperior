@@ -8,6 +8,8 @@ interface MarkdownProps {
 }
 
 const Markdown: FC<MarkdownProps> = ({ content }) => {
+    console.log(content);
+
     return (
         <ReactMarkdown className="text-left flex flex-col gap-6 list-disc markdown leading-7">
             {content}
