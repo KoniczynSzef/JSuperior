@@ -140,3 +140,11 @@ html.light .markdown a:hover {
 .start-learning:hover {
     scale: 1.05;
 }
+
+.markdown p code {
+    padding: 0.35rem 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #1e293b;
+
+    margin-inline: 0.25rem;
+}

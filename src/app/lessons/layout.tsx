@@ -10,7 +10,7 @@ const layout: FC<layoutProps> = ({ children }) => {
         <main className="relative py-6">
             <div className="flex flex-col md:flex-row container mx-auto gap-16 relative items-start">
                 <Sidebar />
-                {children}
+                <section className="max-w-3xl">{children}</section>
             </div>
         </main>
     );
