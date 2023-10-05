@@ -2,18 +2,25 @@ import { prisma } from '@/lib/prisma';
 import { Lesson } from '@prisma/client';
 
 export async function GET() {
-    const lessons = await prisma.lesson.findMany();
+    try {
+        const lessons = await prisma.lesson.findMany();
 
-    return new Response(JSON.stringify(lessons));
+        return new Response(JSON.stringify(lessons));
+    } catch (error) {
+        throw new Error('Unexpected error fetching lessons');
+    }
 }
 
 export async function POST(req: Request) {
     const body: Lesson = await req.json();
-    console.log(body.content);
 
-    const newLesson = await prisma.lesson.create({
-        data: body,
-    });
+    try {
+        const newLesson = await prisma.lesson.create({
+            data: body,
+        });
 
-    return new Response(JSON.stringify(newLesson));
+        return new Response(JSON.stringify(newLesson));
+    } catch (error) {
+        throw new Error('Unexpected error while creating a lesson');
+    }
 }
