@@ -16,7 +16,7 @@ const page: FC<pageProps> = async () => {
 
     const lesson = await fetchLesson(1);
 
-    return (
+    return lesson ? (
         <div className="relative my-16 text-left w-full">
             <h2 className="text-4xl font-semibold">{lesson.title}</h2>
             <p className="mt-5">{lesson.description}</p>
@@ -33,6 +33,8 @@ const page: FC<pageProps> = async () => {
                 </Link>
             </div>
         </div>
+    ) : (
+        <h2>Did not find any lesson</h2>
     );
 };
 

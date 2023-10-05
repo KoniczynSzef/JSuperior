@@ -24,7 +24,7 @@ const page: FC<pageProps> = async ({ params = { id: '1' } }) => {
 
     const quiz = await fetchQuiz(parseInt(params.id));
 
-    return (
+    return lesson ? (
         <div className="relative my-16 text-left w-full">
             <h2 className="text-4xl font-semibold">{lesson.title}</h2>
             <p className="mt-5">{lesson.description}</p>
@@ -61,6 +61,8 @@ const page: FC<pageProps> = async ({ params = { id: '1' } }) => {
                 )}
             </div>
         </div>
+    ) : (
+        <h2>Did not find any lesson</h2>
     );
 };
 
