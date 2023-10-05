@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { ScrollArea } from '../ui/scroll-area';
 import SidebarMenu from './sidebar-menu/SidebarMenu';
-import SidebarLinks from './sidebar-link/SidebarLink';
+import SidebarLink from './sidebar-link/SidebarLink';
 import { Lesson } from '@prisma/client';
 
 const categories = ['Get started'];
@@ -27,12 +27,15 @@ const Sidebar: FC<ComponentProps> = async () => {
             <ScrollArea className="px-4 py-6 my-4 max-w-sm rounded w-full hidden md:block">
                 <div className="flex flex-col w-full gap-1">
                     {data.map((lesson, i) => (
-                        <SidebarLinks
-                            key={i}
-                            lesson={lesson}
-                            categories={categories}
-                            i={i}
-                        />
+                        <div className="flex flex-col items-start" key={i}>
+                            {i % 5 === 0 && (
+                                <h3 className="text-xl font-semibold mb-3">
+                                    {categories[i % 5]}
+                                </h3>
+                            )}
+
+                            <SidebarLink lesson={lesson} />
+                        </div>
                     ))}
                 </div>
             </ScrollArea>

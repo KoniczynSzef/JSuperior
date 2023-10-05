@@ -2,30 +2,20 @@ import { Lesson } from '@prisma/client';
 import Link from 'next/link';
 import React, { FC } from 'react';
 
-interface SidebarLinksProps {
+interface SidebarLinkProps {
     lesson: Lesson;
-    categories: string[];
-    i: number;
 }
 
-const SidebarLinks: FC<SidebarLinksProps> = ({ lesson, categories, i }) => {
+const SidebarLink: FC<SidebarLinkProps> = ({ lesson }) => {
     return (
-        <div>
-            {i % 5 === 0 && (
-                <h3 className="text-xl font-semibold mb-3">
-                    {categories[i % 5]}
-                </h3>
-            )}
-
-            <Link
-                key={lesson.id}
-                href={`/lessons/${lesson.id === 1 ? '' : lesson.id}`}
-                className="text-sec hover:text-accent-foreground transition text-sm"
-            >
-                {lesson.title}
-            </Link>
-        </div>
+        <Link
+            key={lesson.id}
+            href={`/lessons/${lesson.id === 1 ? '' : lesson.id}`}
+            className="text-sec hover:text-accent-foreground transition text-sm my-[0.15rem]"
+        >
+            {lesson.title}
+        </Link>
     );
 };
 
-export default SidebarLinks;
+export default SidebarLink;

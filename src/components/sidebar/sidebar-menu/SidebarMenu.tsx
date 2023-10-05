@@ -23,16 +23,21 @@ const SidebarMenu: FC<SidebarMenuProps> = ({ data, categories }) => {
                 </SheetTrigger>
                 <SheetContent
                     side={'left'}
-                    className="border-r border-r-slate-900"
+                    className="border-r border-r-slate-900 text-left"
                 >
-                    <div className="mt-12 mx-4">
+                    <div className="mt-12 mx-4 text-left flex flex-col items-start">
                         {data.map((lesson, i) => (
-                            <SidebarLink
-                                key={i}
-                                lesson={lesson}
-                                categories={categories}
-                                i={i}
-                            />
+                            <div className="flex flex-col items-start" key={i}>
+                                {i % 5 === 0 && (
+                                    <h3 className="text-xl font-semibold mb-3">
+                                        {categories[i % 5]}
+                                    </h3>
+                                )}
+
+                                <SheetTrigger>
+                                    <SidebarLink lesson={lesson} />
+                                </SheetTrigger>
+                            </div>
                         ))}
                     </div>
                 </SheetContent>
