@@ -1,8 +1,6 @@
 import { Lesson, Quiz as QuizType } from '@prisma/client';
 
 export const fetchLesson = async (id: number) => {
-    if (!id) throw new Error('id is required');
-
     try {
         const res = await fetch(
             `${process.env.BASE_NEXT_URL}/api/lessons/${id}`,
@@ -21,14 +19,16 @@ export const fetchLesson = async (id: number) => {
 };
 
 export const fetchQuiz = async (id: number) => {
-    const res = await fetch(`${process.env.BASE_NEXT_URL}/api/quiz/${id}`, {
-        method: 'POST',
-        body: JSON.stringify({ id }),
-    });
+    try {
+        const res = await fetch(`${process.env.BASE_NEXT_URL}/api/quiz/${id}`, {
+            method: 'POST',
+            body: JSON.stringify({ id }),
+        });
 
-    if (res.status !== 200) throw new Error('Error while fetching');
+        const data: QuizType = await res.json();
 
-    const data: QuizType = await res.json();
-
-    return data;
+        return data;
+    } catch (error) {
+        throw new Error('Error while fetching quiz');
+    }
 };
