@@ -1,7 +1,9 @@
 import React from 'react';
 import './globals.css';
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+
 import Navbar from '@/components/navbar/Navbar';
 import { Toaster } from '@/components/ui/toaster';
 import Bottom from '@/components/bottom/Bottom';
