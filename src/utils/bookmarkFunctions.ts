@@ -7,7 +7,7 @@ export const fetchBookmark = async (userId: string) => {
                 process.env.NODE_ENV === 'development'
                     ? process.env.BASE_NEXT_URL
                     : process.env.SITE_URL
-            }/bookmark`,
+            }/api/bookmark`,
             {
                 method: 'POST',
                 body: JSON.stringify({
