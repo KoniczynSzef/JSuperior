@@ -7,11 +7,7 @@ export const fetchLesson = async (id: number) => {
                 process.env.NODE_ENV === 'development'
                     ? process.env.BASE_NEXT_URL
                     : process.env.SITE_URL
-            }/api/lessons/${id}`,
-            {
-                body: JSON.stringify({ id }),
-                method: 'POST',
-            }
+            }/api/lessons/${id}`
         );
 
         const data: Lesson = await res.json();
@@ -29,11 +25,7 @@ export const fetchQuiz = async (id: number) => {
                 process.env.NODE_ENV === 'development'
                     ? process.env.BASE_NEXT_URL
                     : process.env.SITE_URL
-            }/api/quiz/${id}`,
-            {
-                method: 'POST',
-                body: JSON.stringify({ id }),
-            }
+            }/api/quiz/${id}`
         );
 
         const data: QuizType = await res.json();
