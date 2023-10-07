@@ -1,7 +1,7 @@
-import { authOptions } from '@/utils/authOptions';
-import { getServerSession } from 'next-auth';
+// import { authOptions } from '@/utils/authOptions';
+// import { getServerSession } from 'next-auth';
+// import { redirect } from 'next/navigation';
 // import Link from 'next/link';
-import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
 // import { ArrowRight } from 'lucide-react';
 
@@ -11,8 +11,8 @@ import React, { FC } from 'react';
 interface pageProps {}
 
 const page: FC<pageProps> = async () => {
-    const session = await getServerSession(authOptions);
-    if (!session?.user) return redirect('/signin');
+    // const session = await getServerSession(authOptions);
+    // if (!session?.user) return redirect('/signin');
 
     // const lesson = await fetchLesson(1);
 
