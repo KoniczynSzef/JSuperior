@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 interface BookMarkProps {}
 
-const BookMark: FC<BookMarkProps> = () => {
+const BookMark: FC<BookMarkProps> = async () => {
     return (
         <div>
             <p></p>
