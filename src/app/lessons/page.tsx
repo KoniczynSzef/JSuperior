@@ -7,7 +7,6 @@ import { ArrowRight } from 'lucide-react';
 
 import ReactMarkdown from 'react-markdown';
 import { fetchLesson } from '@/utils/fetchFunctions';
-import { Lesson } from '@prisma/client';
 
 interface pageProps {}
 
@@ -15,13 +14,7 @@ const page: FC<pageProps> = async () => {
     const session = await getServerSession(authOptions);
     if (!session?.user) return redirect('/signin');
 
-    let lesson: Lesson | undefined;
-
-    try {
-        lesson = await fetchLesson(1);
-    } catch (error) {
-        console.error(error);
-    }
+    const lesson = await fetchLesson(1);
 
     return lesson?.title ? (
         <div className="relative my-16 text-left w-full">
