@@ -1,38 +1,45 @@
 'use client';
 
-import { Bookmark } from '@prisma/client';
 import React, { FC } from 'react';
 
 interface UserBookMarkProps {
-    bookmark: Bookmark;
+    user: {
+        id: string;
+        name: string | null;
+        email: string | null;
+        emailVerified: Date | null;
+        image: string | null;
+    } | null;
 }
 
 import { Heart } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import IconButton from './IconButton';
+import { Card } from '@/components/ui/card';
 
-type bookMarkTypes = 'favourite' | 'toRepeat' | 'valuable';
-const icons: { icon: React.JSX.Element; bookmarkType: bookMarkTypes }[] = [
+export type bookMarkTypes = 'favourite' | 'toRepeat' | 'valuable';
+
+const reactions: { icon: React.JSX.Element; bookmarkType: bookMarkTypes }[] = [
     {
         icon: (
-            <Button className="group transition-all duration-200">
-                <Heart
-                    color="#dc2626"
-                    className="fill-none group-hover:fill-red-600 transition-all duration-200"
-                />
-            </Button>
+            <Heart
+                color="#dc2626"
+                className="fill-none group-hover:fill-red-600 transition-all duration-200"
+            />
         ),
         bookmarkType: 'favourite',
     },
 ];
 
-const UserBookMark: FC<UserBookMarkProps> = () => {
+const UserBookMark: FC<UserBookMarkProps> = ({ user }) => {
     return (
-        <aside className="fixed bg-accent top-36 right-0 h-64 w-16">
-            <div className="flex flex-col items-center justify-center py-2">
-                {icons.map((icon, i) => (
-                    <div key={i}>{icon.icon}</div>
-                ))}
-            </div>
+        <aside className="fixed right-0 top-36 bottom-36 w-16 self-stretch">
+            <Card className="h-full border border-accent">
+                <div className="flex flex-col items-center justify-center py-2">
+                    {reactions.map((reaction, i) => (
+                        <IconButton user={user} reaction={reaction} key={i} />
+                    ))}
+                </div>
+            </Card>
         </aside>
     );
 };

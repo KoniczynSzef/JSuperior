@@ -1,5 +1,4 @@
 import { prisma } from '@/lib/prisma';
-import { fetchBookmark } from '@/utils/bookmarkFunctions';
 import { Session } from 'next-auth';
 import React, { FC } from 'react';
 import UserBookMark from './user-bookmark/UserBookMark';
@@ -16,9 +15,7 @@ const BookMark: FC<BookMarkProps> = async ({ session }) => {
         },
     });
 
-    const bookmark = await fetchBookmark(user?.id ? user?.id : '');
-
-    return <UserBookMark bookmark={bookmark} />;
+    return <UserBookMark user={user} />;
 };
 
 export default BookMark;
