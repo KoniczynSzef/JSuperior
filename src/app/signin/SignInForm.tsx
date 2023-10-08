@@ -42,8 +42,6 @@ const SignInForm: FC<props> = () => {
         setTimeout(async () => {
             await handleLogin(btn.name);
         }, 250);
-
-        setLogged(false);
     };
 
     return (
@@ -52,11 +50,11 @@ const SignInForm: FC<props> = () => {
                 initial={{ opacity: 0, y: -25 }}
                 animate={{ opacity: 1, y: 0 }}
             >
-                <Card className="bg-black border-slate-800 max-w-lg text-foreground">
+                <Card className="border-slate-800 max-w-lg text-foreground">
                     {!logged ? (
                         <>
                             <CardHeader>
-                                <CardTitle className="text-center text-2xl font-bold text-white">
+                                <CardTitle className="text-center text-2xl font-bold">
                                     Sign up to{' '}
                                     <span className="text-yellowLogo">JS</span>
                                     uperior
@@ -80,7 +78,7 @@ const SignInForm: FC<props> = () => {
                                 </CardTitle>
                             </CardHeader>
                             <CardContent className="mt-8 space-y-4 mx-auto">
-                                <Loader2 className="animate-spin mx-auto scale-150" />
+                                <Loader2 className="animate-spin mx-auto" />
                             </CardContent>
                         </>
                     )}

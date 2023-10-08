@@ -33,7 +33,7 @@ export default function RootLayout({
                         defaultTheme="system"
                         enableSystem
                     >
-                        <NextTopLoader color="#312e81" showSpinner={false} />
+                        <NextTopLoader color="#4c1d95" showSpinner={false} />
                         <Navbar />
                         {children}
                         <Bottom />
