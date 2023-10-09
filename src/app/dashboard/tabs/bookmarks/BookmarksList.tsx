@@ -9,37 +9,26 @@ interface BookmarksListProps {
     bookmark: Bookmark;
 }
 
-const createLessons = async (idArr: string[]) => {
-    const lessons: Lesson[] = [];
-    idArr.map(async (id) => {
-        const lesson = await prisma.lesson.findFirst({
+const fetchLessons = async (idArr: string[]) => {
+    let lessons: Lesson[] = [];
+
+    for (const id of idArr) {
+        const lesson = await prisma.lesson.findUnique({
             where: {
                 id: parseInt(id),
             },
         });
+
         if (lesson) {
-            lessons.push(lesson);
+            lessons = [...lessons, lesson];
         }
-    });
-
-    return lessons;
-};
-
-const getLessons = async (idArr: string[]) => {
-    console.log(idArr);
-
-    const lessons: Lesson[] = [];
-
-    const test = await createLessons(idArr);
-    console.log(test);
-
-    console.log(lessons);
+    }
 
     return lessons;
 };
 
 const BookmarksList: FC<BookmarksListProps> = async ({ bookmark }) => {
-    const favourites = getLessons(bookmark.favourite);
+    const favourites = await fetchLessons(bookmark.favourite);
 
     return (
         <div>
