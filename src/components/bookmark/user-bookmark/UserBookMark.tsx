@@ -12,6 +12,7 @@ interface UserBookMarkProps {
     } | null;
 
     currPageId: number;
+    bookmark: Bookmark | null;
 }
 
 import { BookMarked } from 'lucide-react';
@@ -19,6 +20,8 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/sheet';
 import Reactions from '../Reactions';
 import SheetTop from './SheetTop';
+import { Bookmark } from '@prisma/client';
+import WithoutBookmark from './WithoutBookmark';
 
 export type bookMarkTypes = 'favourite' | 'toRepeat' | 'valuable';
 
@@ -37,7 +40,11 @@ const reactions: { icon: string; bookmarkType: bookMarkTypes }[] = [
     },
 ];
 
-const UserBookMark: FC<UserBookMarkProps> = ({ user, currPageId }) => {
+const UserBookMark: FC<UserBookMarkProps> = ({
+    user,
+    currPageId,
+    bookmark,
+}) => {
     return (
         <aside className="self-start">
             <Sheet>
@@ -48,12 +55,23 @@ const UserBookMark: FC<UserBookMarkProps> = ({ user, currPageId }) => {
                 </SheetTrigger>
                 <SheetContent className="border-accent px-8 py-16">
                     <SheetTop reactions={reactions} />
-
-                    <Reactions
-                        reactions={reactions}
-                        user={user}
-                        currPageId={currPageId}
-                    />
+                    {bookmark ? (
+                        <Reactions
+                            reactions={reactions}
+                            user={user}
+                            currPageId={currPageId}
+                        />
+                    ) : (
+                        <>
+                            <p className="mt-12">
+                                You have not yet created your own bookmark.
+                                Create it and benefit!
+                            </p>
+                            <div className="mt-6">
+                                <WithoutBookmark user={user} />
+                            </div>
+                        </>
+                    )}
                 </SheetContent>
             </Sheet>
         </aside>

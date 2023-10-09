@@ -17,7 +17,11 @@ interface ReactionsProps {
     currPageId: number;
 }
 
-const Reactions: FC<ReactionsProps> = ({ reactions, user, currPageId }) => {
+const Reactions: FC<ReactionsProps> = async ({
+    reactions,
+    user,
+    currPageId,
+}) => {
     return (
         <div className="flex flex-col py-2 items-start gap-3 my-6">
             {reactions.map((reaction, i) => (

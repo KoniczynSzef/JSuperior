@@ -14,13 +14,17 @@ interface IconButtonProps {
 
 const IconButton: FC<IconButtonProps> = ({ reaction, user, currPageId }) => {
     const handleAddBookmark = async () => {
-        const data = await fetchBookmark(
-            user?.id || '',
-            reaction.bookmarkType,
-            [currPageId.toString()]
-        );
+        try {
+            const data = await fetchBookmark(
+                user?.id || '',
+                reaction.bookmarkType,
+                [currPageId.toString()]
+            );
 
-        return data;
+            return data;
+        } catch (error) {
+            throw new Error('Failed to update bookmark');
+        }
     };
 
     return (
