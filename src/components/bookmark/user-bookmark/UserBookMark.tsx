@@ -25,17 +25,17 @@ import WithoutBookmark from './WithoutBookmark';
 
 export type bookMarkTypes = 'favourite' | 'toRepeat' | 'valuable';
 
-const reactions: { icon: string; bookmarkType: bookMarkTypes }[] = [
+const reactions: { text: string; bookmarkType: bookMarkTypes }[] = [
     {
-        icon: 'favourite',
+        text: 'favourite',
         bookmarkType: 'favourite',
     },
     {
-        icon: 'repeat',
+        text: 'repeat',
         bookmarkType: 'toRepeat',
     },
     {
-        icon: 'valuable',
+        text: 'valuable',
         bookmarkType: 'valuable',
     },
 ];

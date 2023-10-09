@@ -8,7 +8,7 @@ import { User } from '@prisma/client';
 import { useToast } from '@/components/ui/use-toast';
 
 interface IconButtonProps {
-    reaction: { icon: string; bookmarkType: bookMarkTypes };
+    reaction: { text: string; bookmarkType: bookMarkTypes };
     user: User | null;
     currPageId: number;
 }
@@ -18,13 +18,13 @@ const IconButton: FC<IconButtonProps> = ({ reaction, user, currPageId }) => {
     const handleAddBookmark = async () => {
         try {
             const data = await fetchBookmark(
-                user?.id || '',
+                user?.id,
                 reaction.bookmarkType,
-                [currPageId.toString()]
+                currPageId.toString()
             );
 
             toast({
-                title: 'Successfully added bookmark',
+                title: 'Successfully added bookmark to ' + reaction.text,
             });
 
             return data;
@@ -38,7 +38,7 @@ const IconButton: FC<IconButtonProps> = ({ reaction, user, currPageId }) => {
             className="group transition-all duration-200"
             onClick={handleAddBookmark}
         >
-            Add to {reaction.icon}
+            Add to {reaction.text}
         </Button>
     );
 };

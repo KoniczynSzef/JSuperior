@@ -7,16 +7,16 @@ const link =
         : process.env.SITE_URL;
 
 export const fetchBookmark = async (
-    userId: string,
+    userId: string | undefined,
     bookmarkType: bookMarkTypes,
-    entities: string[]
+    lessonId: string
 ) => {
     try {
         const res = await fetch(`${link}/api/bookmark/${bookmarkType}`, {
             method: 'PATCH',
             body: JSON.stringify({
                 id: userId,
-                entities,
+                lessonId,
             }),
         });
 

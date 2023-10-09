@@ -3,7 +3,7 @@ import { bookMarkTypes } from './UserBookMark';
 
 interface SheetTopProps {
     reactions: {
-        icon: string;
+        text: string;
         bookmarkType: bookMarkTypes;
     }[];
 }
@@ -25,7 +25,7 @@ const SheetTop: FC<SheetTopProps> = ({ reactions }) => {
                 <ul className="mt-3 list-disc ml-4">
                     {reactions.map((r, i) => (
                         <li key={i} className="">
-                            {r.icon.charAt(0).toUpperCase() + r.icon.slice(1)}
+                            {r.text.charAt(0).toUpperCase() + r.text.slice(1)}
                         </li>
                     ))}
                 </ul>

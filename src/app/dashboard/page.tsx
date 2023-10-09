@@ -7,10 +7,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Appearance from './tabs/Appearance';
 import { Card } from '@/components/ui/card';
 import General from './tabs/general/General';
+import Bookmarks from './tabs/bookmarks/Bookmarks';
 
-type tab = 'general' | 'account' | 'appearance';
+type tab = 'general' | 'bookmarks' | 'appearance';
 
-const tabs: tab[] = ['general', 'appearance'];
+const tabs: tab[] = ['general', 'appearance', 'bookmarks'];
 
 export const metadata: Metadata = {
     title: 'JSuperior Dashboard',
@@ -45,6 +46,9 @@ const page: FC<ComponentProps> = async () => {
                     </TabsContent>
                     <TabsContent value="appearance">
                         <Appearance />
+                    </TabsContent>
+                    <TabsContent value="bookmarks">
+                        <Bookmarks session={session} />
                     </TabsContent>
                 </Card>
             </Tabs>

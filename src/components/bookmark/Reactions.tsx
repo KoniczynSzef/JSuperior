@@ -4,7 +4,7 @@ import IconButton from './user-bookmark/IconButton';
 
 interface ReactionsProps {
     reactions: {
-        icon: string;
+        text: string;
         bookmarkType: bookMarkTypes;
     }[];
     user: {

@@ -2,28 +2,34 @@ import { prisma } from '@/lib/prisma';
 
 export async function PATCH(req: Request) {
     try {
-        const body: { id: string; entities: string[] } = await req.json();
-        const favorites = await prisma.bookmark.findFirst({
-            where: {
-                id: body.id,
-            },
-            select: {
-                favourite: true,
-            },
-        });
+        const body: { id: string | undefined; lessonId: string } =
+            await req.json();
 
-        console.log(favorites);
+        console.log(body.lessonId);
 
-        // const userBookmark = await prisma.bookmark.update({
-        //     where: {
-        //         id: body.id,
-        //     },
-        //     data: {
-        //         favourite: favorites?.favourite.concat(body.entities),
-        //     },
-        // });
+        if (body.lessonId) {
+            const favorites = await prisma.bookmark.findFirst({
+                where: {
+                    id: body.id,
+                },
+                select: {
+                    favourite: true,
+                },
+            });
 
-        return new Response(JSON.stringify({}));
+            const userBookmark = await prisma.bookmark.update({
+                where: {
+                    id: body.id,
+                },
+                data: {
+                    favourite: favorites
+                        ? [...favorites.favourite, body.lessonId]
+                        : [body.lessonId],
+                },
+            });
+
+            return new Response(JSON.stringify(userBookmark));
+        }
     } catch (error) {
         throw new Error('Error while getting user bookmark');
     }
