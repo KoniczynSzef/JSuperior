@@ -12,16 +12,18 @@ export async function PATCH(req: Request) {
             },
         });
 
-        const userBookmark = await prisma.bookmark.update({
-            where: {
-                id: body.id,
-            },
-            data: {
-                favourite: favorites?.favourite.concat(body.entities),
-            },
-        });
+        console.log(favorites);
 
-        return new Response(JSON.stringify(userBookmark));
+        // const userBookmark = await prisma.bookmark.update({
+        //     where: {
+        //         id: body.id,
+        //     },
+        //     data: {
+        //         favourite: favorites?.favourite.concat(body.entities),
+        //     },
+        // });
+
+        return new Response(JSON.stringify({}));
     } catch (error) {
         throw new Error('Error while getting user bookmark');
     }

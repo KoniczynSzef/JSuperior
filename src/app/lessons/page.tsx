@@ -36,7 +36,7 @@ const page: FC<pageProps> = async () => {
                 </div>
             </section>
 
-            <BookMark session={session} />
+            <BookMark session={session} currPageId={1} />
         </div>
     ) : (
         <h2>Did not find any lesson</h2>

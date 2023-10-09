@@ -3,22 +3,21 @@ import { Bookmark } from '@prisma/client';
 
 export const fetchBookmark = async (
     userId: string,
-    bookmarkType: bookMarkTypes
+    bookmarkType: bookMarkTypes,
+    entities: string[]
 ) => {
+    const link =
+        process.env.NODE_ENV === 'development'
+            ? process.env.BASE_NEXT_URL
+            : process.env.SITE_URL;
     try {
-        const res = await fetch(
-            `${
-                process.env.NODE_ENV === 'development'
-                    ? process.env.BASE_NEXT_URL
-                    : process.env.SITE_URL
-            }/api/bookmark/${bookmarkType}`,
-            {
-                method: 'POST',
-                body: JSON.stringify({
-                    id: userId,
-                }),
-            }
-        );
+        const res = await fetch(`${link}/api/bookmark/${bookmarkType}`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                id: userId,
+                entities,
+            }),
+        });
 
         const data: Bookmark = await res.json();
         return data;

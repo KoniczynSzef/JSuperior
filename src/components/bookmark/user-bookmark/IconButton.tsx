@@ -7,25 +7,28 @@ import { fetchBookmark } from '@/utils/bookmarkFunctions';
 import { User } from '@prisma/client';
 
 interface IconButtonProps {
-    reaction: { icon: React.JSX.Element; bookmarkType: bookMarkTypes };
+    reaction: { icon: string; bookmarkType: bookMarkTypes };
     user: User | null;
+    currPageId: number;
 }
 
-const IconButton: FC<IconButtonProps> = ({ reaction, user }) => {
+const IconButton: FC<IconButtonProps> = ({ reaction, user, currPageId }) => {
     const handleAddBookmark = async () => {
-        const data = await fetchBookmark(user?.id || '', reaction.bookmarkType);
+        const data = await fetchBookmark(
+            user?.id || '',
+            reaction.bookmarkType,
+            [currPageId.toString()]
+        );
 
         return data;
     };
 
     return (
         <Button
-            className="group transition-all duration-200 rounded-full"
-            variant={'ghost'}
-            size={'icon'}
+            className="group transition-all duration-200"
             onClick={handleAddBookmark}
         >
-            {reaction.icon}
+            Add to {reaction.icon}
         </Button>
     );
 };
