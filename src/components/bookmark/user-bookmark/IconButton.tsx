@@ -5,6 +5,7 @@ import React, { FC } from 'react';
 import { bookMarkTypes } from './UserBookMark';
 import { fetchBookmark } from '@/utils/bookmarkFunctions';
 import { User } from '@prisma/client';
+import { useToast } from '@/components/ui/use-toast';
 
 interface IconButtonProps {
     reaction: { icon: string; bookmarkType: bookMarkTypes };
@@ -13,6 +14,7 @@ interface IconButtonProps {
 }
 
 const IconButton: FC<IconButtonProps> = ({ reaction, user, currPageId }) => {
+    const { toast } = useToast();
     const handleAddBookmark = async () => {
         try {
             const data = await fetchBookmark(
@@ -20,6 +22,10 @@ const IconButton: FC<IconButtonProps> = ({ reaction, user, currPageId }) => {
                 reaction.bookmarkType,
                 [currPageId.toString()]
             );
+
+            toast({
+                title: 'Successfully added bookmark',
+            });
 
             return data;
         } catch (error) {

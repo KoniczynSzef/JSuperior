@@ -31,7 +31,7 @@ const reactions: { icon: string; bookmarkType: bookMarkTypes }[] = [
         bookmarkType: 'favourite',
     },
     {
-        icon: 'to repeat',
+        icon: 'repeat',
         bookmarkType: 'toRepeat',
     },
     {

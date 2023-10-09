@@ -9,7 +9,7 @@ export async function GET(
     try {
         const bookmark = await prisma.bookmark.findFirst({
             where: {
-                id: params.userId,
+                userId: params.userId,
             },
         });
 

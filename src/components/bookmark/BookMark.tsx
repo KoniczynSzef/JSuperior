@@ -17,7 +17,7 @@ const BookMark: FC<BookMarkProps> = async ({ session, currPageId }) => {
         },
     });
 
-    const bookmark = await getBookmark(user?.id || '');
+    const bookmark = await getBookmark(user?.id);
 
     return (
         <UserBookMark user={user} currPageId={currPageId} bookmark={bookmark} />

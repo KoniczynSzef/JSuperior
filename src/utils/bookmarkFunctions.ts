@@ -41,13 +41,14 @@ export const createBookmark = async (bookmark: Bookmark) => {
     }
 };
 
-export const getBookmark = async (userId: string) => {
+export const getBookmark = async (userId: string | undefined) => {
     try {
         const res = await fetch(`${link}/api/bookmark/${userId}`, {
             method: 'GET',
         });
 
         const data: Bookmark | null = await res.json();
+
         return data;
     } catch (error) {
         throw new Error('Error getting bookmark');
