@@ -5,24 +5,19 @@ export async function PATCH(req: Request) {
         const body: { id: string | undefined; lessonId: string } =
             await req.json();
 
-        console.log(body.lessonId);
-
-        if (body.lessonId) {
+        if (body.lessonId && body.id) {
             const favorites = await prisma.bookmark.findFirst({
                 where: {
-                    id: body.id,
-                },
-                select: {
-                    favourite: true,
+                    userId: body.id,
                 },
             });
 
             const userBookmark = await prisma.bookmark.update({
                 where: {
-                    id: body.id,
+                    userId: body.id,
                 },
                 data: {
-                    favourite: favorites
+                    favourite: favorites?.favourite
                         ? [...favorites.favourite, body.lessonId]
                         : [body.lessonId],
                 },
