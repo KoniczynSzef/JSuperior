@@ -15,9 +15,11 @@ export const fetchLesson = async (id: number) => {
         );
 
         const data = await res.text();
-        const lesson: Lesson = JSON.parse(data);
+        if (data.charAt(0) !== 'T') {
+            const lesson: Lesson | null = JSON.parse(data);
 
-        return lesson;
+            return lesson;
+        }
     } catch (error) {
         throw new Error('Failed to get lesson');
     }
