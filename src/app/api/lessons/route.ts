@@ -7,7 +7,7 @@ export async function GET() {
 
         return new Response(JSON.stringify(lessons));
     } catch (error) {
-        console.error('Error while getting lessons');
+        throw new Error('Failed to get lessons');
     }
 }
 
@@ -21,6 +21,6 @@ export async function POST(req: Request) {
 
         return new Response(JSON.stringify(newLesson));
     } catch (error) {
-        console.error('Error while creating new lesson');
+        throw new Error('Error while creating new lesson: ');
     }
 }
