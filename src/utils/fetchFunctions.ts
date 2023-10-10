@@ -10,7 +10,7 @@ export const fetchLesson = async (id: number) => {
             }/api/lessons/${id}`,
             {
                 method: 'POST',
-                body: JSON.stringify({ id }),
+                body: JSON.stringify(id),
             }
         );
 
