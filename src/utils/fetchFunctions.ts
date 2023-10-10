@@ -18,7 +18,7 @@ export const fetchLesson = async (id: number) => {
 
         return data;
     } catch (error) {
-        console.error(error);
+        throw new Error('Failed to get lesson');
     }
 };
 
