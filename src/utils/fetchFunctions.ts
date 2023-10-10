@@ -7,11 +7,7 @@ export const fetchLesson = async (id: number) => {
                 process.env.NODE_ENV === 'development'
                     ? process.env.BASE_NEXT_URL
                     : process.env.SITE_URL
-            }/api/lessons/${id}`,
-            {
-                method: 'POST',
-                body: JSON.stringify(id),
-            }
+            }/api/lessons/${id}`
         );
 
         const data = await res.text();

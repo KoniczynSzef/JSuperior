@@ -1,12 +1,13 @@
 import { prisma } from '@/lib/prisma';
 
-export async function POST(req: Request) {
+export async function GET(
+    req: Request,
+    { params }: { params: { id: string } }
+) {
     try {
-        const id: string = await req.json();
-
         const lesson = await prisma.lesson.findUnique({
             where: {
-                id: parseInt(id),
+                id: parseInt(params.id),
             },
         });
 
