@@ -14,9 +14,10 @@ export const fetchLesson = async (id: number) => {
             }
         );
 
-        const data: Lesson = await res.json();
+        const data = await res.text();
+        const lesson: Lesson = JSON.parse(data);
 
-        return data;
+        return lesson;
     } catch (error) {
         throw new Error('Failed to get lesson');
     }
