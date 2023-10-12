@@ -10,12 +10,15 @@ export const fetchLesson = async (id: number) => {
             }/api/lessons/${id}`
         );
 
-        const data = await res.text();
-        if (data.charAt(0) !== 'T') {
-            const lesson: Lesson | null = JSON.parse(data);
-
-            return lesson;
+        if (
+            process.env.NODE_ENV === 'production' &&
+            res.headers.get('Content-Type') !== 'application/json'
+        ) {
+            return null;
         }
+
+        const data: Lesson | null = await res.json();
+        return data;
     } catch (error) {
         throw new Error('Failed to get lesson');
     }
