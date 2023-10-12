@@ -14,6 +14,8 @@ export const fetchLesson = async (id: number) => {
             process.env.NODE_ENV === 'production' &&
             res.headers.get('Content-Type') !== 'application/json'
         ) {
+            console.log('Here');
+
             throw new Error('Invalid response from server');
         }
 
