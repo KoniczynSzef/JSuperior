@@ -1,4 +1,5 @@
 import { bookMarkTypes } from '@/components/bookmark/user-bookmark/UserBookMark';
+import { prisma } from '@/lib/prisma';
 import { Bookmark } from '@prisma/client';
 
 const link =
@@ -12,16 +13,27 @@ export const fetchBookmark = async (
     lessonId: string
 ) => {
     try {
-        const res = await fetch(`${link}/api/bookmark/${bookmarkType}`, {
-            method: 'PATCH',
-            body: JSON.stringify({
-                id: userId,
-                lessonId,
-            }),
+        const lessons = await prisma.lesson.findMany();
+        let canPost = true;
+
+        lessons.forEach((lesson) => {
+            if (lesson.id === parseInt(lessonId)) {
+                canPost = false;
+            }
         });
 
-        const data: Bookmark = await res.json();
-        return data;
+        if (canPost) {
+            const res = await fetch(`${link}/api/bookmark/${bookmarkType}`, {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    id: userId,
+                    lessonId,
+                }),
+            });
+
+            const data: Bookmark = await res.json();
+            return data;
+        }
     } catch (error) {
         throw new Error('Error fetching bookmark');
     }
