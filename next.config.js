@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
     images: {
         remotePatterns: [
@@ -11,17 +12,6 @@ const nextConfig = {
                 hostname: '',
             },
         ],
-    },
-    env: {
-        BASE_NEXT_URL:
-            process.env.NODE_ENV === 'production'
-                ? 'https://js-superior.vercel.app'
-                : 'http://localhost:3000',
-
-        NEXTAUTH_URL:
-            process.env.NODE_ENV === 'production'
-                ? 'https://js-superior.vercel.app'
-                : 'http://localhost:3000',
     },
 };
 
