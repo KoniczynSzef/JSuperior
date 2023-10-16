@@ -10,13 +10,7 @@ html {
 @layer base {
     :root {
         --sec: #475569;
-        --backgroundGradient: linear-gradient(
-            to bottom left,
-            #cfdcf8 0%,
-            white 15%,
-            white 95%,
-            #ddecff 100%
-        );
+        --backgroundGradient: white;
         --background: white;
         --foreground: black;
         --card: 0 0% 100%;
@@ -129,17 +123,17 @@ html.light .markdown a:hover {
     transition: 200ms all;
 }
 
-.start-learning {
+/* .start-learning {
     --first: #7f00ff;
     --second: #e100ff;
     background-image: linear-gradient(var(--first), var(--second));
 
     transition: all 200ms;
-}
+} */
 
-.start-learning:hover {
+/* .start-learning:hover {
     scale: 1.05;
-}
+} */
 
 .markdown p code {
     padding: 0.35rem 1rem;
