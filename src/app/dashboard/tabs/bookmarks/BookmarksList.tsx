@@ -72,7 +72,7 @@ const BookmarksList: FC<BookmarksListProps> = async ({ bookmark }) => {
                 </P>
             </div>
             <div className="gap-16 flex flex-col md:flex-row mt-12">
-                <div className="flex flex-wrap md:flex-col gap-4">
+                <div className="flex flex-wrap justify-between w-full mx-4">
                     {bookmarksArr.map((bookmark, idx) => (
                         <BookmarksCard
                             key={idx}

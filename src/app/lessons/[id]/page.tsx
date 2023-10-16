@@ -9,10 +9,23 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { fetchLesson, fetchQuiz } from '@/utils/fetchFunctions';
 import BookMark from '@/components/bookmark/BookMark';
 import { Lesson } from '@prisma/client';
+import { Metadata } from 'next';
 
 interface pageProps {
     params: {
         id: string;
+    };
+}
+
+export async function generateMetadata({
+    params,
+}: pageProps): Promise<Metadata> {
+    const lesson: Lesson | null = JSON.parse(
+        await fetchLesson(parseInt(params.id))
+    );
+
+    return {
+        title: lesson?.title,
     };
 }
 
