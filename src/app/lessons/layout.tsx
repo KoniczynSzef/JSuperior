@@ -8,11 +8,9 @@ interface layoutProps {
 const layout: FC<layoutProps> = ({ children }) => {
     return (
         <main className="relative py-6">
-            <div className="flex flex-col md:flex-row container mx-auto gap-16 relative items-start">
+            <div className="flex flex-col md:flex-row mx-16 md:gap-32 relative items-start justify-between">
                 <Sidebar />
-                <section className="max-w-3xl relative flex flex-col">
-                    {children}
-                </section>
+                <section className="relative flex flex-col">{children}</section>
             </div>
         </main>
     );

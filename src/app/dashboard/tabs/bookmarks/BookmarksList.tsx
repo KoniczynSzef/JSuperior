@@ -3,11 +3,22 @@ import { Separator } from '@/components/ui/separator';
 import { prisma } from '@/lib/prisma';
 import { Bookmark, Lesson } from '@prisma/client';
 import React, { FC } from 'react';
-import Entities from './Entities';
+import BookmarksCard from './BookmarksCard';
+import { bookMarkTypes } from '@/components/bookmark/user-bookmark/UserBookMark';
 
 interface BookmarksListProps {
     bookmark: Bookmark;
 }
+
+type bookmarkArrProps = {
+    title: bookMarkTypes;
+    bookmarks: {
+        id: number;
+        title: string;
+        description: string;
+        content: string;
+    }[];
+};
 
 const fetchLessons = async (idArr: string[]) => {
     let lessons: Lesson[] = [];
@@ -29,6 +40,23 @@ const fetchLessons = async (idArr: string[]) => {
 
 const BookmarksList: FC<BookmarksListProps> = async ({ bookmark }) => {
     const favourites = await fetchLessons(bookmark.favourite);
+    const toRepeat = await fetchLessons(bookmark.toRepeat);
+    const valuable = await fetchLessons(bookmark.valuable);
+
+    const bookmarksArr: bookmarkArrProps[] = [
+        {
+            bookmarks: favourites,
+            title: 'favourite',
+        },
+        {
+            bookmarks: toRepeat,
+            title: 'toRepeat',
+        },
+        {
+            bookmarks: valuable,
+            title: 'valuable',
+        },
+    ];
 
     return (
         <div>
@@ -45,8 +73,13 @@ const BookmarksList: FC<BookmarksListProps> = async ({ bookmark }) => {
             </div>
             <div className="gap-16 flex flex-col md:flex-row mt-12">
                 <div className="flex flex-wrap md:flex-col gap-4">
-                    <h5>Favourites</h5>
-                    <Entities lessons={favourites} />
+                    {bookmarksArr.map((bookmark, idx) => (
+                        <BookmarksCard
+                            key={idx}
+                            bookmarks={bookmark.bookmarks}
+                            title={bookmark.title}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
