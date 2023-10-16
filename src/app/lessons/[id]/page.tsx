@@ -20,10 +20,7 @@ interface pageProps {
 export async function generateMetadata({
     params,
 }: pageProps): Promise<Metadata> {
-    const lesson: Lesson | null = JSON.parse(
-        await fetchLesson(parseInt(params.id))
-    );
-
+    const lesson: Lesson | null = await fetchLesson(parseInt(params.id));
     return {
         title: lesson?.title,
     };
@@ -33,14 +30,12 @@ const page: FC<pageProps> = async ({ params = { id: '1' } }) => {
     const session = await getServerSession(authOptions);
     if (!session?.user) return redirect('/signin');
 
-    const lesson: Lesson | null = JSON.parse(
-        await fetchLesson(parseInt(params.id))
+    const lesson: Lesson | null = await fetchLesson(parseInt(params.id));
+    const prevLesson: Lesson | null = await fetchLesson(
+        parseInt(params.id) - 1
     );
-    const prevLesson: Lesson | null = JSON.parse(
-        await fetchLesson(parseInt(params.id) - 1)
-    );
-    const nextLesson: Lesson | null = JSON.parse(
-        await fetchLesson(parseInt(params.id) + 1)
+    const nextLesson: Lesson | null = await fetchLesson(
+        parseInt(params.id) + 1
     );
 
     const quiz = await fetchQuiz(parseInt(params.id));

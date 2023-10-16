@@ -1,4 +1,4 @@
-import { Quiz as QuizType } from '@prisma/client';
+import { Lesson, Quiz as QuizType } from '@prisma/client';
 
 export const fetchLesson = async (id: number) => {
     try {
@@ -6,8 +6,14 @@ export const fetchLesson = async (id: number) => {
             `${process.env.BASE_NEXT_URL}/api/lessons/${id}`
         );
 
-        const data = await res.text();
-        return data;
+        const text = await res.text();
+        try {
+            const data: Lesson | null = JSON.parse(text);
+            return data;
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+            throw new Error('Failed to parse lesson data');
+        }
     } catch (error) {
         throw new Error('Failed to get lesson');
     }
