@@ -3,13 +3,13 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 
 interface EntitiesProps {
-    lessons: Lesson[];
+    bookmarks: Lesson[];
 }
 
-const Entities: FC<EntitiesProps> = ({ lessons }) => {
+const Entities: FC<EntitiesProps> = ({ bookmarks }) => {
     return (
         <ul>
-            {lessons.map((f, i) => (
+            {bookmarks.map((f, i) => (
                 <li key={i}>
                     <Link
                         href={`/lessons/${f.id}`}
