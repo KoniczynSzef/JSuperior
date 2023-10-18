@@ -53,7 +53,13 @@ const IconButton: FC<IconButtonProps> = ({ reaction, user, currPageId }) => {
 
     return isBookmark ? (
         <Button
-            className="group transition-all duration-200"
+            className={`text-white group transition-all duration-200 ${
+                reaction.bookmarkType === 'favourite'
+                    ? 'bg-green-600 hover:bg-green-500'
+                    : reaction.bookmarkType === 'toRepeat'
+                    ? 'bg-red-600 hover:bg-red-500'
+                    : 'bg-blue-600 hover:bg-blue-500'
+            }`}
             onClick={handleAddBookmark}
         >
             Add to {reaction.text}
