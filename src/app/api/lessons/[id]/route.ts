@@ -18,5 +18,9 @@
 // }
 
 export async function GET() {
-    console.log('Hello from lessons/[id]/route.ts');
+    try {
+        return new Response('Hello from lessons/id route');
+    } catch (error) {
+        throw new Error('Failed to get lessons');
+    }
 }

@@ -26,5 +26,9 @@
 // }
 
 export async function GET() {
-    console.log('Hello from lessons/route.ts');
+    try {
+        return new Response('Hello from lessons');
+    } catch (error) {
+        throw new Error('Failed to get lessons');
+    }
 }
