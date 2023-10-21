@@ -9,8 +9,13 @@ import ReactMarkdown from 'react-markdown';
 import { fetchLesson } from '@/utils/fetchFunctions';
 import BookMark from '@/components/bookmark/BookMark';
 import { Lesson } from '@prisma/client';
+import { Metadata } from 'next';
 
 interface pageProps {}
+
+export const metadata: Metadata = {
+    title: 'Code Editor',
+};
 
 const page: FC<pageProps> = async () => {
     const session = await getServerSession(authOptions);
