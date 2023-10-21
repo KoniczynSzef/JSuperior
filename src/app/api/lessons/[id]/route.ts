@@ -16,3 +16,7 @@
 //         throw new Error('Something went wrong while finding a unique lesson');
 //     }
 // }
+
+export async function GET() {
+    return new Response(JSON.stringify({ message: 'Hello from lessons' }));
+}
