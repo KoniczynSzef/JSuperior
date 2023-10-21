@@ -18,5 +18,5 @@
 // }
 
 export async function GET() {
-    return new Response(JSON.stringify({ message: 'Hello from lessons' }));
+    return new Response('Hello from lessons/id');
 }
