@@ -29,7 +29,9 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
     try {
-        return new NextResponse('Hello from /api/lessons');
+        return new NextResponse(JSON.stringify({ hello: 'world!' }), {
+            headers: { 'Content-Type': 'application/json' },
+        });
     } catch (error) {
         throw new Error('Failed to get lessons');
     }
