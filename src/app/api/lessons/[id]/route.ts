@@ -1,5 +1,7 @@
 // import { prisma } from '@/lib/prisma';
 
+import { NextResponse } from 'next/server';
+
 // export async function GET(
 //     req: Request,
 //     { params }: { params: { id: string } }
@@ -17,4 +19,8 @@
 //     }
 // }
 
-// export async function GET() {}
+export async function GET() {
+    return NextResponse.json({
+        message: 'Hello from the api/lessons/id/route.s!',
+    });
+}

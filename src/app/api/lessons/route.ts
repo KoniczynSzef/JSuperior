@@ -1,6 +1,8 @@
 // import { prisma } from '@/lib/prisma';
 // import { Lesson } from '@prisma/client';
 
+import { NextResponse } from 'next/server';
+
 // export async function GET() {
 //     try {
 //         const lessons = await prisma.lesson.findMany();
@@ -25,4 +27,8 @@
 //     }
 // }
 
-// export async function GET() {}
+export async function GET() {
+    return NextResponse.json({
+        message: 'Hello from the api/lessons/route.ts!',
+    });
+}
