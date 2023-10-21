@@ -1,6 +1,8 @@
 // import { prisma } from '@/lib/prisma';
 // import { Lesson } from '@prisma/client';
 
+import { NextResponse } from 'next/server';
+
 // export async function GET() {
 //     try {
 //         const lessons = await prisma.lesson.findMany();
@@ -27,7 +29,7 @@
 
 export async function GET() {
     try {
-        return new Response('Hello from lessons');
+        return new NextResponse('Hello from /api/lessons');
     } catch (error) {
         throw new Error('Failed to get lessons');
     }
