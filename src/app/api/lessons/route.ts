@@ -24,3 +24,7 @@
 //         throw new Error('Error while creating new lesson: ');
 //     }
 // }
+
+export async function GET() {
+    return new Response(JSON.stringify({ message: 'Hello from lessons' }));
+}
