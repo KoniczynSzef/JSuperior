@@ -1,5 +1,7 @@
 // import { prisma } from '@/lib/prisma';
 
+import { NextResponse } from 'next/server';
+
 // export async function GET(
 //     req: Request,
 //     { params }: { params: { id: string } }
@@ -19,7 +21,7 @@
 
 export async function GET() {
     try {
-        return new Response('Hello from lessons/id route');
+        return new NextResponse('Hello from /api/lessons/[id]');
     } catch (error) {
         throw new Error('Failed to get lessons');
     }
