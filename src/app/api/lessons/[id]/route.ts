@@ -21,7 +21,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
     try {
-        return new NextResponse(JSON.stringify({ hello: 'world!' }), {
+        return new NextResponse('world!', {
             status: 200,
         });
     } catch (error) {
