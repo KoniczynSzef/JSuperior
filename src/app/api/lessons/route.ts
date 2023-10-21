@@ -26,5 +26,5 @@
 // }
 
 export async function GET() {
-    return new Response('Hello from lessons');
+    console.log('Hello from lessons/route.ts');
 }

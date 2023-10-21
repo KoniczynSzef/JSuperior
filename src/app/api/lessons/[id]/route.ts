@@ -18,5 +18,5 @@
 // }
 
 export async function GET() {
-    return new Response('Hello from lessons/id');
+    console.log('Hello from lessons/[id]/route.ts');
 }
