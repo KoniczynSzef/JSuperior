@@ -27,12 +27,7 @@ import { NextResponse } from 'next/server';
 //     }
 // }
 
-export async function GET() {
-    try {
-        return new NextResponse('world!', {
-            status: 200,
-        });
-    } catch (error) {
-        throw new Error('Failed to get lessons');
-    }
-}
+export async function GET(
+    request: Request,
+    { params }: { params: { id: string } }
+) {}
