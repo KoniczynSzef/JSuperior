@@ -47,10 +47,12 @@ const HeroSection: FC<ComponentProps> = () => {
                 <div className="mt-6">
                     <Link href={'/lessons'}>
                         <Button
-                            className="transition-all text-base py-6 bg-foreground hover:drop-shadow text-white bg-indigo-600 hover:bg-indigo-500"
+                            className="transition-all text-xl text-white start-learning bg-gradient-to-br from-purple-600 to-indigo-700 p-[1px] group w-64 h-20"
                             size={'lg'}
                         >
-                            Start learning
+                            <div className="bg-background w-full h-full rounded-md flex items-center justify-center px-6 py-4 group-hover:bg-transparent transition-all duration-300">
+                                Start learning
+                            </div>
                         </Button>
                     </Link>
                 </div>

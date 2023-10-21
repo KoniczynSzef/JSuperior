@@ -22,6 +22,7 @@ const page: FC<pageProps> = async () => {
     if (!session?.user) return redirect('/signin');
 
     const lesson: Lesson | null = await fetchLesson(1);
+    console.log(lesson);
 
     return lesson ? (
         <div className="my-16 text-left w-full flex items-center justify-between">
