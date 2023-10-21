@@ -22,7 +22,7 @@ import { NextResponse } from 'next/server';
 export async function GET() {
     try {
         return new NextResponse(JSON.stringify({ hello: 'world!' }), {
-            headers: { 'Content-Type': 'application/json' },
+            status: 200,
         });
     } catch (error) {
         throw new Error('Failed to get lessons');
