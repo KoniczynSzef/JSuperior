@@ -15,7 +15,7 @@ export async function GET(
         const response = NextResponse.json(lesson);
 
         response.headers.set('Access-Control-Allow-Origin', '*');
-        response.headers.set('Content-Type', 'application/json');
+        response.headers.set('Content-Type', 'text/plain');
         response.headers.set(
             'Access-Control-Allow-Methods',
             'GET, POST, PUT, DELETE, OPTIONS'
