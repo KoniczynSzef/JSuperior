@@ -49,7 +49,7 @@ const page: FC<pageProps> = async () => {
     //     <h2>Did not find any lesson</h2>
     // );
 
-    return <p>Hello World!</p>;
+    return <p>Hello World debugging!</p>;
 };
 
 export default page;

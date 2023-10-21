@@ -1,8 +1,7 @@
 import { authOptions } from '@/utils/authOptions';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import { FC } from 'react';
-// import React from 'react';
+import React, { FC } from 'react';
 // import Markdown from './Markdown';
 // import QuizWrapper from './QuizWrapper';
 // import Link from 'next/link';
@@ -32,6 +31,8 @@ const page: FC<pageProps> = async ({ params = { id: '1' } }) => {
     if (!session?.user) return redirect('/signin');
 
     console.log(params);
+
+    return <p>Hello World debugging!</p>;
 
     // const lesson: Lesson | null = await fetchLesson(parseInt(params.id));
     // const prevLesson: Lesson | null = await fetchLesson(
