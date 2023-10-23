@@ -1,26 +1,17 @@
-import { prisma } from '@/lib/prisma';
+import { NextResponse } from 'next/server';
 
 export async function GET() {
-    async function getLessons(
-        resolve: (value: Response | PromiseLike<Response>) => void,
-        reject: (reason?: unknown) => void
-    ) {
-        const lessons = await prisma.lesson.findMany();
-        if (lessons) {
-            resolve(new Response(JSON.stringify(lessons)));
-        } else {
-            reject('Error while fetching lessons');
-        }
-    }
-    const res = new Promise<Response>((resolve, reject) => {
-        try {
-            getLessons(resolve, reject);
-        } catch (error) {
-            throw new Error('Error while fetching lessons');
-        }
+    const response = NextResponse.json('Hello world', {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'text/plain',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers':
+                'X-Requested-With, Content-Type, Authorization',
+        },
     });
 
-    return res;
+    return response;
 }
 // }
 
