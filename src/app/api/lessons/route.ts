@@ -1,5 +1,5 @@
-export async function GET() {
-    return Response.json('Hello world', {
+async function handler() {
+    return Response.json('Hello world from /id', {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
@@ -9,6 +9,8 @@ export async function GET() {
         },
     });
 }
+
+export { handler as GET };
 // }
 
 // export async function POST(req: Request) {

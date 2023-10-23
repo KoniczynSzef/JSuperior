@@ -40,7 +40,7 @@
 // return new Response('Hello world from lesson/id route');
 // }
 
-export async function GET() {
+async function handler() {
     return Response.json('Hello world from /id', {
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -51,3 +51,5 @@ export async function GET() {
         },
     });
 }
+
+export { handler as GET };
