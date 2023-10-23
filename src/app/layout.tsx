@@ -27,8 +27,9 @@ export default function RootLayout({
             <html lang="en" suppressHydrationWarning>
                 <meta
                     httpEquiv="Content-Security-Policy"
-                    content="connect-src 'self' 'https://jsuperior.vercel.app'"
+                    content="connect-src 'self' https://jsuperior.vercel.app"
                 />
+
                 <body
                     className={`${inter.className} bg-gradient-b from-gray-900 via-[#300171] to-slate-900 text-foreground`}
                 >
