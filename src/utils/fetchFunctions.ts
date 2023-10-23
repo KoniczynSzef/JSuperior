@@ -1,4 +1,4 @@
-import { Lesson, Quiz as QuizType } from '@prisma/client';
+import { Quiz as QuizType } from '@prisma/client';
 
 export const fetchLesson = async (id: number) => {
     try {
