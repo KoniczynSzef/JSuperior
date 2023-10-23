@@ -40,10 +40,8 @@
 // return new Response('Hello world from lesson/id route');
 // }
 
-export async function GET(req: Request) {
-    console.log(await req.text());
-
-    return new Response('Hello world from lesson/id route', {
+export async function GET() {
+    return Response.json('Hello world from /id', {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
