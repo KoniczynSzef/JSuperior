@@ -13,6 +13,19 @@ module.exports = {
             },
         ],
     },
+    async headers() {
+        return [
+            {
+                source: '/api/lessons',
+                headers: [
+                    {
+                        key: 'Content-Security-Policy',
+                        value: "connect-src 'self' https://jsuperior.vercel.app",
+                    },
+                ],
+            },
+        ];
+    },
     csp: {
         reportOnly: process.env.NODE_ENV === 'development',
         policies: {
