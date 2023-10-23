@@ -1,7 +1,7 @@
-import { authOptions } from '@/utils/authOptions';
-import { getServerSession } from 'next-auth';
+// import { authOptions } from '@/utils/authOptions';
+// import { getServerSession } from 'next-auth';
 // import Link from 'next/link';
-import { redirect } from 'next/navigation';
+// import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
 // import { ArrowRight } from 'lucide-react';
 
@@ -18,10 +18,10 @@ export const metadata: Metadata = {
 };
 
 const page: FC<pageProps> = async () => {
-    const session = await getServerSession(authOptions);
-    if (!session?.user) return redirect('/signin');
+    // const session = await getServerSession(authOptions);
+    // if (!session?.user) return redirect('/signin');
 
-    // const lesson: Lesson | null = await fetchLesson(1);
+    // const lesson = await fetchLesson(1);
     // console.log(lesson);
 
     // return lesson ? (
@@ -49,7 +49,7 @@ const page: FC<pageProps> = async () => {
     //     <h2>Did not find any lesson</h2>
     // );
 
-    return <p>Hello World!</p>;
+    return <p>Hello World debugging!</p>;
 };
 
 export default page;
