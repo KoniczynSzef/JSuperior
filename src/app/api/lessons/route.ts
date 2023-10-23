@@ -4,23 +4,20 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
     try {
-        // const lessons = await prisma.lesson.findMany();
+        const lessons = await prisma.lesson.findMany();
 
-        // const response = NextResponse.json(lessons);
+        const response = new Response(JSON.stringify(lessons), {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Methods':
+                    'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers':
+                    'X-Requested-With, Content-Type, Authorization',
+            },
+        });
 
-        // response.headers.set('Access-Control-Allow-Origin', '*');
-        // response.headers.set('Content-Type', 'text/plain');
-        // response.headers.set(
-        //     'Access-Control-Allow-Methods',
-        //     'GET, POST, PUT, DELETE, OPTIONS'
-        // );
-        // response.headers.set(
-        //     'Access-Control-Allow-Headers',
-        //     'X-Requested-With, Content-Type, Authorization'
-        // );
-
-        // return response;
-        return new Response(JSON.stringify(await prisma.lesson.findMany()));
+        return response;
     } catch (error) {
         throw new Error('Failed to get lessons');
     }
