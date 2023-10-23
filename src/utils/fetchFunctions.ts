@@ -6,7 +6,9 @@ export const fetchLesson = async (id: number) => {
             `${process.env.BASE_NEXT_URL}/api/lessons/${id}`
         );
 
-        const data: Lesson | null = await res.json();
+        const data = await res.text();
+        console.log(data);
+
         return data;
     } catch (error) {
         throw new Error('Failed to get lesson');

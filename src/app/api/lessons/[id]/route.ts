@@ -1,5 +1,4 @@
 import { prisma } from '@/lib/prisma';
-import { NextResponse } from 'next/server';
 
 export async function GET(
     req: Request,
@@ -12,19 +11,27 @@ export async function GET(
             },
         });
 
-        const response = NextResponse.json(lesson);
+        const lessonStr = JSON.stringify(lesson);
 
-        response.headers.set('Access-Control-Allow-Origin', '*');
-        response.headers.set('Content-Type', 'text/plain');
-        response.headers.set(
-            'Access-Control-Allow-Methods',
-            'GET, POST, PUT, DELETE, OPTIONS'
-        );
-        response.headers.set(
-            'Access-Control-Allow-Headers',
-            'X-Requested-With, Content-Type, Authorization'
-        );
+        // Check if the first character of the JSON string is 'T' and if we are in production environment
+        if (lessonStr.charAt(0) === 'T') {
+            // If so, throw an error to prevent the Response object from being created
+            throw new Error('Failed to get lessons');
+        }
 
+        // Create a new Response object with the JSON string and headers
+        const response = new Response(lessonStr, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Methods':
+                    'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers':
+                    'X-Requested-With, Content-Type, Authorization',
+            },
+        });
+
+        // Return the Response object
         return response;
     } catch (error) {
         throw new Error('Something went wrong while finding a unique lesson');
