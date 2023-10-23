@@ -7,13 +7,14 @@ export async function GET() {
         const lessons = await prisma.lesson.findMany();
 
         const lessonStr = JSON.stringify(lessons);
-        if (
-            lessonStr.charAt(0) === 'T' &&
-            process.env.NODE_ENV === 'production'
-        ) {
+
+        // Check if the first character of the JSON string is 'T' and if we are in production environment
+        if (lessonStr.charAt(0) === 'T') {
+            // If so, throw an error to prevent the Response object from being created
             throw new Error('Failed to get lessons');
         }
 
+        // Create a new Response object with the JSON string and headers
         const response = new Response(lessonStr, {
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -25,8 +26,10 @@ export async function GET() {
             },
         });
 
+        // Return the Response object
         return response;
     } catch (error) {
+        // If an error occurs, throw a new error with a message
         throw new Error('Failed to get lessons');
     }
 }
