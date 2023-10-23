@@ -21,7 +21,7 @@ const page: FC<pageProps> = async () => {
     // const session = await getServerSession(authOptions);
     // if (!session?.user) return redirect('/signin');
 
-    // const lesson: Lesson | null = await fetchLesson(1);
+    // const lesson = await fetchLesson(1);
     // console.log(lesson);
 
     // return lesson ? (
