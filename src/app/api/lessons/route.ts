@@ -1,16 +1,27 @@
-async function handler() {
-    return Response.json('Hello world from /id', {
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers':
-                'X-Requested-With, Content-Type, Authorization',
-        },
-    });
-}
+import { prisma } from '@/lib/prisma';
 
-export { handler as GET };
+export async function GET() {
+    async function getLessons(
+        resolve: (value: Response | PromiseLike<Response>) => void,
+        reject: (reason?: unknown) => void
+    ) {
+        const lessons = await prisma.lesson.findMany();
+        if (lessons) {
+            resolve(new Response(JSON.stringify(lessons)));
+        } else {
+            reject('Error while fetching lessons');
+        }
+    }
+    const res = new Promise<Response>((resolve, reject) => {
+        try {
+            getLessons(resolve, reject);
+        } catch (error) {
+            throw new Error('Error while fetching lessons');
+        }
+    });
+
+    return res;
+}
 // }
 
 // export async function POST(req: Request) {
