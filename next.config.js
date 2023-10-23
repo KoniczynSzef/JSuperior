@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const nextConfig = {
+module.exports = {
     images: {
         remotePatterns: [
             {
@@ -13,6 +13,11 @@ const nextConfig = {
             },
         ],
     },
+    csp: {
+        reportOnly: process.env.NODE_ENV === 'development',
+        policies: {
+            'default-src': "'self' https://jsuperior.vercel.app",
+            // Inne polityki CSP
+        },
+    },
 };
-
-module.exports = nextConfig;
