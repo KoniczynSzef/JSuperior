@@ -2,9 +2,7 @@ import { Quiz as QuizType } from '@prisma/client';
 
 export const fetchLesson = async (id: number) => {
     try {
-        const res = await fetch(
-            `${process.env.BASE_NEXT_URL}/api/lessons/${id}`
-        );
+        const res = await fetch(`/api/lessons/${id}`);
 
         const data = await res.text();
         console.log(data);
