@@ -3,7 +3,15 @@
 // import { NextResponse } from 'next/server';
 
 export async function GET() {
-    return new Response('Hello world');
+    return new Response('Hello world', {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers':
+                'X-Requested-With, Content-Type, Authorization',
+        },
+    });
     // try {
     //     const lessons = await prisma.lesson.findMany();
 
