@@ -37,3 +37,5 @@ next-env.d.ts
 
 backend/node_modules
 
+src/app/admin-panel
+
