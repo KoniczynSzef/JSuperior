@@ -16,7 +16,7 @@ export async function GET() {
             },
         });
 
-        if (response.headers.get('Content-Type') !== 'text/plain') return;
+        if (response.headers.get('Content-Type') !== 'application/json') return;
 
         return response;
     } catch (error) {
