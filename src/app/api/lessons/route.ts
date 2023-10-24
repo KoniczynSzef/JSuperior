@@ -16,6 +16,8 @@ export async function GET() {
             },
         });
 
+        if (response.headers.get('Content-Type') !== 'text/plain') return;
+
         return response;
     } catch (error) {
         throw new Error('Error while fetching lessons: ');
