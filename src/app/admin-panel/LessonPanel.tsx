@@ -4,27 +4,25 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { Lesson } from '@prisma/client';
 import React, { FC, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 interface LessonPanelProps {
     prevId: number;
+    createLesson(
+        prevId: number,
+        title: string,
+        description: string,
+        content: string
+    ): Promise<{
+        id: number;
+        title: string;
+        description: string;
+        content: string;
+    }>;
 }
 
-const postLesson = async (lesson: Lesson) => {
-    const res = await fetch(`/api/lessons`, {
-        method: 'POST',
-        body: JSON.stringify(lesson),
-    });
-
-    if (res.status !== 200) throw new Error('Failed to post');
-
-    const data: Lesson = await res.json();
-    return data;
-};
-
-const LessonPanel: FC<LessonPanelProps> = ({ prevId }) => {
+const LessonPanel: FC<LessonPanelProps> = ({ prevId, createLesson }) => {
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [content, setContent] = useState<string>('');
@@ -34,12 +32,7 @@ const LessonPanel: FC<LessonPanelProps> = ({ prevId }) => {
         e.preventDefault();
 
         try {
-            await postLesson({
-                id: prevId + 1,
-                title,
-                description,
-                content,
-            });
+            await createLesson(prevId, title, description, content);
 
             toast({
                 title: 'Lesson created successfully',
