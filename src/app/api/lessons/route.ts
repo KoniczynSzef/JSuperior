@@ -8,7 +8,7 @@ export async function GET() {
         const response = NextResponse.json(lessons, {
             headers: {
                 'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'text/plain',
+                'Content-Type': 'application/json',
                 'Access-Control-Allow-Methods':
                     'GET, POST, PUT, DELETE, OPTIONS',
                 'Access-Control-Allow-Headers':

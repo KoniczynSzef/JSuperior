@@ -26,11 +26,4 @@ module.exports = {
             },
         ];
     },
-    csp: {
-        reportOnly: process.env.NODE_ENV === 'development',
-        policies: {
-            'default-src': "'self' https://jsuperior.vercel.app",
-            // Inne polityki CSP
-        },
-    },
 };
