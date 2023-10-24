@@ -2,24 +2,20 @@ import React, { FC } from 'react';
 import { ScrollArea } from '../ui/scroll-area';
 import SidebarMenu from './sidebar-menu/SidebarMenu';
 import SidebarLink from './sidebar-link/SidebarLink';
-import { Lesson } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
 
 const categories = ['Get started'];
 
 interface ComponentProps {}
 
-const fetchLessons = async () => {
-    const res = await fetch(`${process.env.BASE_NEXT_URL}/api/lessons`, {
-        method: 'GET',
-    });
+const getLessons = async () => {
+    const lessons = await prisma.lesson.findMany();
 
-    const data: Lesson[] = await res.json();
-
-    return data;
+    return lessons;
 };
 
 const Sidebar: FC<ComponentProps> = async () => {
-    const data = await fetchLessons();
+    const data = await getLessons();
 
     return (
         <nav className="md:sticky top-0 md:w-72 md:border-r md:border-r-slate-700">
