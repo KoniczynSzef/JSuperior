@@ -1,18 +1,4 @@
-import { Lesson, Quiz as QuizType } from '@prisma/client';
-
-export const fetchLesson = async (id: number) => {
-    try {
-        const res = await fetch(`/api/lessons/${id}`);
-
-        if (res.headers.get('Content-Type') !== 'application/json') return;
-
-        const data: Lesson | null = await res.json();
-
-        return data;
-    } catch (error) {
-        throw new Error('Failed to get lesson');
-    }
-};
+import { Quiz as QuizType } from '@prisma/client';
 
 export const fetchQuiz = async (id: number) => {
     try {
