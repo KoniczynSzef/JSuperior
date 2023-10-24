@@ -1,19 +1,26 @@
+import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-    const response = NextResponse.json('Hello world', {
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'text/plain',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers':
-                'X-Requested-With, Content-Type, Authorization',
-        },
-    });
+    try {
+        const lessons = await prisma.lesson.findMany();
 
-    return response;
+        const response = NextResponse.json(lessons, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'text/plain',
+                'Access-Control-Allow-Methods':
+                    'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers':
+                    'X-Requested-With, Content-Type, Authorization',
+            },
+        });
+
+        return response;
+    } catch (error) {
+        throw new Error('Error while fetching lessons: ');
+    }
 }
-// }
 
 // export async function POST(req: Request) {
 //     try {
