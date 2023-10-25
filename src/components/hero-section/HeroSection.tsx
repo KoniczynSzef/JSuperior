@@ -16,11 +16,11 @@ const HeroSection: FC<ComponentProps> = () => {
     return (
         <section
             id="hero-section"
-            className="container mx-auto relative my-32 py-1.5 transition flex flex-col lg:flex-row justify-between items-center space-y-20 lg:space-y-0 overflow-hidden gap-10"
+            className="container mx-auto relative my-8 md:my-32 py-1.5 transition flex flex-col lg:flex-row justify-between items-center space-y-20 lg:space-y-0 overflow-hidden gap-10"
         >
             <Cookies />
-            <div>
-                <h1 className="text-4xl font-extrabold text-center md:text-left">
+            <article>
+                <h1 className="text-2xl md:text-4xl font-extrabold text-left">
                     <p>
                         Complete{' '}
                         <span className="text-yellowLogo">JavaScript</span>{' '}
@@ -44,7 +44,7 @@ const HeroSection: FC<ComponentProps> = () => {
                     <TypedParagraph />
                 </div>
 
-                <div className="mt-6">
+                <div className="mt-12">
                     <Link href={'/lessons'}>
                         <Button
                             className="transition-all text-xl text-white start-learning bg-gradient-to-br from-purple-600 to-indigo-700 p-[1px] group w-64 h-20"
@@ -56,7 +56,7 @@ const HeroSection: FC<ComponentProps> = () => {
                         </Button>
                     </Link>
                 </div>
-            </div>
+            </article>
             <Image
                 src={coding}
                 alt="Coding using JS in editor image"

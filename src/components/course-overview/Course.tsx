@@ -44,7 +44,7 @@ const Course = () => {
 
             <Question q={courseOffer} />
 
-            <div className="space-y-16 mt-32">
+            <div className="space-y-12 md:space-y-16 mt-24 md:mt-32">
                 {questions2.map((q, i) => (
                     <Question key={i} q={q} />
                 ))}
