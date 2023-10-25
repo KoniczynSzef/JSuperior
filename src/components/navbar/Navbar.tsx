@@ -34,7 +34,7 @@ const Navbar: FC<ComponentProps> = async () => {
     return (
         <header className="border-b-slate-400 dark:border-b-slate-700 border-b">
             <nav
-                className={`relative mx-16 py-8 flex items-center justify-between transition duration-200`}
+                className={`relative mx-8 md:mx-16 py-8 flex items-center justify-between transition duration-200`}
             >
                 <Link href={'/'}>
                     <span className="text-5xl font-extrabold text-yellowLogo opacity-90 hover:opacity-100 transition duration-150">
