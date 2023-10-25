@@ -28,12 +28,10 @@ export const code = [
 	   `,
     // code for todo list
     `
-	// It's only an example ;)
-
 	// Selecting all DOM elements
 	const input = document.querySelector("input")
 	const button = document.querySelector("button")
-	const todoList = document.querySelector("div")
+	const todoList = document.querySelector("ol")
 
 	// Creating a function to addTodo
 	const addTodo = () => {
@@ -41,23 +39,20 @@ export const code = [
 		const value = input.value
 
 		// Creating new dynamic elements
-		const todo = document.createElement("div")
-		const paragraph = document.createElement("p")
+		const todo = document.createElement("li")
 		const btn = document.createElement("button")
 
 		// Creating text nodes for elements 
-		const btnText = document.createTextNode("X")
-		const text = document.createTextNode(value)
+		btn.append("X")
+		todo.append(value)
 
 		// Appending elements to the DOM
-		paragraph.appendChild(text)
-		todo.appendChild(paragraph)
-		todo.appendChild(button)
+		todo.appendChild(btn)
 
 		todoList.appendChild(todo)
 
 		// Clearing the input field value
-		value = ""
+		input.value = ""
 	}	
 
 	// Adding an event listener to the button

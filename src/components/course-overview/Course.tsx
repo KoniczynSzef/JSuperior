@@ -11,7 +11,7 @@ import {
     questions,
     questions2,
 } from '@/assets/courseOverviewAssets';
-import TodoList from './TodoList';
+import TodoList from './todo-list/TodoList';
 import AccordionChild from './accordion/AccordionChild';
 
 const Course = () => {
